@@ -1,0 +1,2100 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>서울 철거 - 청년철거 ㅣ 모든 철거 및 원상 복구 업체</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+
+<style>
+@font-face{font-family:"Encode Sans Expanded:Bold";font-style:normal;font-weight:700;src:url("https://ybdemolish.com/_woff/v2/EncodeSansExpanded-Bold_1/EncodeSansExpanded-Bold_1-english.woff2") format("woff2");font-display:block;unicode-range:U+0000-00A0,U+00A2-00A9,U+00AC-00AE,U+00B0-00B7,U+00B9-00BA,U+00BC-00BE,U+00D7,U+00F7,U+2000-206F,U+2074,U+20AC,U+2122,U+2190-21BB,U+2212,U+2215,U+F8FF,U+FEFF,U+FFFD}
+@font-face{font-family:"Encode Sans Expanded:Bold";font-style:normal;font-weight:700;src:url("https://ybdemolish.com/_woff/v2/EncodeSansExpanded-Bold_1/EncodeSansExpanded-Bold_1-rest-latin.woff2") format("woff2");font-display:block;unicode-range:U+00A1,U+00AA-00AB,U+00AF,U+00B8,U+00BB,U+00BF-00D6,U+00D8-00F6,U+00F8-00FF,U+0131,U+0152-0153,U+02B0-02FF}
+@font-face{font-family:"Encode Sans Expanded:Bold";font-style:normal;font-weight:700;src:url("https://ybdemolish.com/_woff/v2/EncodeSansExpanded-Bold_1/EncodeSansExpanded-Bold_1-rest.woff2") format("woff2");font-display:block;unicode-range:U+0250-02AF,U+0300-1DFF,U+1F00-1FFF,U+2070-2073,U+2075-20AB,U+20AD-2121,U+2123-218F,U+21BC-2211,U+2213-2214,U+2216-F8FE,U+F900-FEFE,U+FF00-FFFC,U+FFFE-FFFF}
+
+/* ══════════════════════════════════
+   RESET & BASE
+══════════════════════════════════ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; font-size: 32px; }
+body {
+  font-family: 'Noto Sans KR', sans-serif;
+  background: #000; color: #fff;
+  overflow-x: hidden; -webkit-font-smoothing: antialiased;
+  padding-bottom: 33.016px;
+}
+@media (min-width: 800px)  { body { padding-bottom: 47.419px; } }
+@media (min-width: 1280px) { body { padding-bottom: 72.661px; } }
+@media (min-width: 1920px) { body { padding-bottom: 80px; } }
+img { display: block; max-width: 100%; }
+a { text-decoration: none; color: inherit; }
+
+/* ══════════════════════════════════
+   VARIABLES
+══════════════════════════════════ */
+:root {
+  --blue: #1B6CF7;
+  --blue-btn: #1B6CF7;
+  --black: #000000;
+  --dark: #0d0d0d;
+  --dark2: #181818;
+  --gray-bg: #F3F4F6;
+  --white: #fff;
+  --muted: rgba(255,255,255,0.55);
+}
+
+/* ══════════════════════════════════
+   SCROLL ANIMATIONS
+══════════════════════════════════ */
+.reveal {
+  opacity: 0;
+  transform: translateY(36px);
+  transition: opacity 0.7s cubic-bezier(0.22,1,0.36,1), transform 0.7s cubic-bezier(0.22,1,0.36,1);
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.reveal-left {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 0.75s cubic-bezier(0.22,1,0.36,1), transform 0.75s cubic-bezier(0.22,1,0.36,1);
+}
+.reveal-left.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.reveal-right {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 0.75s cubic-bezier(0.22,1,0.36,1), transform 0.75s cubic-bezier(0.22,1,0.36,1);
+}
+.reveal-right.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+.reveal-delay-4 { transition-delay: 0.4s; }
+.reveal-delay-5 { transition-delay: 0.5s; }
+
+
+
+/* ══════════════════════════════════
+   NAV
+══════════════════════════════════ */
+.gnav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 500;
+  height: 72px;
+  background: transparent;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  border-bottom: none;
+  display: flex; align-items: center;
+  justify-content: space-between;
+  padding: 0 40px;
+  transition: background 0.3s;
+}
+.gnav.scrolled {
+  background: rgba(0,0,0,0.88);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  box-shadow: 0 2px 20px rgba(0,0,0,0.4);
+}
+.gnav-logo img { height: 26px; display: block; background: transparent !important; mix-blend-mode: normal !important; }
+.gnav-links { display: flex; gap: 51px; }
+.gnav-links a {
+  font-size: 20px; font-weight: 500;
+  color: rgba(255,255,255,0.72); letter-spacing: -0.3px;
+  transition: color 0.2s;
+  position: relative;
+}
+.gnav-links a::after {
+  content: '';
+  position: absolute; bottom: -4px; left: 0; right: 0;
+  height: 2px; background: var(--blue);
+  transform: scaleX(0);
+  transition: transform 0.2s;
+  transform-origin: center;
+}
+.gnav-links a:hover { color: #fff; }
+.gnav-links a:hover::after { transform: scaleX(1); }
+
+/* ══════════════════════════════════
+   BUTTONS
+══════════════════════════════════ */
+.btn-outline {
+  display: inline-flex; align-items: center; justify-content: center;
+  padding: 17px 37px; border-radius: 100px;
+  border: 1.5px solid rgba(255,255,255,0.55);
+  font-size: 20px; font-weight: 700; color: #fff;
+  letter-spacing: -0.3px; white-space: nowrap;
+  transition: background 0.2s, border-color 0.2s;
+}
+.btn-outline:hover {
+  border-color: #fff;
+  background: rgba(255,255,255,0.08);
+}
+.btn-filled {
+  display: inline-flex; align-items: center; justify-content: center;
+  padding: 17px 37px; border-radius: 100px;
+  background: var(--blue); border: 1.5px solid var(--blue);
+  font-size: 20px; font-weight: 700; color: #fff;
+  letter-spacing: -0.3px; white-space: nowrap;
+  transition: background 0.2s, transform 0.15s;
+}
+.btn-filled:hover { opacity: 0.88; transform: translateY(-1px); }
+.btn-filled:active { transform: translateY(0); }
+.btn-cta-white {
+  display: inline-flex; align-items: center; justify-content: center;
+  padding: 17px 37px; border-radius: 100px;
+  background: #fff; border: 1.5px solid #fff;
+  font-size: 20px; font-weight: 800; color: var(--blue);
+  letter-spacing: -0.4px; white-space: nowrap;
+  transition: opacity .2s, transform .15s;
+}
+.btn-cta-white:hover { opacity: 0.9; transform: translateY(-2px); }
+
+/* ══════════════════════════════════
+   HERO
+══════════════════════════════════ */
+.hero {
+  position: relative; overflow: hidden;
+  height: 100vh; min-height: 640px;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  text-align: center; background: #000;
+}
+.hero-video {
+  position: absolute; inset: 0; z-index: 0; overflow: hidden;
+}
+.hero-video iframe {
+  position: absolute; top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: max(100vw, 177.78vh);
+  height: max(100vh, 56.25vw);
+  pointer-events: none; border: 0;
+}
+.hero-video::after {
+  content: ''; position: absolute; inset: 0;
+  background: rgba(0,0,0,0.52); z-index: 1;
+}
+.hero-content {
+  position: relative; z-index: 2;
+  display: flex; flex-direction: column;
+  align-items: center; gap: 0;
+  padding: 0 24px;
+  animation: heroFadeIn 1.2s cubic-bezier(0.22,1,0.36,1) 0.3s both;
+}
+@keyframes heroFadeIn {
+  from { opacity: 0; transform: translateY(30px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.hero-h1 {
+  font-size: 52px; font-weight: 900;
+  line-height: 1.5; letter-spacing: -1.5px;
+  margin-bottom: 20px;
+}
+.hero-h1 em {
+  background: var(--blue); color: #fff;
+  font-style: normal; padding: 0px 5px; border-radius: 0;
+  display: inline;
+}
+.hero-sub {
+  font-size: 28px; color: rgba(255,255,255,0.62);
+  line-height: 1.85; margin-bottom: 30px;
+}
+.hero-tel {
+  display: flex; align-items: center; justify-content: center; gap: 8px;
+  font-size: 50px; font-weight: 900; letter-spacing: -0.5px;
+  margin-bottom: 32px;
+}
+.hero-tel-icon { width: 44px; height: 44px; flex-shrink: 0; }
+.hero-btns { display: flex; gap: 10px; }
+.hero-scroll-hint {
+  position: absolute; bottom: 32px; left: 50%; transform: translateX(-50%);
+  z-index: 2; display: flex; flex-direction: column; align-items: center; gap: 6px;
+  opacity: 0.45; animation: scrollBounce 2.2s ease-in-out infinite;
+}
+.hero-scroll-hint span { font-size: 20px; letter-spacing: 3.6px; text-transform: uppercase; }
+.scroll-arrow {
+  width: 16px; height: 16px;
+  border-right: 2px solid #fff;
+  border-bottom: 2px solid #fff;
+  transform: rotate(45deg);
+  animation: arrowFade 2.2s ease-in-out infinite;
+}
+@keyframes scrollBounce {
+  0%,100% { transform: translateX(-50%) translateY(0); }
+  50%      { transform: translateX(-50%) translateY(6px); }
+}
+@keyframes arrowFade {
+  0%,100% { opacity: 1; }
+  50%      { opacity: 0.3; }
+}
+
+/* ══════════════════════════════════
+   SECTION HELPERS
+══════════════════════════════════ */
+.wrap { max-width: 960px; margin: 0 auto; padding: 0 24px; }
+.sec-label {
+  display: block; font-size: 20px; font-weight: 800;
+  letter-spacing: 5.8px; text-transform: uppercase;
+  color: var(--blue); margin-bottom: 23px;
+}
+.sec-title {
+  font-size: 44px; font-weight: 900;
+  letter-spacing: -1.8px; line-height: 1.2;
+}
+.sec-sub { font-size: 20px; color: var(--muted); line-height: 1.75; margin-top: 14px; }
+
+/* ══════════════════════════════════
+   POINT SECTION
+══════════════════════════════════ */
+.sec-point { background: var(--black); padding: 110px 0; }
+.sec-point-head { text-align: center; margin-bottom: 90px; }
+.point-item {
+  display: flex; align-items: center;
+  gap: 80px; margin-bottom: 90px;
+}
+.point-item:last-child { margin-bottom: 0; }
+.point-item.rev { flex-direction: row-reverse; }
+.pi-img { flex: 0 0 48%; }
+.pi-img img {
+  width: 100%; border-radius: 14px; object-fit: cover;
+  aspect-ratio: 1 / 1;
+  transition: transform 0.5s cubic-bezier(0.22,1,0.36,1);
+}
+.pi-img:hover img { transform: scale(1.03); }
+.pi-text { flex: 1; }
+.pi-badge {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 53px; height: 53px; border-radius: 50%;
+  background: var(--blue); color: #fff;
+  font-size: 20px; font-weight: 900;
+  margin-bottom: 30px;
+}
+.pi-text h3 {
+  font-size: 26px; font-weight: 900; line-height: 1.35;
+  letter-spacing: -0.8px; margin-bottom: 14px;
+}
+.pi-text p { font-size: 20px; color: var(--muted); line-height: 1.8; }
+
+/* ══════════════════════════════════
+   PARTNERS — Auto-scroll marquee
+══════════════════════════════════ */
+.sec-partners {
+  background: var(--black);
+  border-top: 1px solid rgba(255,255,255,0.07);
+  padding: 90px 0 135px;
+  text-align: center;
+}
+.sec-partners h2 { font-size: 38px; font-weight: 900; letter-spacing: -1.2px; line-height: 1.3; }
+.sec-partners h2 span { color: var(--blue); }
+.sec-partners .sec-sub { margin: 10px 0 46px; }
+
+/* Marquee rows */
+.partner-marquee-wrap {
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 12%, black 88%, transparent 100%);
+  mask-image: linear-gradient(to right, transparent 0%, black 12%, black 88%, transparent 100%);
+}
+.partner-marquee-row {
+  display: flex; gap: 0; margin-bottom: 0;
+}
+.partner-marquee-row + .partner-marquee-row { margin-top: 18px; }
+.pm-track {
+  display: flex; gap: 43px;
+  animation: marqueeScroll 56s linear infinite;
+  will-change: transform;
+}
+.partner-marquee-row:nth-child(2) .pm-track {
+  animation-direction: reverse;
+  animation-duration: 68s;
+}
+.pm-track:hover { animation-play-state: paused; }
+.pm-logo {
+  flex-shrink: 0;
+  height: auto;
+  display: flex; align-items: center; justify-content: center;
+  padding: 0 28px;
+  border: none;
+  background: none;
+  font-size: 20px; font-weight: 700;
+  color: rgba(255,255,255,0.55);
+  white-space: nowrap;
+  letter-spacing: -0.4px;
+  transition: color 0.3s;
+  padding: 0 27px;
+}
+.pm-logo:hover { color: rgba(255,255,255,0.9); }
+.pm-logo img {
+  height: 39px; width: auto; max-width: 140px; object-fit: contain;
+  opacity: 0.8;
+  transition: opacity 0.3s;
+  display: inline-block;
+}
+.pm-logo:hover img { opacity: 1; }
+
+.pm-sep {
+  flex-shrink: 0;
+  color: rgba(255,255,255,0.18);
+  font-size: 20px;
+  line-height: 1;
+  align-self: center;
+}
+
+@keyframes marqueeScroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+/* Fallback: original partner img */
+.partner-img { width: 100%; max-width: 920px; margin: 0 auto; }
+
+/* ══════════════════════════════════
+   REVIEWS — Drag scroll
+══════════════════════════════════ */
+.sec-review { background: var(--blue); padding: 86px 0; }
+.sec-review .sec-label { color: rgba(255,255,255,0.65); }
+.sec-review .sec-title { color: #fff; }
+.sec-review .sec-sub { color: rgba(255,255,255,0.72); }
+.review-head { text-align: center; margin-bottom: 46px; }
+
+.review-track {
+  display: flex; gap: 16px;
+  overflow-x: auto; cursor: grab;
+  padding: 8px 24px 24px;
+  scrollbar-width: none;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+}
+.review-track::-webkit-scrollbar { display: none; }
+.review-track.grabbing { cursor: grabbing; }
+.review-track.grabbing * { user-select: none; pointer-events: none; }
+
+.rv-card {
+  flex-shrink: 0; width: 708px;
+  background: #fff; border-radius: 16px;
+  display: flex; overflow: hidden;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.1);
+  scroll-snap-align: start;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.rv-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.18);
+}
+.rv-photo {
+  width: 258px; flex-shrink: 0; overflow: hidden;
+}
+.rv-photo img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s; }
+.rv-card:hover .rv-photo img { transform: scale(1.06); }
+.rv-body {
+  flex: 1; padding: 31px 34px;
+  display: flex; flex-direction: column; gap: 17px;
+}
+.rv-badge {
+  display: inline-block; background: var(--blue); color: #fff;
+  font-size: 20px; font-weight: 700; line-height: 1.5;
+  padding: 9px 22px; border-radius: 100px;
+  align-self: flex-start;
+  white-space: nowrap;
+}
+.rv-text { font-size: 20px; color: #333; line-height: 1.78; flex: 1; }
+.rv-meta { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+.rv-author { font-size: 20px; color: var(--blue); font-weight: 700; }
+.rv-stars { color: #F59E0B; font-size: 20px; letter-spacing: 1.5px; }
+
+/* ══════════════════════════════════
+   PROCESS – 실시간 철거 현황
+══════════════════════════════════ */
+.sec-process { background: var(--gray-bg); padding: 86px 0; }
+.sec-process .sec-label { color: var(--blue); }
+.sec-process .sec-title { color: #111; }
+.process-head { text-align: center; margin-bottom: 38px; }
+.process-marquee-wrap {
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
+  mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
+}
+.process-scroll {
+  display: flex; gap: 14px;
+  padding: 4px 0 16px;
+  width: max-content;
+  animation: processMarquee 560s linear infinite;
+  will-change: transform;
+}
+.process-marquee-wrap:hover .process-scroll { animation-play-state: paused; }
+@keyframes processMarquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+.pc-card {
+  flex-shrink: 0; width: 580px;
+  background: #fff; border-radius: 14px; overflow: hidden;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+  scroll-snap-align: start;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.pc-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 28px rgba(0,0,0,0.12);
+}
+.pc-thumb {
+  width: 100%; aspect-ratio: 1/1;
+  background: #ddd; overflow: hidden;
+}
+.pc-thumb img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s; }
+.pc-card:hover .pc-thumb img { transform: scale(1.08); }
+.pc-info { padding: 22px 25px 25px; }
+.pc-tag {
+  display: flex; align-items: center; gap: 11px;
+  margin-bottom: 11px;
+}
+.pc-tag-icon { width: 29px; height: 29px; flex-shrink: 0; }
+.pc-tag-icon img { width: 100%; height: 100%; object-fit: contain; }
+.pc-tag-text { font-size: 20px; color: var(--blue); font-weight: 700; }
+.pc-name { font-size: 20px; font-weight: 700; color: #111; line-height: 1.4; margin-bottom: 5px; }
+.pc-loc { font-size: 20px; color: #999; }
+
+/* ══════════════════════════════════
+   WHY #1
+══════════════════════════════════ */
+.sec-why { background: var(--gray-bg); padding: 0 24px 60px; }
+.why-inner {
+  position: relative; border-radius: 18px; overflow: hidden;
+  min-height: 400px;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  text-align: center; padding: 80px 48px;
+}
+.why-inner > img.bg {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%; object-fit: cover;
+  transition: transform 0.6s ease;
+}
+.why-inner:hover > img.bg { transform: scale(1.04); }
+.why-inner::after {
+  content: ''; position: absolute; inset: 0;
+  background: rgba(238,241,245,0.84); z-index: 1;
+}
+.why-inner > *:not(img) { position: relative; z-index: 2; }
+.why-inner h2 {
+  font-size: 42px; font-weight: 900;
+  letter-spacing: -1.4px; line-height: 1.28;
+  color: #111; margin-bottom: 14px;
+}
+.why-inner h2 span { color: var(--blue); }
+.why-inner p { font-size: 20px; color: #555; margin-bottom: 37px; }
+
+/* ══════════════════════════════════
+   STEPS
+══════════════════════════════════ */
+.sec-steps { background: var(--gray-bg); padding: 86px 0; }
+.sec-steps .sec-label { color: var(--blue); }
+.sec-steps .sec-title { color: #111; }
+.steps-head { text-align: center; margin-bottom: 42px; }
+.steps-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+.step-cell {
+  padding: 54px 47px;
+  background: #fff;
+  border-radius: 14px;
+  border: 1px solid #e2e2e2;
+  transition: background 0.3s, box-shadow 0.2s;
+  min-height: 290px;
+}
+.step-cell:not(.on):hover { background: #f4f7ff; box-shadow: 0 4px 16px rgba(27,108,247,0.08); }
+.step-cell.on { background: var(--blue); border-color: var(--blue); }
+.step-num { font-size: 20px; font-weight: 800; color: var(--blue); letter-spacing: 1.8px; margin-bottom: 16px; }
+.step-cell.on .step-num { color: rgba(255,255,255,0.6); }
+.step-cell h4 { font-size: 20px; font-weight: 800; color: #111; line-height: 1.5; margin-bottom: 13px; letter-spacing: -0.4px; }
+.step-cell.on h4 { color: #fff; }
+.step-cell p { font-size: 20px; color: #aaa; line-height: 1.65; }
+.step-cell.on p { color: rgba(255,255,255,0.65); }
+.step-link { display: inline-block; margin-top: 22px; font-size: 20px; font-weight: 700; color: #fff; }
+.step-img-cell {
+  padding: 0 !important;
+  overflow: hidden;
+  border-radius: 14px;
+  border: none !important;
+  background: transparent !important;
+  min-height: unset !important;
+}
+.step-img-cell img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  display: block;
+  border-radius: 14px;
+}
+
+/* ══════════════════════════════════
+   POINT DARK — 변동 즉시 대응
+══════════════════════════════════ */
+.sec-pdark { background: #181818; padding: 86px 0; }
+.sec-pdark .sec-label { color: var(--blue); }
+.pdark-head { text-align: center; margin-bottom: 52px; }
+.pdark-head .sec-title { font-size: 42px; }
+
+.pdark-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+
+.pd-card {
+  border-radius: 20px; overflow: hidden;
+  min-height: 520px; position: relative;
+  display: flex; flex-direction: column;
+  justify-content: flex-end; padding: 30px 28px;
+  transition: transform 0.3s;
+}
+.pd-card:hover { transform: translateY(-6px); }
+.pd-card img.bg {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%; object-fit: cover;
+  transition: transform 0.5s;
+}
+.pd-card:hover img.bg { transform: scale(1.05); }
+
+.pd-card-body { position: relative; z-index: 1; }
+.pd-card-sub { font-size: 20px; color: rgba(255,255,255,0.7); line-height: 1.7; margin-bottom: 15px; }
+.pd-card-title { font-size: 26px; font-weight: 900; }
+.pd-bar { width: 28px; height: 3px; background: var(--blue); margin-bottom: 14px; border-radius: 2px; }
+
+.pd-card-white {
+  border-radius: 20px; overflow: hidden;
+  background: #fff; min-height: 520px;
+  display: flex; flex-direction: column;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.pd-card-white:hover { transform: translateY(-6px); box-shadow: 0 16px 40px rgba(0,0,0,0.18); }
+.pd-white-top { padding: 32px 28px 22px; }
+.pd-white-top h3 {
+  font-size: 26px; font-weight: 900; color: #111;
+  margin-bottom: 12px; letter-spacing: -0.5px;
+}
+.pd-white-top .bar { width: 28px; height: 3px; background: var(--blue); margin-bottom: 16px; border-radius: 2px; }
+.pd-white-top p { font-size: 20px; color: #666; line-height: 1.75; }
+.pd-white-photo { flex: 1; min-height: 280px; overflow: hidden; }
+.pd-white-photo img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.5s; }
+.pd-card-white:hover .pd-white-photo img { transform: scale(1.05); }
+
+/* ══════════════════════════════════
+   SAFETY
+══════════════════════════════════ */
+.sec-safety { position: relative; overflow: hidden; padding: 86px 0; }
+.sec-safety > img.bg {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%; object-fit: cover;
+}
+.sec-safety::after {
+  content: ''; position: absolute; inset: 0;
+  background: rgba(0,0,0,0.38);
+}
+.sec-safety > .wrap { position: relative; z-index: 1; }
+.safety-head { text-align: center; margin-bottom: 56px; }
+.safety-head .sec-title span { color: var(--blue); }
+.safety-head .sec-sub { color: rgba(255,255,255,0.6); }
+.safety-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+.safety-item {
+  text-align: center;
+  background: rgba(10, 20, 50, 0.82);
+  border: 1px solid rgba(27, 108, 247, 0.35);
+  border-radius: 16px;
+  padding: 58px 36px 51px;
+}
+.safety-n { font-size: 20px; font-weight: 800; color: var(--blue); letter-spacing: 1.8px; margin-bottom: 22px; }
+.safety-icon { width: 120px; height: 120px; margin: 0 auto 36px; }
+.safety-icon img { width: 100%; height: 100%; object-fit: contain; }
+.safety-item h4 { font-size: 20px; font-weight: 800; line-height: 1.5; margin-bottom: 18px; }
+.safety-item p { font-size: 20px; color: rgba(255,255,255,0.52); line-height: 1.7; }
+.safety-img-item {
+  padding: 0 !important;
+  background: transparent !important;
+  border: none !important;
+  border-radius: 16px;
+  overflow: hidden;
+}
+.safety-img-item img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  display: block;
+  border-radius: 16px;
+}
+
+/* ══════════════════════════════════
+   STRUCTURE
+══════════════════════════════════ */
+.sec-struct {
+  background: linear-gradient(to bottom, #2e2e2e 48%, #1B6CF7 48%);
+  padding: 80px 0 0;
+}
+.sec-struct .sec-label { color: #4da3ff; }
+.sec-struct .sec-title { color: #fff; }
+.sec-struct .sec-sub   { color: rgba(255,255,255,0.65); }
+.struct-head { text-align: center; margin-bottom: 60px; }
+.struct-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+  align-items: start;
+  padding-bottom: 80px;
+}
+.struct-img {
+  width: 100%;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 12px 40px rgba(0,0,0,0.22);
+  transition: transform 0.35s cubic-bezier(0.22,1,0.36,1);
+}
+.struct-img:hover { transform: translateY(-6px); }
+.struct-img img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* ══════════════════════════════════
+   FINAL CTA
+══════════════════════════════════ */
+.sec-cta { background: var(--blue); padding: 92px 24px; text-align: center; }
+.sec-cta h2 {
+  font-size: 44px; font-weight: 900;
+  letter-spacing: -1.5px; line-height: 1.25;
+  margin-bottom: 14px;
+}
+.sec-cta p { font-size: 20px; color: rgba(255,255,255,0.78); line-height: 1.85; margin-bottom: 45px; }
+
+/* ══════════════════════════════════
+   PARTNER RECRUITMENT
+══════════════════════════════════ */
+.sec-partner { position: relative; overflow: hidden; padding: 100px 24px; text-align: center; }
+.sec-partner > img.bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s; }
+.sec-partner:hover > img.bg { transform: scale(1.03); }
+.sec-partner::after { content: ''; position: absolute; inset: 0; background: rgba(0,0,0,0.76); }
+.sec-partner > div { position: relative; z-index: 1; }
+.sec-partner h2 {
+  font-size: 40px; font-weight: 900;
+  letter-spacing: -1.2px; line-height: 1.3;
+  margin-bottom: 12px;
+}
+.sec-partner p { font-size: 20px; color: rgba(255,255,255,0.65); margin-bottom: 37px; }
+
+/* ══════════════════════════════════
+   FOOTER
+══════════════════════════════════ */
+.ybfooter {
+  background: #111;
+  color: #fff;
+  padding: 48px 60px;
+  box-sizing: border-box;
+  width: 100%;
+}
+.ybfooter-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 40px;
+  align-items: start;
+}
+.ybfooter-logo {
+  font-size: 28px;
+  font-weight: 900;
+  font-style: italic;
+  letter-spacing: -0.5px;
+  color: #fff;
+  line-height: 1.2;
+}
+.ybfooter-info p,
+.ybfooter-info02 p {
+  margin: 0 0 12px 0;
+  font-size: 22px;
+  line-height: 1.6;
+  color: #ccc;
+}
+.ybfooter-info p strong,
+.ybfooter-info02 p strong {
+  display: block;
+  color: #fff;
+  font-weight: 500;
+  font-size: 20px;
+  margin-bottom: 2px;
+}
+.ybfooter-info a,
+.ybfooter-info02 a { color: #ccc; text-decoration: none; }
+.ybfooter-info a:hover,
+.ybfooter-info02 a:hover { color: #fff; }
+.ybfooter-info02 .copyright { font-size: 20px; color: #999; margin-top: 4px; }
+
+.ft-btns .btn-outline, .ft-btns .btn-filled {
+  display: inline-flex; align-items: center; justify-content: center;
+  padding: 17px 37px; border-radius: 100px;
+  background: var(--blue); border: 1.5px solid var(--blue);
+  font-size: 20px; font-weight: 700; color: #fff;
+  letter-spacing: -0.3px; white-space: nowrap;
+  transition: background 0.2s, transform 0.15s;
+}
+
+/* ══════════════════════════════════
+   TICKER
+══════════════════════════════════ */
+.ticker-wrap {
+  overflow: hidden;
+  background: #060606;
+  border-top: 1px solid rgba(255,255,255,0.05);
+  padding: 16px 0;
+  display: flex;
+  width: 100%;
+}
+.ticker-track {
+  display: flex;
+  flex-shrink: 0;
+  min-width: 100%;
+  animation: ticker 120s linear infinite;
+  will-change: transform;
+}
+.ticker-wrap:hover .ticker-track { animation-play-state: paused; }
+.ticker-item {
+  font-size: 20px; color: rgba(255,255,255,0.5); font-weight: 600;
+  white-space: nowrap; flex-shrink: 0; padding: 0 56px;
+}
+.ticker-dot {
+  color: rgba(255,255,255,0.28); flex-shrink: 0; align-self: center; font-size: 20px;
+}
+@keyframes ticker {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-100%); }
+}
+
+.spacer { display: none; }
+
+/* ══════════════════════════════════
+   COUNTER NUMBERS
+══════════════════════════════════ */
+.counter-section {
+  background: #000;
+  border-top: 1px solid rgba(255,255,255,0.06);
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  padding: 60px 24px;
+}
+.counter-grid {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  max-width: 960px; margin: 0 auto; gap: 0;
+}
+.counter-item {
+  text-align: center;
+  padding: 20px;
+  border-right: 1px solid rgba(255,255,255,0.07);
+}
+.counter-item:last-child { border-right: none; }
+.counter-num {
+  font-size: 42px; font-weight: 900;
+  letter-spacing: -2px;
+  color: #fff;
+  line-height: 1;
+  margin-bottom: 8px;
+}
+.counter-num span { color: var(--blue); }
+.counter-label { font-size: 20px; color: rgba(255,255,255,0.5); font-weight: 500; }
+
+/* ══════════════════════════════════
+   RESPONSIVE
+══════════════════════════════════ */
+@media (max-width: 860px) {
+  .hero-h1 { font-size: 34px; }
+  .hero-tel { font-size: 26px; }
+  .sec-title { font-size: 30px; }
+  .gnav { padding: 0 20px; }
+  .gnav-links { gap: 18px; }
+  .topbar { padding: 9px 20px; }
+  .point-item, .point-item.rev { flex-direction: column; gap: 30px; }
+  .pi-img { flex: unset; width: 100%; }
+  .pdark-cards { grid-template-columns: 1fr; }
+  .safety-grid { grid-template-columns: repeat(2, 1fr); }
+  .struct-grid { grid-template-columns: 1fr; }
+  .steps-grid { grid-template-columns: repeat(2, 1fr); }
+  .rv-card { width: 490px; flex-direction: column; }
+  .rv-photo { width: 100%; height: 246px; }
+  .ybfooter { padding: 40px 24px; }
+  .ybfooter-inner { grid-template-columns: 1fr; gap: 28px; }
+
+  .sticky-label { display: none; }
+  .counter-grid { grid-template-columns: repeat(2, 1fr); }
+  .counter-item:nth-child(2) { border-right: none; }
+  .counter-item:nth-child(3) { border-right: 1px solid rgba(255,255,255,0.07); border-top: 1px solid rgba(255,255,255,0.07); }
+  .counter-item:nth-child(4) { border-right: none; border-top: 1px solid rgba(255,255,255,0.07); }
+  .counter-num { font-size: 32px; }
+}
+.pc-info{display:none!important}
+
+.review-slider-wrap { position: relative; }
+.review-nav-btn {
+  position: absolute; top: 50%; transform: translateY(-50%);
+  width: 44px; height: 44px; border-radius: 50%;
+  background: rgba(255,255,255,0.9); border: none;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  cursor: pointer; z-index: 10;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 24px; color: var(--blue);
+  transition: background 0.3s;
+}
+.review-nav-btn:hover { background: #fff; }
+.review-nav-btn.prev { left: 10px; }
+.review-nav-btn.next { right: 10px; }
+@media (max-width: 768px) { .review-nav-btn { display: none; } }
+
+
+/* ══════════════════════════════════
+   하단 고정 배너 (서브페이지 수치·폰트 그대로)
+══════════════════════════════════ */
+.ybban-800,.ybban-1280,.ybban-1920{display:none!important}
+@media(min-width:800px){.ybban-375{display:none!important}.ybban-800{display:flex!important}}
+@media(min-width:1280px){.ybban-800{display:none!important}.ybban-1280{display:flex!important}}
+@media(min-width:1920px){.ybban-1280{display:none!important}.ybban-1920{display:flex!important}}
+
+/* 공통 래퍼 */
+.ybban{
+  position:fixed; z-index:9999; background-color:#1e1e1e;
+  display:flex; justify-content:center; align-items:center;
+  left:0; right:0; bottom:0;
+  font-size:0; /* ← html{font-size:32px} 상속 완전 차단 */
+}
+
+/* 텍스트 */
+.ybban-txt{
+  font-family:"Encode Sans Expanded:Bold","Noto Sans KR",sans-serif;
+  font-weight:700; color:#fff; -webkit-text-fill-color:#fff;
+  white-space:nowrap; line-height:0; word-break:break-word;
+}
+.ybban-txt p{line-height:0.9; display:block;}
+
+/* 버튼 */
+.ybban-btn{position:relative; display:block; flex-shrink:0; cursor:pointer;}
+.ybban-btn-bg{position:absolute; display:block; border-radius:28.5px; top:0; left:0;}
+.ybban-btn-blue{background-color:#005bff;}
+.ybban-btn-outline{background-color:rgba(217,217,217,0);}
+.ybban-btn-lbl{
+  position:absolute; display:flex; flex-direction:column; justify-content:center;
+  transform:translateX(-50%) translateY(-50%);
+  font-family:"Encode Sans Expanded:Bold","Noto Sans KR",sans-serif;
+  font-weight:700; color:#fff; -webkit-text-fill-color:#fff;
+  white-space:nowrap; line-height:0; text-align:center; word-break:break-word;
+}
+.ybban-btn-lbl p{line-height:1; display:block;}
+
+/* ── 375 ── */
+.ybban-375{height:33.016px; gap:15.682px;}
+.ybban-375 .ybban-txt    {font-size:11.555px; letter-spacing:-0.6933px;}
+.ybban-375 .ybban-btn    {width:84.603px;  height:19.397px;}
+.ybban-375 .ybban-btn-bg {width:84.603px;  height:19.397px;}
+.ybban-375 .ybban-btn-lbl{font-size:11.56px; letter-spacing:-0.9248px; left:42.3px; top:9.49px;}
+
+/* ── 800 ── */
+.ybban-800{height:47.419px; gap:22.524px;}
+.ybban-800 .ybban-txt    {font-size:16.597px; letter-spacing:-0.9958px;}
+.ybban-800 .ybban-btn    {width:121.512px; height:27.859px;}
+.ybban-800 .ybban-btn-bg {width:121.512px; height:27.859px;}
+.ybban-800 .ybban-btn-outline{border:0.593px solid #fff;}
+.ybban-800 .ybban-btn-lbl{font-size:16.6px; letter-spacing:-1.328px; left:60.76px; top:13.63px;}
+
+/* ── 1280 ── */
+.ybban-1280{height:72.661px; gap:34.514px;}
+.ybban-1280 .ybban-txt    {font-size:25.432px; letter-spacing:-1.5259px;}
+.ybban-1280 .ybban-btn    {width:186.195px; height:42.689px;}
+.ybban-1280 .ybban-btn-bg {width:186.195px; height:42.689px;}
+.ybban-1280 .ybban-btn-outline{border:0.908px solid #fff;}
+.ybban-1280 .ybban-btn-lbl{font-size:25.43px; letter-spacing:-2.0344px; left:93.1px; top:20.89px;}
+
+/* ── 1920 ── */
+.ybban-1920{height:80px; gap:38px;}
+.ybban-1920 .ybban-txt    {font-size:28px; letter-spacing:-1.68px;}
+.ybban-1920 .ybban-btn    {width:205px; height:47px;}
+.ybban-1920 .ybban-btn-bg {width:205px; height:47px;}
+.ybban-1920 .ybban-btn-outline{border:1px solid #fff;}
+.ybban-1920 .ybban-btn-lbl{font-size:28px; letter-spacing:-2.24px; left:102.5px; top:23px;}
+
+/* SAFETY 배경 강제 교체 */
+.sec-safety {
+  background-image: url("assets/images/img_0.png") !important;
+  background-size: cover !important;
+  background-position: center center !important;
+  background-repeat: no-repeat !important;
+}
+.sec-safety > img.bg {
+  display: none !important;
+}
+
+
+/* SAFETY 배경 밝기 조정 */
+.sec-safety::after {
+  background: rgba(0,0,0,0.38) !important;
+}
+.sec-safety {
+  background-size: cover !important;
+  background-position: center center !important;
+  background-repeat: no-repeat !important;
+}
+
+
+/* POINT DARK 헤더 복구 */
+.sec-pdark .pdark-head {
+  display: block !important;
+  text-align: center !important;
+  margin-bottom: 52px !important;
+}
+.sec-pdark .pdark-head .sec-label,
+.sec-pdark .pdark-head .sec-title {
+  display: block !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  transform: none !important;
+}
+.sec-pdark .pdark-head .sec-label {
+  color: #1B6CF7 !important;
+  font-size: 20px !important;
+  font-weight: 800 !important;
+  letter-spacing: 5.8px !important;
+  text-transform: uppercase !important;
+  margin-bottom: 23px !important;
+}
+.sec-pdark .pdark-head .sec-title {
+  color: #fff !important;
+  font-size: 42px !important;
+  font-weight: 900 !important;
+  line-height: 1.2 !important;
+  letter-spacing: -1.4px !important;
+}
+
+
+
+/* WHY 섹션 배경 최종 수정 */
+.sec-why {
+  background: #EEF1F5 !important;
+  padding: 0 !important;
+  width: 100% !important;
+  overflow: hidden !important;
+}
+
+.sec-why .why-inner {
+  width: 100% !important;
+  max-width: none !important;
+  min-height: 626px !important;
+  border-radius: 0 !important;
+  margin: 0 !important;
+  padding: 0 48px !important;
+  background-image: url("assets/images/img_1.png") !important;
+  background-size: cover !important;
+  background-position: center center !important;
+  background-repeat: no-repeat !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  text-align: center !important;
+}
+
+.sec-why .why-inner > img.bg {
+  display: none !important;
+}
+
+.sec-why .why-inner::after {
+  display: none !important;
+}
+
+.sec-why .why-inner h2,
+.sec-why .why-inner p,
+.sec-why .why-inner a {
+  position: relative !important;
+  z-index: 2 !important;
+}
+
+@media (max-width: 860px) {
+  .sec-why .why-inner {
+    min-height: 520px !important;
+    padding: 0 24px !important;
+    background-size: cover !important;
+    background-position: center center !important;
+  }
+}
+
+
+/* HEADER LOGO CLEAN FIX */
+header .logo,
+header .logo-wrap,
+header .brand,
+header .navbar-brand {
+    background: transparent !important;
+    box-shadow: none !important;
+    border: none !important;
+    backdrop-filter: none !important;
+}
+
+header img.logo,
+header .logo img,
+header .brand img,
+header .navbar-brand img {
+    background: transparent !important;
+    mix-blend-mode: normal !important;
+}
+
+
+/* GNAV LOGO BLACK BG REMOVE */
+.gnav-logo,
+.gnav-logo a,
+.gnav-logo img {
+  background: transparent !important;
+  background-color: transparent !important;
+  box-shadow: none !important;
+  border: none !important;
+  outline: none !important;
+  mix-blend-mode: normal !important;
+  filter: none !important;
+}
+.gnav-logo a {
+  display: inline-flex !important;
+  align-items: center !important;
+}
+.gnav-logo img {
+  height: 26px !important;
+  width: auto !important;
+  object-fit: contain !important;
+}
+
+
+/* FINAL WHY BACKGROUND */
+.sec-why {
+  padding:0 !important;
+  background:#EFF1F4 !important;
+}
+
+.sec-why .why-inner {
+  position:relative !important;
+  width:100% !important;
+  max-width:none !important;
+  min-height:880px !important;
+  margin:0 !important;
+  border-radius:0 !important;
+  overflow:hidden !important;
+  background:url("assets/images/img_2.png") center center / cover no-repeat !important;
+  display:flex !important;
+  flex-direction:column !important;
+  align-items:center !important;
+  justify-content:center !important;
+  text-align:center !important;
+}
+
+.sec-why .why-inner > img.bg {
+  display:none !important;
+}
+
+.sec-why .why-inner::before {
+  content:'' !important;
+  position:absolute !important;
+  inset:0 !important;
+  background:rgba(255,255,255,0.55) !important;
+}
+
+.sec-why .why-inner h2,
+.sec-why .why-inner p,
+.sec-why .why-inner a {
+  position:relative !important;
+  z-index:2 !important;
+}
+
+
+/* WHY 배경 선명도 조정 */
+.sec-why .why-inner::before {
+  background: rgba(255,255,255,0.18) !important;
+}
+.sec-why .why-inner {
+  filter: none !important;
+}
+.sec-why .why-inner h2,
+.sec-why .why-inner p,
+.sec-why .why-inner a {
+  filter: none !important;
+}
+
+
+/* 실시간 철거 현황 마퀴 카드 HQ 복구 */
+.sec-process .pc-card {
+  width: 536px !important;
+  flex: 0 0 536px !important;
+  border-radius: 14px !important;
+  overflow: hidden !important;
+}
+
+.sec-process .pc-thumb {
+  width: 536px !important;
+  height: 536px !important;
+  aspect-ratio: 1 / 1 !important;
+  background: transparent !important;
+}
+
+.sec-process .pc-thumb img {
+  width: 536px !important;
+  height: 536px !important;
+  object-fit: cover !important;
+  image-rendering: auto !important;
+  transform: none !important;
+  filter: none !important;
+}
+
+.sec-process .pc-card:hover .pc-thumb img {
+  transform: none !important;
+}
+
+</style>
+</head>
+<body>
+
+<!-- ════ NAV ════ -->
+<nav class="gnav" id="gnav">
+  <div class="gnav-logo">
+    <a href="/"><img src="assets/images/img_3.png" alt="청년철거"></a>
+  </div>
+  <div class="gnav-links">
+    <a href="https://ybdemolish.com/sub-page">시공사례</a>
+    <a href="https://ybdemolish.imweb.me/PartnerRecruitment">파트너 지원</a>
+    <a href="https://ybdemolish.imweb.me/Quotationinquiry">견적문의</a>
+  </div>
+</nav>
+
+<!-- ════ HERO ════ -->
+<section class="hero">
+  <div class="hero-video">
+    <iframe
+      src="https://player.vimeo.com/video/1191419212?background=1&autoplay=1&loop=1&muted=1&byline=0&title=0&portrait=0&dnt=1"
+      allow="autoplay; fullscreen; picture-in-picture"
+      allowfullscreen>
+    </iframe>
+  </div>
+  <div class="hero-content">
+    <h1 class="hero-h1">
+      철거, 잘못 고르면 바로 손해<br>
+      <em>청년철거</em>는 숨은 비용부터 제거
+    </h1>
+    <p class="hero-sub">추가요금 없는 투명한 견적<br>무료 방문 상담으로 정확하게 안내합니다</p>
+    <div class="hero-tel">
+      <img class="hero-tel-icon" src="https://ybdemolish.com/_assets/v11/ba68f95ba05de48dcf8ea1f5a37ec9c07235a3e7.png" alt="">
+      1866-0379
+    </div>
+    <div class="hero-btns">
+      <a href="https://ybdemolish.imweb.me/Quotationinquiry" class="btn-outline">간편 견적 요청</a>
+      <a href="https://pf.kakao.com/_xexbgxin/chat" class="btn-filled">카톡 채널 문의</a>
+    </div>
+  </div>
+  <div class="hero-scroll-hint">
+    <div class="scroll-arrow"></div>
+  </div>
+</section>
+
+<!-- ════ COUNTERS ════ -->
+<div class="counter-section">
+  <div class="counter-grid">
+    <div class="counter-item reveal">
+      <div class="counter-num" data-target="3200">0<span>+</span></div>
+      <div class="counter-label">누적 시공 건수</div>
+    </div>
+    <div class="counter-item reveal reveal-delay-1">
+      <div class="counter-num" data-target="98">0<span>%</span></div>
+      <div class="counter-label">고객 만족도</div>
+    </div>
+    <div class="counter-item reveal reveal-delay-2">
+      <div class="counter-num" data-target="15">0<span>년</span></div>
+      <div class="counter-label">운영 경력</div>
+    </div>
+    <div class="counter-item reveal reveal-delay-3">
+      <div class="counter-num" data-target="600">0<span>만원</span></div>
+      <div class="counter-label">최대 폐업지원금</div>
+    </div>
+  </div>
+</div>
+
+<!-- ════ POINT ════ -->
+<section class="sec-point">
+  <div class="wrap sec-point-head">
+    <span class="sec-label reveal">POINT</span>
+    <h2 class="sec-title reveal">조건이 다르면 결과도 다릅니다</h2>
+  </div>
+  <div class="wrap">
+
+    <div class="point-item">
+      <div class="pi-img reveal-left">
+        <img src="https://ybdemolish.com/_assets/v11/50bd6443d341fadc534913670c8fdac93e45f595.png" alt="">
+      </div>
+      <div class="pi-text reveal-right">
+        <div class="pi-badge">01</div>
+        <h3>쓸데없는 추가요금, 0원<br>견적 외 비용은 없습니다</h3>
+        <p>방문 견적 기준으로만 시공<br>동의 없는 추가 비용 없음</p>
+      </div>
+    </div>
+
+    <div class="point-item rev">
+      <div class="pi-img reveal-right">
+        <img src="https://ybdemolish.com/_assets/v11/64cc902ccf5ed1e02d114615eb7ad7e055e12f22.png" alt="">
+      </div>
+      <div class="pi-text reveal-left">
+        <div class="pi-badge">02</div>
+        <h3>자격 · 장비 · 전문 인력<br>기본 조건부터 다릅니다</h3>
+        <p>조건만 갖추고 끝내지 않습니다<br>작업 퀄리티까지 책임</p>
+      </div>
+    </div>
+
+    <div class="point-item">
+      <div class="pi-img reveal-left">
+        <img src="https://ybdemolish.com/_assets/v11/a1a9ac3cdfde2d890d704e86937f0c53685d67e2.png" alt="">
+      </div>
+      <div class="pi-text reveal-right">
+        <div class="pi-badge">03</div>
+        <h3>처음부터 끝까지<br>1:1 전담 매니저</h3>
+        <p>계약부터 시공, 사후 A/S까지<br>전 과정 직접 관리</p>
+      </div>
+    </div>
+
+    <div class="point-item rev">
+      <div class="pi-img reveal-right">
+        <img src="https://ybdemolish.com/_assets/v11/0ded5f746a160b200d7e17db13b0b20916710077.png" alt="">
+      </div>
+      <div class="pi-text reveal-left">
+        <div class="pi-badge">04</div>
+        <h3>폐업지원금 600만 원<br>신청부터 수령까지 직접</h3>
+        <p>받을 수 있는 정부 지원금,<br>놓치지 않도록 관리</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ════ PARTNERS ════ -->
+<section class="sec-partners">
+  <div class="wrap">
+    <h2 class="reveal">결과로 남는 이름, <span>청년철거</span><br>신뢰는 함께한 이름으로 남습니다</h2>
+    <p class="sec-sub reveal">실제 현장 기준으로 함께해온 파트너입니다</p>
+
+    <div class="partner-marquee-wrap reveal">
+      <div class="partner-marquee-row">
+        <div class="pm-track" id="marqueeRow1">
+          <div class="pm-logo"><img src="assets/images/img_4.png" alt="이디야커피"></div>
+          <span class="pm-sep">·</span>
+          <div class="pm-logo"><img src="assets/images/img_5.png" alt="작심"></div>
+          <span class="pm-sep">·</span>
+          <div class="pm-logo"><img src="assets/images/img_6.png" alt="GS25"></div>
+          <span class="pm-sep">·</span>
+          <div class="pm-logo"><img src="assets/images/img_7.png" alt="CU"></div>
+          <span class="pm-sep">·</span>
+          <div class="pm-logo"><img src="assets/images/img_8.png" alt="원더플레이스"></div>
+          <span class="pm-sep">·</span>
+          <div class="pm-logo"><img src="assets/images/img_9.png" alt="이마트24"></div>
+          <span class="pm-sep">·</span>
+          <div class="pm-logo"><img src="assets/images/img_10.png" alt="세븐일레븐"></div>
+          <span class="pm-sep">·</span>
+          <div class="pm-logo"><img src="assets/images/img_11.png" alt="파리바게트"></div>
+          <span class="pm-sep">·</span>
+          <div class="pm-logo"><img src="assets/images/img_12.png" alt="박승철 헤어스투디오"></div>
+          <span class="pm-sep">·</span>
+          <div class="pm-logo"><img src="assets/images/img_13.png" alt="스마트 해법영어"></div>
+          <span class="pm-sep">·</span>
+          <div class="pm-logo"><img src="assets/images/img_14.png" alt="네이쳐 리퍼블릭"></div>
+          <span class="pm-sep">·</span>
+          <div class="pm-logo"><img src="assets/images/img_15.png" alt="건일제약"></div>
+          <span class="pm-sep">·</span>
+          <div class="pm-logo"><img src="assets/images/img_16.png" alt="이디야커피"></div>
+          <span class="pm-sep">·</span>
+          <div class="pm-logo"><img src="assets/images/img_17.png" alt="작심"></div>
+          <span class="pm-sep">·</span>
+          <div class="pm-logo"><img src="assets/images/img_18.png" alt="GS25"></div>
+          <span class="pm-sep">·</span>
+          <div class="pm-logo"><img src="assets/images/img_19.png" alt="CU"></div>
+          <span class="pm-sep">·</span>
+          <div class="pm-logo"><img src="assets/images/img_20.png" alt="원더플레이스"></div>
+          <span class="pm-sep">·</span>
+          <div class="pm-logo"><img src="assets/images/img_21.png" alt="이마트24"></div>
+          <span class="pm-sep">·</span>
+          <div class="pm-logo"><img src="assets/images/img_22.png" alt="세븐일레븐"></div>
+          <span class="pm-sep">·</span>
+          <div class="pm-logo"><img src="assets/images/img_23.png" alt="파리바게트"></div>
+          <span class="pm-sep">·</span>
+          <div class="pm-logo"><img src="assets/images/img_24.png" alt="박승철 헤어스투디오"></div>
+          <span class="pm-sep">·</span>
+          <div class="pm-logo"><img src="assets/images/img_25.png" alt="스마트 해법영어"></div>
+          <span class="pm-sep">·</span>
+          <div class="pm-logo"><img src="assets/images/img_26.png" alt="네이쳐 리퍼블릭"></div>
+          <span class="pm-sep">·</span>
+          <div class="pm-logo"><img src="assets/images/img_27.png" alt="건일제약"></div>
+          <span class="pm-sep">·</span>
+        </div>
+      </div>
+      <div class="partner-marquee-row" style="margin-top:20px">
+        <div class="pm-track" id="marqueeRow2">
+          <div class="pm-logo"><img src="assets/images/img_28.png" alt="더스윙블랙"></div>
+          <span class="pm-sep">·</span>
+          <div class="pm-logo"><img src="assets/images/img_29.png" alt="우리할매떡볶이"></div>
+          <span class="pm-sep">·</span>
+          <div class="pm-logo"><img src="assets/images/img_30.png" alt="BBQ"></div>
+          <span class="pm-sep">·</span>
+          <div class="pm-logo"><img src="assets/images/img_31.png" alt="고봉민김밥"></div>
+          <span class="pm-sep">·</span>
+          <div class="pm-logo"><img src="assets/images/img_32.png" alt="최고당돈가스"></div>
+          <span class="pm-sep">·</span>
+          <div class="pm-logo"><img src="assets/images/img_33.png" alt="연세대학교"></div>
+          <span class="pm-sep">·</span>
+          <div class="pm-logo"><img src="assets/images/img_34.png" alt="E편한세상"></div>
+          <span class="pm-sep">·</span>
+          <div class="pm-logo"><img src="assets/images/img_35.png" alt="걸작떡볶이"></div>
+          <span class="pm-sep">·</span>
+          <div class="pm-logo"><img src="assets/images/img_36.png" alt="더벤티"></div>
+          <span class="pm-sep">·</span>
+          <div class="pm-logo"><img src="assets/images/img_37.png" alt="킨텍스"></div>
+          <span class="pm-sep">·</span>
+          <div class="pm-logo"><img src="assets/images/img_38.png" alt="더현대서울"></div>
+          <span class="pm-sep">·</span>
+          <div class="pm-logo"><img src="assets/images/img_39.png" alt="롯데월드"></div>
+          <span class="pm-sep">·</span>
+          <div class="pm-logo"><img src="assets/images/img_40.png" alt="래미안"></div>
+          <span class="pm-sep">·</span>
+          <div class="pm-logo"><img src="assets/images/img_41.png" alt="힐스테이트"></div>
+          <span class="pm-sep">·</span>
+          <div class="pm-logo"><img src="assets/images/img_42.png" alt="더스윙블랙"></div>
+          <span class="pm-sep">·</span>
+          <div class="pm-logo"><img src="assets/images/img_43.png" alt="우리할매떡볶이"></div>
+          <span class="pm-sep">·</span>
+          <div class="pm-logo"><img src="assets/images/img_44.png" alt="BBQ"></div>
+          <span class="pm-sep">·</span>
+          <div class="pm-logo"><img src="assets/images/img_45.png" alt="고봉민김밥"></div>
+          <span class="pm-sep">·</span>
+          <div class="pm-logo"><img src="assets/images/img_46.png" alt="최고당돈가스"></div>
+          <span class="pm-sep">·</span>
+          <div class="pm-logo"><img src="assets/images/img_47.png" alt="연세대학교"></div>
+          <span class="pm-sep">·</span>
+          <div class="pm-logo"><img src="assets/images/img_48.png" alt="E편한세상"></div>
+          <span class="pm-sep">·</span>
+          <div class="pm-logo"><img src="assets/images/img_49.png" alt="걸작떡볶이"></div>
+          <span class="pm-sep">·</span>
+          <div class="pm-logo"><img src="assets/images/img_50.png" alt="더벤티"></div>
+          <span class="pm-sep">·</span>
+          <div class="pm-logo"><img src="assets/images/img_51.png" alt="킨텍스"></div>
+          <span class="pm-sep">·</span>
+          <div class="pm-logo"><img src="assets/images/img_52.png" alt="더현대서울"></div>
+          <span class="pm-sep">·</span>
+          <div class="pm-logo"><img src="assets/images/img_53.png" alt="롯데월드"></div>
+          <span class="pm-sep">·</span>
+          <div class="pm-logo"><img src="assets/images/img_54.png" alt="래미안"></div>
+          <span class="pm-sep">·</span>
+          <div class="pm-logo"><img src="assets/images/img_55.png" alt="힐스테이트"></div>
+          <span class="pm-sep">·</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ════ REVIEW ════ -->
+<section class="sec-review">
+  <div class="wrap review-head">
+    <span class="sec-label reveal">REVIEW</span>
+    <h2 class="sec-title reveal">철거, 결과로 증명합니다</h2>
+    <p class="sec-sub reveal">실제 의뢰 기준으로 진행된 철거 현장입니다.</p>
+  </div>
+  <div class="review-slider-wrap">
+    <button class="review-nav-btn prev" onclick="slideReview(-1)">&#8249;</button>
+    <button class="review-nav-btn next" onclick="slideReview(1)">&#8250;</button>
+    <div class="review-track" id="reviewTrack">
+
+    <div class="rv-card">
+      <div class="rv-photo"><img src="https://ybdemolish.com/_assets/v11/d6c1ab79e8fb7f07b32f042cf72647b5184d6afe.png" alt=""></div>
+      <div class="rv-body">
+        <span class="rv-badge">중간에 신경 쓸 일이 없었어요.</span>
+        <p class="rv-text">상담부터 진행까지 흐름이 정리돼 있어서<br>따로 챙길 게 거의 없었어요.<br>작업 중 추가 비용 얘기도 없었고,<br>현장도 약속한 일정에 맞춰 마무리됐습니다.</p>
+        <div class="rv-meta"><span class="rv-author">사무실철거 후기 김*우</span><span class="rv-stars">★★★★★</span></div>
+      </div>
+    </div>
+
+    <div class="rv-card">
+      <div class="rv-photo"><img src="https://ybdemolish.com/_assets/v11/2183c70db837d887b38c294a545f6eb7fe539137.png" alt=""></div>
+      <div class="rv-body">
+        <span class="rv-badge">처음 철거하시는 분들께 추천드리고 싶어요.</span>
+        <p class="rv-text">철거가 처음이라 걱정이 많았는데,<br>상담부터 차분하게 설명해줘서 마음이 놓였어요.<br>견적도 처음 안내받은 금액 그대로 진행됐고,<br>바로 다음 일정까지 이어갈 수 있었습니다.</p>
+        <div class="rv-meta"><span class="rv-author">사무실철거 후기 이*호</span><span class="rv-stars">★★★★★</span></div>
+      </div>
+    </div>
+
+    <div class="rv-card">
+      <div class="rv-photo"><img src="https://ybdemolish.com/_assets/v11/53b9c5512ff09ee21e2d0c808da15203f1f0a70a.png" alt=""></div>
+      <div class="rv-body">
+        <span class="rv-badge">불필요한 철거는 안 했어요.</span>
+        <p class="rv-text">처음에는 전부 철거해야 하나 고민했는데,<br>유지해도 되는 부분은 미리 설명해줘서<br>범위를 조정할 수 있었습니다.<br>덕분에 작업도 줄고 이후 공정도 수월했어요.</p>
+        <div class="rv-meta"><span class="rv-author">사무실철거 후기 박*훈</span><span class="rv-stars">★★★★★</span></div>
+      </div>
+    </div>
+
+    <div class="rv-card">
+      <div class="rv-photo"><img src="https://ybdemolish.com/_assets/v11/75b4b98aeed29c8557d978d1d86d918452503c7a.png" alt=""></div>
+      <div class="rv-body">
+        <span class="rv-badge">생각했던 일정 안에 끝났어요.</span>
+        <p class="rv-text">원상복구 일정이 정해져 있어서<br>시간 맞추는 게 중요했는데,<br>안내해준 일정 그대로 진행돼서 문제 없이 마무리됐습니다.<br>건물 측 확인도 바로 끝났어요.</p>
+        <div class="rv-meta"><span class="rv-author">원상복구 후기 이*은</span><span class="rv-stars">★★★★★</span></div>
+      </div>
+    </div>
+
+    <div class="rv-card">
+      <div class="rv-photo"><img src="https://ybdemolish.com/_assets/v11/11cf2f19e52e09110c010ecd40444a0307b6ec5e.png" alt=""></div>
+      <div class="rv-body">
+        <span class="rv-badge">일정이 급했는데 바로 맞춰서 진행됐어요.</span>
+        <p class="rv-text">영업 일정 때문에 철거가 급했는데,<br>문의하자마자 바로 일정 잡아줘서 도움 많이 됐어요.<br>작업도 빠르고 정리까지 깔끔해서 따로 손 볼 게 없었고,<br>진행 상황도 잘 안내해줘서 안심됐습니다.</p>
+        <div class="rv-meta"><span class="rv-author">상가철거 후기 박*연</span><span class="rv-stars">★★★★★</span></div>
+      </div>
+    </div>
+
+    <div class="rv-card">
+      <div class="rv-photo"><img src="https://ybdemolish.com/_assets/v11/7e7a2d0dcffc29f4f18b6471e5aff7b84fb04b73.png" alt=""></div>
+      <div class="rv-body">
+        <span class="rv-badge">건물 기준에 맞춰 진행됐어요.</span>
+        <p class="rv-text">건물 관리 기준이 까다로운 편이라 걱정했는데,<br>사전에 필요한 부분을 정리해서 설명해줘서<br>판단하기 쉬웠습니다.<br>작업 후에도 관리 측 확인이 바로 끝났어요.</p>
+        <div class="rv-meta"><span class="rv-author">상가철거 후기 김*정</span><span class="rv-stars">★★★★★</span></div>
+      </div>
+    </div>
+
+    <div class="rv-card">
+      <div class="rv-photo"><img src="https://ybdemolish.com/_assets/v11/800ef61facce0697d071defdb2943fdb9ca65bbe.png" alt=""></div>
+      <div class="rv-body">
+        <span class="rv-badge">처음 안내받은 내용 그대로 진행됐어요.</span>
+        <p class="rv-text">여러 곳 비교해봤는데 설명이 가장 현실적이어서 선택했어요.<br>금액 변동 없이 그대로 진행됐고,<br>집기 많은 현장도 정리까지 깔끔하게 마무리돼 만족했습니다.</p>
+        <div class="rv-meta"><span class="rv-author">학원철거 후기 정*수</span><span class="rv-stars">★★★★★</span></div>
+      </div>
+    </div>
+
+    <div class="rv-card">
+      <div class="rv-photo"><img src="https://ybdemolish.com/_assets/v11/14e521ea4cc09f4490c566d75ff8491b62bb9dd9.png" alt=""></div>
+      <div class="rv-body">
+        <span class="rv-badge">빠르게 다음 단계로 넘어갔어요.</span>
+        <p class="rv-text">철거 이후 바로 인테리어 일정이 잡혀 있었는데,<br>현장 정리가 잘 돼 있어서 바로 다음 공정으로 이어갈 수 있었습니다.<br>일정 관리 측면에서 도움이 많이 됐어요.</p>
+        <div class="rv-meta"><span class="rv-author">카페철거 후기 한*은</span><span class="rv-stars">★★★★★</span></div>
+      </div>
+    </div>
+
+    <div class="rv-card">
+      <div class="rv-photo"><img src="https://ybdemolish.com/_assets/v11/4567775b30edd11344a4cdb24759889b0b3cc068.png" alt=""></div>
+      <div class="rv-body">
+        <span class="rv-badge">마무리까지 깔끔해서 인수 과정도 수월했어요.</span>
+        <p class="rv-text">작업 끝난 뒤에도 현장 상태를 다시 한 번 확인해주는 과정이 있었습니다.<br>그 부분에서 책임감 있게 마무리한다는 느낌을 받았고,<br>전반적으로 깔끔하게 정돈돼 있었어요.</p>
+        <div class="rv-meta"><span class="rv-author">카페철거 후기 최*린</span><span class="rv-stars">★★★★★</span></div>
+      </div>
+    </div>
+
+    <div class="rv-card">
+      <div class="rv-photo"><img src="https://ybdemolish.com/_assets/v11/3d30a9f1f9d55c9a659557bbcde078df0ab494f0.png" alt=""></div>
+      <div class="rv-body">
+        <span class="rv-badge">주변 민원 걱정이 덜했어요.</span>
+        <p class="rv-text">상가가 밀집된 위치라 소음이나 민원이 걱정됐는데,<br>작업 시간이나 정리 부분을 신경 써서 진행해줘서 문제 없이 끝났습니다.<br>주변 점포에서도 따로 얘기 나올 일이 없었어요.</p>
+        <div class="rv-meta"><span class="rv-author">상가철거 후기 윤*준</span><span class="rv-stars">★★★★★</span></div>
+      </div>
+    </div>
+
+  </div>
+  </div>
+</section>
+
+
+<!-- ════ 실시간 철거 현황 ════ -->
+<section class="sec-process">
+  <div class="wrap process-head">
+    <span class="sec-label reveal">PROCESS</span>
+    <h2 class="sec-title reveal" style="color:#111">실시간 철거 현황</h2>
+  </div>
+  <div class="process-marquee-wrap">
+  <div class="process-scroll" id="processScroll">
+<div class="pc-card"><div class="pc-thumb"><img src="assets/images/img_56.png" alt="청년철거 시공사례 카드 1" loading="lazy"></div></div>
+<div class="pc-card"><div class="pc-thumb"><img src="assets/images/img_57.png" alt="청년철거 시공사례 카드 2" loading="lazy"></div></div>
+<div class="pc-card"><div class="pc-thumb"><img src="assets/images/img_58.png" alt="청년철거 시공사례 카드 3" loading="lazy"></div></div>
+<div class="pc-card"><div class="pc-thumb"><img src="assets/images/img_59.png" alt="청년철거 시공사례 카드 4" loading="lazy"></div></div>
+<div class="pc-card"><div class="pc-thumb"><img src="assets/images/img_60.png" alt="청년철거 시공사례 카드 5" loading="lazy"></div></div>
+<div class="pc-card"><div class="pc-thumb"><img src="assets/images/img_61.png" alt="청년철거 시공사례 카드 6" loading="lazy"></div></div>
+<div class="pc-card"><div class="pc-thumb"><img src="assets/images/img_62.png" alt="청년철거 시공사례 카드 7" loading="lazy"></div></div>
+<div class="pc-card"><div class="pc-thumb"><img src="assets/images/img_63.png" alt="청년철거 시공사례 카드 8" loading="lazy"></div></div>
+<div class="pc-card"><div class="pc-thumb"><img src="assets/images/img_64.png" alt="청년철거 시공사례 카드 9" loading="lazy"></div></div>
+<div class="pc-card"><div class="pc-thumb"><img src="assets/images/img_65.png" alt="청년철거 시공사례 카드 10" loading="lazy"></div></div>
+<div class="pc-card"><div class="pc-thumb"><img src="assets/images/img_66.png" alt="청년철거 시공사례 카드 11" loading="lazy"></div></div>
+<div class="pc-card"><div class="pc-thumb"><img src="assets/images/img_67.png" alt="청년철거 시공사례 카드 12" loading="lazy"></div></div>
+<div class="pc-card"><div class="pc-thumb"><img src="assets/images/img_68.png" alt="청년철거 시공사례 카드 13" loading="lazy"></div></div>
+<div class="pc-card"><div class="pc-thumb"><img src="assets/images/img_69.png" alt="청년철거 시공사례 카드 14" loading="lazy"></div></div>
+<div class="pc-card"><div class="pc-thumb"><img src="assets/images/img_70.png" alt="청년철거 시공사례 카드 15" loading="lazy"></div></div>
+<div class="pc-card"><div class="pc-thumb"><img src="assets/images/img_71.png" alt="청년철거 시공사례 카드 16" loading="lazy"></div></div>
+<div class="pc-card"><div class="pc-thumb"><img src="assets/images/img_72.png" alt="청년철거 시공사례 카드 17" loading="lazy"></div></div>
+<div class="pc-card"><div class="pc-thumb"><img src="assets/images/img_73.png" alt="청년철거 시공사례 카드 18" loading="lazy"></div></div>
+<div class="pc-card"><div class="pc-thumb"><img src="assets/images/img_74.png" alt="청년철거 시공사례 카드 19" loading="lazy"></div></div>
+<div class="pc-card"><div class="pc-thumb"><img src="assets/images/img_75.png" alt="청년철거 시공사례 카드 20" loading="lazy"></div></div>
+<div class="pc-card"><div class="pc-thumb"><img src="assets/images/img_76.png" alt="청년철거 시공사례 카드 21" loading="lazy"></div></div>
+<div class="pc-card"><div class="pc-thumb"><img src="assets/images/img_77.png" alt="청년철거 시공사례 카드 22" loading="lazy"></div></div>
+<div class="pc-card"><div class="pc-thumb"><img src="assets/images/img_78.png" alt="청년철거 시공사례 카드 23" loading="lazy"></div></div>
+<div class="pc-card"><div class="pc-thumb"><img src="assets/images/img_79.png" alt="청년철거 시공사례 카드 24" loading="lazy"></div></div>
+<div class="pc-card"><div class="pc-thumb"><img src="assets/images/img_80.png" alt="청년철거 시공사례 카드 25" loading="lazy"></div></div>
+<div class="pc-card"><div class="pc-thumb"><img src="assets/images/img_81.png" alt="청년철거 시공사례 카드 26" loading="lazy"></div></div>
+<div class="pc-card"><div class="pc-thumb"><img src="assets/images/img_82.png" alt="청년철거 시공사례 카드 27" loading="lazy"></div></div>
+<div class="pc-card"><div class="pc-thumb"><img src="assets/images/img_83.png" alt="청년철거 시공사례 카드 28" loading="lazy"></div></div>
+<div class="pc-card"><div class="pc-thumb"><img src="assets/images/img_84.png" alt="청년철거 시공사례 카드 29" loading="lazy"></div></div>
+<div class="pc-card"><div class="pc-thumb"><img src="assets/images/img_85.png" alt="청년철거 시공사례 카드 30" loading="lazy"></div></div>
+<div class="pc-card"><div class="pc-thumb"><img src="assets/images/img_86.png" alt="청년철거 시공사례 카드 31" loading="lazy"></div></div>
+<div class="pc-card"><div class="pc-thumb"><img src="assets/images/img_87.png" alt="청년철거 시공사례 카드 32" loading="lazy"></div></div>
+<div class="pc-card"><div class="pc-thumb"><img src="assets/images/img_88.png" alt="청년철거 시공사례 카드 33" loading="lazy"></div></div>
+<div class="pc-card"><div class="pc-thumb"><img src="assets/images/img_89.png" alt="청년철거 시공사례 카드 34" loading="lazy"></div></div>
+<div class="pc-card"><div class="pc-thumb"><img src="assets/images/img_90.png" alt="청년철거 시공사례 카드 35" loading="lazy"></div></div>
+<div class="pc-card"><div class="pc-thumb"><img src="assets/images/img_91.png" alt="청년철거 시공사례 카드 36" loading="lazy"></div></div>
+<div class="pc-card"><div class="pc-thumb"><img src="assets/images/img_92.png" alt="청년철거 시공사례 카드 37" loading="lazy"></div></div>
+<div class="pc-card"><div class="pc-thumb"><img src="assets/images/img_93.png" alt="청년철거 시공사례 카드 38" loading="lazy"></div></div>
+<div class="pc-card"><div class="pc-thumb"><img src="assets/images/img_94.png" alt="청년철거 시공사례 카드 39" loading="lazy"></div></div>
+<div class="pc-card"><div class="pc-thumb"><img src="assets/images/img_95.png" alt="청년철거 시공사례 카드 40" loading="lazy"></div></div>
+<div class="pc-card"><div class="pc-thumb"><img src="assets/images/img_96.png" alt="청년철거 시공사례 카드 41" loading="lazy"></div></div>
+<div class="pc-card"><div class="pc-thumb"><img src="assets/images/img_97.png" alt="청년철거 시공사례 카드 42" loading="lazy"></div></div>
+<div class="pc-card"><div class="pc-thumb"><img src="assets/images/img_98.png" alt="청년철거 시공사례 카드 43" loading="lazy"></div></div>
+<div class="pc-card"><div class="pc-thumb"><img src="assets/images/img_99.png" alt="청년철거 시공사례 카드 44" loading="lazy"></div></div>
+<div class="pc-card"><div class="pc-thumb"><img src="assets/images/img_100.png" alt="청년철거 시공사례 카드 45" loading="lazy"></div></div>
+<div class="pc-card"><div class="pc-thumb"><img src="assets/images/img_101.png" alt="청년철거 시공사례 카드 46" loading="lazy"></div></div>
+<div class="pc-card"><div class="pc-thumb"><img src="assets/images/img_102.png" alt="청년철거 시공사례 카드 47" loading="lazy"></div></div>
+<div class="pc-card"><div class="pc-thumb"><img src="assets/images/img_103.png" alt="청년철거 시공사례 카드 48" loading="lazy"></div></div>
+<div class="pc-card"><div class="pc-thumb"><img src="assets/images/img_104.png" alt="청년철거 시공사례 카드 49" loading="lazy"></div></div>
+<div class="pc-card"><div class="pc-thumb"><img src="assets/images/img_105.png" alt="청년철거 시공사례 카드 50" loading="lazy"></div></div>
+<div class="pc-card"><div class="pc-thumb"><img src="assets/images/img_106.png" alt="청년철거 시공사례 카드 51" loading="lazy"></div></div>
+<div class="pc-card"><div class="pc-thumb"><img src="assets/images/img_107.png" alt="청년철거 시공사례 카드 52" loading="lazy"></div></div>
+<div class="pc-card"><div class="pc-thumb"><img src="assets/images/img_108.png" alt="청년철거 시공사례 카드 53" loading="lazy"></div></div>
+<div class="pc-card"><div class="pc-thumb"><img src="assets/images/img_109.png" alt="청년철거 시공사례 카드 54" loading="lazy"></div></div>
+<div class="pc-card"><div class="pc-thumb"><img src="assets/images/img_110.png" alt="청년철거 시공사례 카드 55" loading="lazy"></div></div>
+<div class="pc-card"><div class="pc-thumb"><img src="assets/images/img_111.png" alt="청년철거 시공사례 카드 56" loading="lazy"></div></div>
+<div class="pc-card"><div class="pc-thumb"><img src="assets/images/img_112.png" alt="청년철거 시공사례 카드 57" loading="lazy"></div></div>
+<div class="pc-card"><div class="pc-thumb"><img src="assets/images/img_113.png" alt="청년철거 시공사례 카드 58" loading="lazy"></div></div>
+<div class="pc-card"><div class="pc-thumb"><img src="assets/images/img_114.png" alt="청년철거 시공사례 카드 59" loading="lazy"></div></div>
+<div class="pc-card"><div class="pc-thumb"><img src="assets/images/img_115.png" alt="청년철거 시공사례 카드 60" loading="lazy"></div></div>
+<div class="pc-card"><div class="pc-thumb"><img src="assets/images/img_116.png" alt="청년철거 시공사례 카드 61" loading="lazy"></div></div>
+<div class="pc-card"><div class="pc-thumb"><img src="assets/images/img_117.png" alt="청년철거 시공사례 카드 62" loading="lazy"></div></div>
+<div class="pc-card"><div class="pc-thumb"><img src="assets/images/img_118.png" alt="청년철거 시공사례 카드 63" loading="lazy"></div></div>
+<div class="pc-card"><div class="pc-thumb"><img src="assets/images/img_119.png" alt="청년철거 시공사례 카드 64" loading="lazy"></div></div>
+<div class="pc-card"><div class="pc-thumb"><img src="assets/images/img_120.png" alt="청년철거 시공사례 카드 65" loading="lazy"></div></div>
+<div class="pc-card"><div class="pc-thumb"><img src="assets/images/img_121.png" alt="청년철거 시공사례 카드 66" loading="lazy"></div></div>
+<div class="pc-card"><div class="pc-thumb"><img src="assets/images/img_122.png" alt="청년철거 시공사례 카드 67" loading="lazy"></div></div>
+<div class="pc-card"><div class="pc-thumb"><img src="assets/images/img_123.png" alt="청년철거 시공사례 카드 68" loading="lazy"></div></div>
+<div class="pc-card"><div class="pc-thumb"><img src="assets/images/img_124.png" alt="청년철거 시공사례 카드 69" loading="lazy"></div></div>
+<div class="pc-card"><div class="pc-thumb"><img src="assets/images/img_125.png" alt="청년철거 시공사례 카드 70" loading="lazy"></div></div>
+<div class="pc-card"><div class="pc-thumb"><img src="assets/images/img_126.png" alt="청년철거 시공사례 카드 71" loading="lazy"></div></div>
+<div class="pc-card"><div class="pc-thumb"><img src="assets/images/img_127.png" alt="청년철거 시공사례 카드 72" loading="lazy"></div></div>
+<div class="pc-card"><div class="pc-thumb"><img src="assets/images/img_128.png" alt="청년철거 시공사례 카드 73" loading="lazy"></div></div>
+<div class="pc-card"><div class="pc-thumb"><img src="assets/images/img_129.png" alt="청년철거 시공사례 카드 74" loading="lazy"></div></div>
+<div class="pc-card"><div class="pc-thumb"><img src="assets/images/img_130.png" alt="청년철거 시공사례 카드 75" loading="lazy"></div></div>
+<div class="pc-card"><div class="pc-thumb"><img src="assets/images/img_131.png" alt="청년철거 시공사례 카드 76" loading="lazy"></div></div>
+<div class="pc-card"><div class="pc-thumb"><img src="assets/images/img_132.png" alt="청년철거 시공사례 카드 77" loading="lazy"></div></div>
+<div class="pc-card"><div class="pc-thumb"><img src="assets/images/img_133.png" alt="청년철거 시공사례 카드 78" loading="lazy"></div></div>
+<div class="pc-card"><div class="pc-thumb"><img src="assets/images/img_134.png" alt="청년철거 시공사례 카드 79" loading="lazy"></div></div>
+<div class="pc-card"><div class="pc-thumb"><img src="assets/images/img_135.png" alt="청년철거 시공사례 카드 80" loading="lazy"></div></div>
+<div class="pc-card"><div class="pc-thumb"><img src="assets/images/img_136.png" alt="청년철거 시공사례 카드 81" loading="lazy"></div></div>
+<div class="pc-card"><div class="pc-thumb"><img src="assets/images/img_137.png" alt="청년철거 시공사례 카드 82" loading="lazy"></div></div>
+<div class="pc-card"><div class="pc-thumb"><img src="assets/images/img_138.png" alt="청년철거 시공사례 카드 83" loading="lazy"></div></div>
+<div class="pc-card"><div class="pc-thumb"><img src="assets/images/img_139.png" alt="청년철거 시공사례 카드 84" loading="lazy"></div></div>
+<div class="pc-card"><div class="pc-thumb"><img src="assets/images/img_140.png" alt="청년철거 시공사례 카드 85" loading="lazy"></div></div>
+<div class="pc-card"><div class="pc-thumb"><img src="assets/images/img_141.png" alt="청년철거 시공사례 카드 86" loading="lazy"></div></div>
+<div class="pc-card"><div class="pc-thumb"><img src="assets/images/img_142.png" alt="청년철거 시공사례 카드 87" loading="lazy"></div></div>
+<div class="pc-card"><div class="pc-thumb"><img src="assets/images/img_143.png" alt="청년철거 시공사례 카드 88" loading="lazy"></div></div>
+<div class="pc-card"><div class="pc-thumb"><img src="assets/images/img_144.png" alt="청년철거 시공사례 카드 89" loading="lazy"></div></div>
+<div class="pc-card"><div class="pc-thumb"><img src="assets/images/img_145.png" alt="청년철거 시공사례 카드 90" loading="lazy"></div></div>
+<div class="pc-card"><div class="pc-thumb"><img src="assets/images/img_146.png" alt="청년철거 시공사례 카드 91" loading="lazy"></div></div>
+<div class="pc-card"><div class="pc-thumb"><img src="assets/images/img_147.png" alt="청년철거 시공사례 카드 92" loading="lazy"></div></div>
+<div class="pc-card"><div class="pc-thumb"><img src="assets/images/img_148.png" alt="청년철거 시공사례 카드 93" loading="lazy"></div></div>
+<div class="pc-card"><div class="pc-thumb"><img src="assets/images/img_149.png" alt="청년철거 시공사례 카드 94" loading="lazy"></div></div>
+<div class="pc-card"><div class="pc-thumb"><img src="assets/images/img_150.png" alt="청년철거 시공사례 카드 95" loading="lazy"></div></div>
+<div class="pc-card"><div class="pc-thumb"><img src="assets/images/img_151.png" alt="청년철거 시공사례 카드 96" loading="lazy"></div></div>
+<div class="pc-card"><div class="pc-thumb"><img src="assets/images/img_152.png" alt="청년철거 시공사례 카드 97" loading="lazy"></div></div>
+<div class="pc-card"><div class="pc-thumb"><img src="assets/images/img_153.png" alt="청년철거 시공사례 카드 98" loading="lazy"></div></div>
+<div class="pc-card"><div class="pc-thumb"><img src="assets/images/img_154.png" alt="청년철거 시공사례 카드 99" loading="lazy"></div></div>
+<div class="pc-card"><div class="pc-thumb"><img src="assets/images/img_155.png" alt="청년철거 시공사례 카드 100" loading="lazy"></div></div>
+<div class="pc-card"><div class="pc-thumb"><img src="assets/images/img_156.png" alt="청년철거 시공사례 카드 101" loading="lazy"></div></div>
+<div class="pc-card"><div class="pc-thumb"><img src="assets/images/img_157.png" alt="청년철거 시공사례 카드 102" loading="lazy"></div></div>
+<div class="pc-card"><div class="pc-thumb"><img src="assets/images/img_158.png" alt="청년철거 시공사례 카드 103" loading="lazy"></div></div>
+<div class="pc-card"><div class="pc-thumb"><img src="assets/images/img_159.png" alt="청년철거 시공사례 카드 104" loading="lazy"></div></div>
+<div class="pc-card"><div class="pc-thumb"><img src="assets/images/img_160.png" alt="청년철거 시공사례 카드 105" loading="lazy"></div></div>
+<div class="pc-card"><div class="pc-thumb"><img src="assets/images/img_161.png" alt="청년철거 시공사례 카드 106" loading="lazy"></div></div>
+<div class="pc-card"><div class="pc-thumb"><img src="assets/images/img_162.png" alt="청년철거 시공사례 카드 107" loading="lazy"></div></div>
+<div class="pc-card"><div class="pc-thumb"><img src="assets/images/img_163.png" alt="청년철거 시공사례 카드 108" loading="lazy"></div></div>
+<div class="pc-card"><div class="pc-thumb"><img src="assets/images/img_164.png" alt="청년철거 시공사례 카드 109" loading="lazy"></div></div>
+<div class="pc-card"><div class="pc-thumb"><img src="assets/images/img_165.png" alt="청년철거 시공사례 카드 110" loading="lazy"></div></div>
+<div class="pc-card"><div class="pc-thumb"><img src="assets/images/img_166.png" alt="청년철거 시공사례 카드 111" loading="lazy"></div></div>
+<div class="pc-card"><div class="pc-thumb"><img src="assets/images/img_167.png" alt="청년철거 시공사례 카드 112" loading="lazy"></div></div>
+<div class="pc-card"><div class="pc-thumb"><img src="assets/images/img_168.png" alt="청년철거 시공사례 카드 113" loading="lazy"></div></div>
+<div class="pc-card"><div class="pc-thumb"><img src="assets/images/img_169.png" alt="청년철거 시공사례 카드 114" loading="lazy"></div></div>
+<div class="pc-card"><div class="pc-thumb"><img src="assets/images/img_170.png" alt="청년철거 시공사례 카드 115" loading="lazy"></div></div>
+<div class="pc-card"><div class="pc-thumb"><img src="assets/images/img_171.png" alt="청년철거 시공사례 카드 116" loading="lazy"></div></div>
+<div class="pc-card"><div class="pc-thumb"><img src="assets/images/img_172.png" alt="청년철거 시공사례 카드 117" loading="lazy"></div></div>
+<div class="pc-card"><div class="pc-thumb"><img src="assets/images/img_173.png" alt="청년철거 시공사례 카드 118" loading="lazy"></div></div>
+<div class="pc-card"><div class="pc-thumb"><img src="assets/images/img_174.png" alt="청년철거 시공사례 카드 119" loading="lazy"></div></div>
+<div class="pc-card"><div class="pc-thumb"><img src="assets/images/img_175.png" alt="청년철거 시공사례 카드 120" loading="lazy"></div></div>
+<div class="pc-card"><div class="pc-thumb"><img src="assets/images/img_176.png" alt="청년철거 시공사례 카드 1" loading="lazy"></div></div>
+<div class="pc-card"><div class="pc-thumb"><img src="assets/images/img_177.png" alt="청년철거 시공사례 카드 2" loading="lazy"></div></div>
+<div class="pc-card"><div class="pc-thumb"><img src="assets/images/img_178.png" alt="청년철거 시공사례 카드 3" loading="lazy"></div></div>
+<div class="pc-card"><div class="pc-thumb"><img src="assets/images/img_179.png" alt="청년철거 시공사례 카드 4" loading="lazy"></div></div>
+<div class="pc-card"><div class="pc-thumb"><img src="assets/images/img_180.png" alt="청년철거 시공사례 카드 5" loading="lazy"></div></div>
+<div class="pc-card"><div class="pc-thumb"><img src="assets/images/img_181.png" alt="청년철거 시공사례 카드 6" loading="lazy"></div></div>
+<div class="pc-card"><div class="pc-thumb"><img src="assets/images/img_182.png" alt="청년철거 시공사례 카드 7" loading="lazy"></div></div>
+<div class="pc-card"><div class="pc-thumb"><img src="assets/images/img_183.png" alt="청년철거 시공사례 카드 8" loading="lazy"></div></div>
+<div class="pc-card"><div class="pc-thumb"><img src="assets/images/img_184.png" alt="청년철거 시공사례 카드 9" loading="lazy"></div></div>
+<div class="pc-card"><div class="pc-thumb"><img src="assets/images/img_185.png" alt="청년철거 시공사례 카드 10" loading="lazy"></div></div>
+<div class="pc-card"><div class="pc-thumb"><img src="assets/images/img_186.png" alt="청년철거 시공사례 카드 11" loading="lazy"></div></div>
+<div class="pc-card"><div class="pc-thumb"><img src="assets/images/img_187.png" alt="청년철거 시공사례 카드 12" loading="lazy"></div></div>
+<div class="pc-card"><div class="pc-thumb"><img src="assets/images/img_188.png" alt="청년철거 시공사례 카드 13" loading="lazy"></div></div>
+<div class="pc-card"><div class="pc-thumb"><img src="assets/images/img_189.png" alt="청년철거 시공사례 카드 14" loading="lazy"></div></div>
+<div class="pc-card"><div class="pc-thumb"><img src="assets/images/img_190.png" alt="청년철거 시공사례 카드 15" loading="lazy"></div></div>
+<div class="pc-card"><div class="pc-thumb"><img src="assets/images/img_191.png" alt="청년철거 시공사례 카드 16" loading="lazy"></div></div>
+<div class="pc-card"><div class="pc-thumb"><img src="assets/images/img_192.png" alt="청년철거 시공사례 카드 17" loading="lazy"></div></div>
+<div class="pc-card"><div class="pc-thumb"><img src="assets/images/img_193.png" alt="청년철거 시공사례 카드 18" loading="lazy"></div></div>
+<div class="pc-card"><div class="pc-thumb"><img src="assets/images/img_194.png" alt="청년철거 시공사례 카드 19" loading="lazy"></div></div>
+<div class="pc-card"><div class="pc-thumb"><img src="assets/images/img_195.png" alt="청년철거 시공사례 카드 20" loading="lazy"></div></div>
+<div class="pc-card"><div class="pc-thumb"><img src="assets/images/img_196.png" alt="청년철거 시공사례 카드 21" loading="lazy"></div></div>
+<div class="pc-card"><div class="pc-thumb"><img src="assets/images/img_197.png" alt="청년철거 시공사례 카드 22" loading="lazy"></div></div>
+<div class="pc-card"><div class="pc-thumb"><img src="assets/images/img_198.png" alt="청년철거 시공사례 카드 23" loading="lazy"></div></div>
+<div class="pc-card"><div class="pc-thumb"><img src="assets/images/img_199.png" alt="청년철거 시공사례 카드 24" loading="lazy"></div></div>
+<div class="pc-card"><div class="pc-thumb"><img src="assets/images/img_200.png" alt="청년철거 시공사례 카드 25" loading="lazy"></div></div>
+<div class="pc-card"><div class="pc-thumb"><img src="assets/images/img_201.png" alt="청년철거 시공사례 카드 26" loading="lazy"></div></div>
+<div class="pc-card"><div class="pc-thumb"><img src="assets/images/img_202.png" alt="청년철거 시공사례 카드 27" loading="lazy"></div></div>
+<div class="pc-card"><div class="pc-thumb"><img src="assets/images/img_203.png" alt="청년철거 시공사례 카드 28" loading="lazy"></div></div>
+<div class="pc-card"><div class="pc-thumb"><img src="assets/images/img_204.png" alt="청년철거 시공사례 카드 29" loading="lazy"></div></div>
+<div class="pc-card"><div class="pc-thumb"><img src="assets/images/img_205.png" alt="청년철거 시공사례 카드 30" loading="lazy"></div></div>
+<div class="pc-card"><div class="pc-thumb"><img src="assets/images/img_206.png" alt="청년철거 시공사례 카드 31" loading="lazy"></div></div>
+<div class="pc-card"><div class="pc-thumb"><img src="assets/images/img_207.png" alt="청년철거 시공사례 카드 32" loading="lazy"></div></div>
+<div class="pc-card"><div class="pc-thumb"><img src="assets/images/img_208.png" alt="청년철거 시공사례 카드 33" loading="lazy"></div></div>
+<div class="pc-card"><div class="pc-thumb"><img src="assets/images/img_209.png" alt="청년철거 시공사례 카드 34" loading="lazy"></div></div>
+<div class="pc-card"><div class="pc-thumb"><img src="assets/images/img_210.png" alt="청년철거 시공사례 카드 35" loading="lazy"></div></div>
+<div class="pc-card"><div class="pc-thumb"><img src="assets/images/img_211.png" alt="청년철거 시공사례 카드 36" loading="lazy"></div></div>
+<div class="pc-card"><div class="pc-thumb"><img src="assets/images/img_212.png" alt="청년철거 시공사례 카드 37" loading="lazy"></div></div>
+<div class="pc-card"><div class="pc-thumb"><img src="assets/images/img_213.png" alt="청년철거 시공사례 카드 38" loading="lazy"></div></div>
+<div class="pc-card"><div class="pc-thumb"><img src="assets/images/img_214.png" alt="청년철거 시공사례 카드 39" loading="lazy"></div></div>
+<div class="pc-card"><div class="pc-thumb"><img src="assets/images/img_215.png" alt="청년철거 시공사례 카드 40" loading="lazy"></div></div>
+<div class="pc-card"><div class="pc-thumb"><img src="assets/images/img_216.png" alt="청년철거 시공사례 카드 41" loading="lazy"></div></div>
+<div class="pc-card"><div class="pc-thumb"><img src="assets/images/img_217.png" alt="청년철거 시공사례 카드 42" loading="lazy"></div></div>
+<div class="pc-card"><div class="pc-thumb"><img src="assets/images/img_218.png" alt="청년철거 시공사례 카드 43" loading="lazy"></div></div>
+<div class="pc-card"><div class="pc-thumb"><img src="assets/images/img_219.png" alt="청년철거 시공사례 카드 44" loading="lazy"></div></div>
+<div class="pc-card"><div class="pc-thumb"><img src="assets/images/img_220.png" alt="청년철거 시공사례 카드 45" loading="lazy"></div></div>
+<div class="pc-card"><div class="pc-thumb"><img src="assets/images/img_221.png" alt="청년철거 시공사례 카드 46" loading="lazy"></div></div>
+<div class="pc-card"><div class="pc-thumb"><img src="assets/images/img_222.png" alt="청년철거 시공사례 카드 47" loading="lazy"></div></div>
+<div class="pc-card"><div class="pc-thumb"><img src="assets/images/img_223.png" alt="청년철거 시공사례 카드 48" loading="lazy"></div></div>
+<div class="pc-card"><div class="pc-thumb"><img src="assets/images/img_224.png" alt="청년철거 시공사례 카드 49" loading="lazy"></div></div>
+<div class="pc-card"><div class="pc-thumb"><img src="assets/images/img_225.png" alt="청년철거 시공사례 카드 50" loading="lazy"></div></div>
+<div class="pc-card"><div class="pc-thumb"><img src="assets/images/img_226.png" alt="청년철거 시공사례 카드 51" loading="lazy"></div></div>
+<div class="pc-card"><div class="pc-thumb"><img src="assets/images/img_227.png" alt="청년철거 시공사례 카드 52" loading="lazy"></div></div>
+<div class="pc-card"><div class="pc-thumb"><img src="assets/images/img_228.png" alt="청년철거 시공사례 카드 53" loading="lazy"></div></div>
+<div class="pc-card"><div class="pc-thumb"><img src="assets/images/img_229.png" alt="청년철거 시공사례 카드 54" loading="lazy"></div></div>
+<div class="pc-card"><div class="pc-thumb"><img src="assets/images/img_230.png" alt="청년철거 시공사례 카드 55" loading="lazy"></div></div>
+<div class="pc-card"><div class="pc-thumb"><img src="assets/images/img_231.png" alt="청년철거 시공사례 카드 56" loading="lazy"></div></div>
+<div class="pc-card"><div class="pc-thumb"><img src="assets/images/img_232.png" alt="청년철거 시공사례 카드 57" loading="lazy"></div></div>
+<div class="pc-card"><div class="pc-thumb"><img src="assets/images/img_233.png" alt="청년철거 시공사례 카드 58" loading="lazy"></div></div>
+<div class="pc-card"><div class="pc-thumb"><img src="assets/images/img_234.png" alt="청년철거 시공사례 카드 59" loading="lazy"></div></div>
+<div class="pc-card"><div class="pc-thumb"><img src="assets/images/img_235.png" alt="청년철거 시공사례 카드 60" loading="lazy"></div></div>
+<div class="pc-card"><div class="pc-thumb"><img src="assets/images/img_236.png" alt="청년철거 시공사례 카드 61" loading="lazy"></div></div>
+<div class="pc-card"><div class="pc-thumb"><img src="assets/images/img_237.png" alt="청년철거 시공사례 카드 62" loading="lazy"></div></div>
+<div class="pc-card"><div class="pc-thumb"><img src="assets/images/img_238.png" alt="청년철거 시공사례 카드 63" loading="lazy"></div></div>
+<div class="pc-card"><div class="pc-thumb"><img src="assets/images/img_239.png" alt="청년철거 시공사례 카드 64" loading="lazy"></div></div>
+<div class="pc-card"><div class="pc-thumb"><img src="assets/images/img_240.png" alt="청년철거 시공사례 카드 65" loading="lazy"></div></div>
+<div class="pc-card"><div class="pc-thumb"><img src="assets/images/img_241.png" alt="청년철거 시공사례 카드 66" loading="lazy"></div></div>
+<div class="pc-card"><div class="pc-thumb"><img src="assets/images/img_242.png" alt="청년철거 시공사례 카드 67" loading="lazy"></div></div>
+<div class="pc-card"><div class="pc-thumb"><img src="assets/images/img_243.png" alt="청년철거 시공사례 카드 68" loading="lazy"></div></div>
+<div class="pc-card"><div class="pc-thumb"><img src="assets/images/img_244.png" alt="청년철거 시공사례 카드 69" loading="lazy"></div></div>
+<div class="pc-card"><div class="pc-thumb"><img src="assets/images/img_245.png" alt="청년철거 시공사례 카드 70" loading="lazy"></div></div>
+<div class="pc-card"><div class="pc-thumb"><img src="assets/images/img_246.png" alt="청년철거 시공사례 카드 71" loading="lazy"></div></div>
+<div class="pc-card"><div class="pc-thumb"><img src="assets/images/img_247.png" alt="청년철거 시공사례 카드 72" loading="lazy"></div></div>
+<div class="pc-card"><div class="pc-thumb"><img src="assets/images/img_248.png" alt="청년철거 시공사례 카드 73" loading="lazy"></div></div>
+<div class="pc-card"><div class="pc-thumb"><img src="assets/images/img_249.png" alt="청년철거 시공사례 카드 74" loading="lazy"></div></div>
+<div class="pc-card"><div class="pc-thumb"><img src="assets/images/img_250.png" alt="청년철거 시공사례 카드 75" loading="lazy"></div></div>
+<div class="pc-card"><div class="pc-thumb"><img src="assets/images/img_251.png" alt="청년철거 시공사례 카드 76" loading="lazy"></div></div>
+<div class="pc-card"><div class="pc-thumb"><img src="assets/images/img_252.png" alt="청년철거 시공사례 카드 77" loading="lazy"></div></div>
+<div class="pc-card"><div class="pc-thumb"><img src="assets/images/img_253.png" alt="청년철거 시공사례 카드 78" loading="lazy"></div></div>
+<div class="pc-card"><div class="pc-thumb"><img src="assets/images/img_254.png" alt="청년철거 시공사례 카드 79" loading="lazy"></div></div>
+<div class="pc-card"><div class="pc-thumb"><img src="assets/images/img_255.png" alt="청년철거 시공사례 카드 80" loading="lazy"></div></div>
+<div class="pc-card"><div class="pc-thumb"><img src="assets/images/img_256.png" alt="청년철거 시공사례 카드 81" loading="lazy"></div></div>
+<div class="pc-card"><div class="pc-thumb"><img src="assets/images/img_257.png" alt="청년철거 시공사례 카드 82" loading="lazy"></div></div>
+<div class="pc-card"><div class="pc-thumb"><img src="assets/images/img_258.png" alt="청년철거 시공사례 카드 83" loading="lazy"></div></div>
+<div class="pc-card"><div class="pc-thumb"><img src="assets/images/img_259.png" alt="청년철거 시공사례 카드 84" loading="lazy"></div></div>
+<div class="pc-card"><div class="pc-thumb"><img src="assets/images/img_260.png" alt="청년철거 시공사례 카드 85" loading="lazy"></div></div>
+<div class="pc-card"><div class="pc-thumb"><img src="assets/images/img_261.png" alt="청년철거 시공사례 카드 86" loading="lazy"></div></div>
+<div class="pc-card"><div class="pc-thumb"><img src="assets/images/img_262.png" alt="청년철거 시공사례 카드 87" loading="lazy"></div></div>
+<div class="pc-card"><div class="pc-thumb"><img src="assets/images/img_263.png" alt="청년철거 시공사례 카드 88" loading="lazy"></div></div>
+<div class="pc-card"><div class="pc-thumb"><img src="assets/images/img_264.png" alt="청년철거 시공사례 카드 89" loading="lazy"></div></div>
+<div class="pc-card"><div class="pc-thumb"><img src="assets/images/img_265.png" alt="청년철거 시공사례 카드 90" loading="lazy"></div></div>
+<div class="pc-card"><div class="pc-thumb"><img src="assets/images/img_266.png" alt="청년철거 시공사례 카드 91" loading="lazy"></div></div>
+<div class="pc-card"><div class="pc-thumb"><img src="assets/images/img_267.png" alt="청년철거 시공사례 카드 92" loading="lazy"></div></div>
+<div class="pc-card"><div class="pc-thumb"><img src="assets/images/img_268.png" alt="청년철거 시공사례 카드 93" loading="lazy"></div></div>
+<div class="pc-card"><div class="pc-thumb"><img src="assets/images/img_269.png" alt="청년철거 시공사례 카드 94" loading="lazy"></div></div>
+<div class="pc-card"><div class="pc-thumb"><img src="assets/images/img_270.png" alt="청년철거 시공사례 카드 95" loading="lazy"></div></div>
+<div class="pc-card"><div class="pc-thumb"><img src="assets/images/img_271.png" alt="청년철거 시공사례 카드 96" loading="lazy"></div></div>
+<div class="pc-card"><div class="pc-thumb"><img src="assets/images/img_272.png" alt="청년철거 시공사례 카드 97" loading="lazy"></div></div>
+<div class="pc-card"><div class="pc-thumb"><img src="assets/images/img_273.png" alt="청년철거 시공사례 카드 98" loading="lazy"></div></div>
+<div class="pc-card"><div class="pc-thumb"><img src="assets/images/img_274.png" alt="청년철거 시공사례 카드 99" loading="lazy"></div></div>
+<div class="pc-card"><div class="pc-thumb"><img src="assets/images/img_275.png" alt="청년철거 시공사례 카드 100" loading="lazy"></div></div>
+<div class="pc-card"><div class="pc-thumb"><img src="assets/images/img_276.png" alt="청년철거 시공사례 카드 101" loading="lazy"></div></div>
+<div class="pc-card"><div class="pc-thumb"><img src="assets/images/img_277.png" alt="청년철거 시공사례 카드 102" loading="lazy"></div></div>
+<div class="pc-card"><div class="pc-thumb"><img src="assets/images/img_278.png" alt="청년철거 시공사례 카드 103" loading="lazy"></div></div>
+<div class="pc-card"><div class="pc-thumb"><img src="assets/images/img_279.png" alt="청년철거 시공사례 카드 104" loading="lazy"></div></div>
+<div class="pc-card"><div class="pc-thumb"><img src="assets/images/img_280.png" alt="청년철거 시공사례 카드 105" loading="lazy"></div></div>
+<div class="pc-card"><div class="pc-thumb"><img src="assets/images/img_281.png" alt="청년철거 시공사례 카드 106" loading="lazy"></div></div>
+<div class="pc-card"><div class="pc-thumb"><img src="assets/images/img_282.png" alt="청년철거 시공사례 카드 107" loading="lazy"></div></div>
+<div class="pc-card"><div class="pc-thumb"><img src="assets/images/img_283.png" alt="청년철거 시공사례 카드 108" loading="lazy"></div></div>
+<div class="pc-card"><div class="pc-thumb"><img src="assets/images/img_284.png" alt="청년철거 시공사례 카드 109" loading="lazy"></div></div>
+<div class="pc-card"><div class="pc-thumb"><img src="assets/images/img_285.png" alt="청년철거 시공사례 카드 110" loading="lazy"></div></div>
+<div class="pc-card"><div class="pc-thumb"><img src="assets/images/img_286.png" alt="청년철거 시공사례 카드 111" loading="lazy"></div></div>
+<div class="pc-card"><div class="pc-thumb"><img src="assets/images/img_287.png" alt="청년철거 시공사례 카드 112" loading="lazy"></div></div>
+<div class="pc-card"><div class="pc-thumb"><img src="assets/images/img_288.png" alt="청년철거 시공사례 카드 113" loading="lazy"></div></div>
+<div class="pc-card"><div class="pc-thumb"><img src="assets/images/img_289.png" alt="청년철거 시공사례 카드 114" loading="lazy"></div></div>
+<div class="pc-card"><div class="pc-thumb"><img src="assets/images/img_290.png" alt="청년철거 시공사례 카드 115" loading="lazy"></div></div>
+<div class="pc-card"><div class="pc-thumb"><img src="assets/images/img_291.png" alt="청년철거 시공사례 카드 116" loading="lazy"></div></div>
+<div class="pc-card"><div class="pc-thumb"><img src="assets/images/img_292.png" alt="청년철거 시공사례 카드 117" loading="lazy"></div></div>
+<div class="pc-card"><div class="pc-thumb"><img src="assets/images/img_293.png" alt="청년철거 시공사례 카드 118" loading="lazy"></div></div>
+<div class="pc-card"><div class="pc-thumb"><img src="assets/images/img_294.png" alt="청년철거 시공사례 카드 119" loading="lazy"></div></div>
+<div class="pc-card"><div class="pc-thumb"><img src="assets/images/img_295.png" alt="청년철거 시공사례 카드 120" loading="lazy"></div></div>
+  </div>
+</div>
+</section>
+
+<!-- ════ WHY #1 ════ -->
+<section class="sec-why">
+  <div class="why-inner reveal">
+    <img class="bg" src="assets/images/img_296.png" alt="">
+    <h2>철거는 곧 <span>청년철거,</span><br><span>전국 1위</span>의 이유가 있습니다</h2>
+    <p>누적 계약과 시공 실적으로 검증된 최고의 파트너</p>
+    <a href="https://ybdemolish.com/sub-page" class="btn-filled">더 많은 시공사례 보러 가기 ></a>
+  </div>
+</section>
+
+<!-- ════ STEPS ════ -->
+<section class="sec-steps">
+  <div class="wrap steps-head">
+    <span class="sec-label reveal">PROCESS</span>
+    <h2 class="sec-title reveal" style="color:#111">철거는 순서보다 기준입니다</h2>
+  </div>
+  <div class="wrap reveal">
+    <div class="steps-grid">
+      <div class="step-cell step-img-cell"><img src="assets/images/img_297.png" alt="step 01"></div>
+      <div class="step-cell step-img-cell"><img src="assets/images/img_298.png" alt="step 02"></div>
+      <div class="step-cell step-img-cell"><img src="assets/images/img_299.png" alt="step 03"></div>
+      <div class="step-cell step-img-cell"><img src="assets/images/img_300.png" alt="step 04"></div>
+      <div class="step-cell step-img-cell"><img src="assets/images/img_301.png" alt="step 05"></div>
+      <div class="step-cell step-img-cell"><img src="assets/images/img_302.png" alt="step 06"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ════ POINT DARK ════ -->
+<section class="sec-pdark">
+  <div class="wrap">
+    
+    <div class="pdark-head">
+      <span class="sec-label reveal visible">POINT</span>
+      <h2 class="sec-title reveal visible">변동은 즉시 대응<br>결과는 안정적으로.</h2>
+    </div>
+<div class="pdark-cards">
+
+      <div class="pd-card reveal" style="transition-delay:0s">
+        <img class="bg" src="assets/images/img_303.png" alt="일정 준수">
+        </div>
+
+      <div class="pd-card reveal" style="transition-delay:0.12s">
+        <img class="bg" src="assets/images/img_304.png" alt="현장 공유">
+        </div>
+
+      <div class="pd-card reveal" style="transition-delay:0.24s">
+        <img class="bg" src="assets/images/img_305.png" alt="마감 확인">
+        </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ════ SAFETY ════ -->
+<section class="sec-safety">
+  
+  <div class="wrap">
+    <div class="safety-head">
+      <h2 class="sec-title reveal">시공만큼 중요한 건<br><span>안전·민원 관리</span>입니다</h2>
+      <p class="sec-sub reveal">청년철거는 네 가지 기준으로 관리합니다</p>
+    </div>
+    <div class="safety-grid">
+      <div class="safety-item safety-img-item reveal"><img src="assets/images/img_306.png" alt="01"></div>
+      <div class="safety-item safety-img-item reveal reveal-delay-1"><img src="assets/images/img_307.png" alt="02"></div>
+      <div class="safety-item safety-img-item reveal reveal-delay-2"><img src="assets/images/img_308.png" alt="03"></div>
+      <div class="safety-item safety-img-item reveal reveal-delay-3"><img src="assets/images/img_309.png" alt="04"></div>
+    </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════ STRUCTURE ════ -->
+<section class="sec-struct">
+  <div class="wrap struct-head">
+    <span class="sec-label reveal">STRUCTURE</span>
+    <h2 class="sec-title reveal">비용은 구조에서 결정됩니다</h2>
+    <p class="sec-sub reveal">구조가 잡혀야 비용이 새지 않습니다.</p>
+  </div>
+  <div class="wrap reveal">
+    <div class="struct-grid">
+      <div class="struct-img">
+        <img src="assets/images/img_310.png" alt="장비 내부 보유">
+      </div>
+      <div class="struct-img">
+        <img src="assets/images/img_311.png" alt="전 지점 직영 운영">
+      </div>
+      <div class="struct-img">
+        <img src="assets/images/img_312.png" alt="폐기물 원가 처리">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════ FINAL CTA ════ -->
+<section class="sec-cta">
+  <h2 class="reveal">새로운 시작을 함께, 청년철거</h2>
+  <p class="reveal reveal-delay-1">철거는 끝이 아니라, 다음을 위한 준비입니다.<br>우리는 그 준비를 기준과 책임으로 진행합니다.</p>
+  <a href="https://ybdemolish.imweb.me/Quotationinquiry" class="btn-cta-white reveal reveal-delay-2">무료 견적 요청 ></a>
+</section>
+
+<!-- ════ PARTNER RECRUIT ════ -->
+<section class="sec-partner">
+  <img class="bg" src="https://ybdemolish.com/_assets/v11/17b7f96b874045fc92869aa4a8eee35536c9c2d0.png" alt="">
+  <div>
+    <h2 class="reveal">청년철거와 함께 성장할<br>파트너 팀을 찾습니다</h2>
+    <p class="reveal reveal-delay-1">기준과 신뢰가 검증된 파트너와 함께합니다.</p>
+    <a href="https://ybdemolish.imweb.me/PartnerRecruitment" class="btn-filled reveal reveal-delay-2">파트너 지원하기 ></a>
+  </div>
+</section>
+
+<!-- ════ FOOTER ════ -->
+<footer class="ybfooter">
+  <div class="ybfooter-inner">
+    <!-- 로고 -->
+    <div class="ybfooter-logo">청년철거</div>
+    <!-- 정보 -->
+    <div class="ybfooter-info">
+      <p><strong>대표자</strong>임재인</p>
+      <p><strong>전화 번호:</strong>1866-0379</p>
+      <p><strong>이메일:</strong><a href="mailto:ybdemolish@naver.com">ybdemolish@naver.com</a></p>
+      <p><strong>인스타그램:</strong><a href="https://instagram.com/ybdemolish_" target="_blank">@ybdemolish_</a></p>
+      <p><strong>유튜브:</strong><a href="#" target="_blank">청년철거</a></p>
+    </div>
+    <!-- 정보02 -->
+    <div class="ybfooter-info02">
+      <p><strong>주소:</strong>서울특별시 동대문구 고산자로 505, 2층 145호(제기동)</p>
+      <p><strong>사업자 등록 번호:</strong>681-23-02112</p>
+      <p class="copyright">YBdemolish©<br>2025 All Rights Reserved</p>
+    </div>
+  </div>
+</footer>
+
+<!-- ════ TICKER ════ -->
+<div class="ticker-wrap">
+  <div class="ticker-track">
+    <span class="ticker-item">새로운 시작을 함께, 청년철거</span><span class="ticker-dot">◆</span><span class="ticker-item">폐업 지원금 최대 600만 원</span><span class="ticker-dot">◆</span><span class="ticker-item">무료 방문 견적 · 직영 운영</span><span class="ticker-dot">◆</span><span class="ticker-item">새로운 시작을 함께, 청년철거</span><span class="ticker-dot">◆</span><span class="ticker-item">폐업 지원금 최대 600만 원</span><span class="ticker-dot">◆</span><span class="ticker-item">무료 방문 견적 · 직영 운영</span><span class="ticker-dot">◆</span><span class="ticker-item">새로운 시작을 함께, 청년철거</span><span class="ticker-dot">◆</span><span class="ticker-item">폐업 지원금 최대 600만 원</span><span class="ticker-dot">◆</span><span class="ticker-item">무료 방문 견적 · 직영 운영</span><span class="ticker-dot">◆</span><span class="ticker-item">새로운 시작을 함께, 청년철거</span><span class="ticker-dot">◆</span><span class="ticker-item">폐업 지원금 최대 600만 원</span><span class="ticker-dot">◆</span><span class="ticker-item">무료 방문 견적 · 직영 운영</span><span class="ticker-dot">◆</span><span class="ticker-item">새로운 시작을 함께, 청년철거</span><span class="ticker-dot">◆</span><span class="ticker-item">폐업 지원금 최대 600만 원</span><span class="ticker-dot">◆</span><span class="ticker-item">무료 방문 견적 · 직영 운영</span><span class="ticker-dot">◆</span><span class="ticker-item">새로운 시작을 함께, 청년철거</span><span class="ticker-dot">◆</span><span class="ticker-item">폐업 지원금 최대 600만 원</span><span class="ticker-dot">◆</span><span class="ticker-item">무료 방문 견적 · 직영 운영</span><span class="ticker-dot">◆</span><span class="ticker-item">새로운 시작을 함께, 청년철거</span><span class="ticker-dot">◆</span><span class="ticker-item">폐업 지원금 최대 600만 원</span><span class="ticker-dot">◆</span><span class="ticker-item">무료 방문 견적 · 직영 운영</span><span class="ticker-dot">◆</span><span class="ticker-item">새로운 시작을 함께, 청년철거</span><span class="ticker-dot">◆</span><span class="ticker-item">폐업 지원금 최대 600만 원</span><span class="ticker-dot">◆</span><span class="ticker-item">무료 방문 견적 · 직영 운영</span><span class="ticker-dot">◆</span><span class="ticker-item">새로운 시작을 함께, 청년철거</span><span class="ticker-dot">◆</span><span class="ticker-item">폐업 지원금 최대 600만 원</span><span class="ticker-dot">◆</span><span class="ticker-item">무료 방문 견적 · 직영 운영</span><span class="ticker-dot">◆</span><span class="ticker-item">새로운 시작을 함께, 청년철거</span><span class="ticker-dot">◆</span><span class="ticker-item">폐업 지원금 최대 600만 원</span><span class="ticker-dot">◆</span><span class="ticker-item">무료 방문 견적 · 직영 운영</span><span class="ticker-dot">◆</span>
+  </div>
+  <div class="ticker-track" aria-hidden="true">
+    <span class="ticker-item">새로운 시작을 함께, 청년철거</span><span class="ticker-dot">◆</span><span class="ticker-item">폐업 지원금 최대 600만 원</span><span class="ticker-dot">◆</span><span class="ticker-item">무료 방문 견적 · 직영 운영</span><span class="ticker-dot">◆</span><span class="ticker-item">새로운 시작을 함께, 청년철거</span><span class="ticker-dot">◆</span><span class="ticker-item">폐업 지원금 최대 600만 원</span><span class="ticker-dot">◆</span><span class="ticker-item">무료 방문 견적 · 직영 운영</span><span class="ticker-dot">◆</span><span class="ticker-item">새로운 시작을 함께, 청년철거</span><span class="ticker-dot">◆</span><span class="ticker-item">폐업 지원금 최대 600만 원</span><span class="ticker-dot">◆</span><span class="ticker-item">무료 방문 견적 · 직영 운영</span><span class="ticker-dot">◆</span><span class="ticker-item">새로운 시작을 함께, 청년철거</span><span class="ticker-dot">◆</span><span class="ticker-item">폐업 지원금 최대 600만 원</span><span class="ticker-dot">◆</span><span class="ticker-item">무료 방문 견적 · 직영 운영</span><span class="ticker-dot">◆</span><span class="ticker-item">새로운 시작을 함께, 청년철거</span><span class="ticker-dot">◆</span><span class="ticker-item">폐업 지원금 최대 600만 원</span><span class="ticker-dot">◆</span><span class="ticker-item">무료 방문 견적 · 직영 운영</span><span class="ticker-dot">◆</span><span class="ticker-item">새로운 시작을 함께, 청년철거</span><span class="ticker-dot">◆</span><span class="ticker-item">폐업 지원금 최대 600만 원</span><span class="ticker-dot">◆</span><span class="ticker-item">무료 방문 견적 · 직영 운영</span><span class="ticker-dot">◆</span><span class="ticker-item">새로운 시작을 함께, 청년철거</span><span class="ticker-dot">◆</span><span class="ticker-item">폐업 지원금 최대 600만 원</span><span class="ticker-dot">◆</span><span class="ticker-item">무료 방문 견적 · 직영 운영</span><span class="ticker-dot">◆</span><span class="ticker-item">새로운 시작을 함께, 청년철거</span><span class="ticker-dot">◆</span><span class="ticker-item">폐업 지원금 최대 600만 원</span><span class="ticker-dot">◆</span><span class="ticker-item">무료 방문 견적 · 직영 운영</span><span class="ticker-dot">◆</span><span class="ticker-item">새로운 시작을 함께, 청년철거</span><span class="ticker-dot">◆</span><span class="ticker-item">폐업 지원금 최대 600만 원</span><span class="ticker-dot">◆</span><span class="ticker-item">무료 방문 견적 · 직영 운영</span><span class="ticker-dot">◆</span><span class="ticker-item">새로운 시작을 함께, 청년철거</span><span class="ticker-dot">◆</span><span class="ticker-item">폐업 지원금 최대 600만 원</span><span class="ticker-dot">◆</span><span class="ticker-item">무료 방문 견적 · 직영 운영</span><span class="ticker-dot">◆</span>
+  </div>
+</div>
+
+
+
+<script>
+/* ══════════════════════════════
+   SCROLL REVEAL (IntersectionObserver)
+══════════════════════════════ */
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+      revealObserver.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach(el => {
+  revealObserver.observe(el);
+});
+
+// sticky bar removed
+
+/* ══════════════════════════════
+   NAV — scrolled state
+══════════════════════════════ */
+const gnav = document.getElementById('gnav');
+window.addEventListener('scroll', () => {
+  gnav.classList.toggle('scrolled', window.scrollY > 60);
+}, { passive: true });
+
+/* ══════════════════════════════
+   DRAG SCROLL — Generic
+══════════════════════════════ */
+function makeDraggable(el) {
+  if (!el) return;
+  let isDown = false, startX, scrollLeft;
+
+  el.addEventListener('mousedown', e => {
+    isDown = true;
+    el.classList.add('grabbing');
+    startX = e.pageX - el.offsetLeft;
+    scrollLeft = el.scrollLeft;
+  });
+  document.addEventListener('mouseup', () => {
+    isDown = false;
+    el.classList.remove('grabbing');
+  });
+  el.addEventListener('mouseleave', () => {
+    isDown = false;
+    el.classList.remove('grabbing');
+  });
+  el.addEventListener('mousemove', e => {
+    if (!isDown) return;
+    e.preventDefault();
+    const x = e.pageX - el.offsetLeft;
+    const walk = (x - startX) * 1.6;
+    el.scrollLeft = scrollLeft - walk;
+  });
+
+  // Touch support
+  let touchStartX, touchScrollLeft;
+  el.addEventListener('touchstart', e => {
+    touchStartX = e.touches[0].pageX;
+    touchScrollLeft = el.scrollLeft;
+  }, { passive: true });
+  el.addEventListener('touchmove', e => {
+    const dx = touchStartX - e.touches[0].pageX;
+    el.scrollLeft = touchScrollLeft + dx;
+  }, { passive: true });
+}
+
+makeDraggable(document.getElementById('reviewTrack'));
+// processScroll is now a marquee - no drag needed
+
+/* ══════════════════════════════
+   COUNTER ANIMATION
+══════════════════════════════ */
+function animateCounter(el) {
+  const target = parseInt(el.dataset.target, 10);
+  const suffix = el.querySelector('span') ? el.querySelector('span').outerHTML : '';
+  const duration = 1800;
+  const start = performance.now();
+
+  function update(now) {
+    const elapsed = now - start;
+    const progress = Math.min(elapsed / duration, 1);
+    // Ease out
+    const eased = 1 - Math.pow(1 - progress, 3);
+    const current = Math.round(eased * target);
+    el.innerHTML = current.toLocaleString('ko-KR') + suffix;
+    if (progress < 1) requestAnimationFrame(update);
+  }
+  requestAnimationFrame(update);
+}
+
+const counterObserver = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      const nums = e.target.querySelectorAll('.counter-num[data-target]');
+      nums.forEach(n => animateCounter(n));
+      counterObserver.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.5 });
+
+const counterSection = document.querySelector('.counter-section');
+if (counterSection) counterObserver.observe(counterSection);
+
+/* ══════════════════════════════
+   AUTO-SCROLL for process cards
+   (slow continuous auto-scroll hint)
+══════════════════════════════ */
+// Subtle nudge to show more cards
+(function() {
+  const el = document.getElementById('processScroll');
+  if (!el) return;
+  let animId;
+  let auto = false;
+
+  const processObserver = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting && !auto) {
+        auto = true;
+        // One-time gentle nudge animation
+        const start = el.scrollLeft;
+        const target = start + 160;
+        const dur = 600;
+        const t0 = performance.now();
+        function nudge(now) {
+          const p = Math.min((now - t0) / dur, 1);
+          el.scrollLeft = start + (target - start) * (1 - Math.pow(1 - p, 2));
+          if (p < 1) requestAnimationFrame(nudge);
+        }
+        setTimeout(() => requestAnimationFrame(nudge), 800);
+      }
+    });
+  }, { threshold: 0.5 });
+  processObserver.observe(el);
+})();
+</script>
+
+<script>
+
+function slideReview(direction) {
+  const track = document.getElementById('reviewTrack');
+  if (!track) return;
+  const cardWidth = track.querySelector('.rv-card').offsetWidth + 16;
+  track.scrollBy({ left: direction * cardWidth, behavior: 'smooth' });
+}
+
+</script>
+
+<!-- ══ 하단 고정 배너 ══ -->
+
+<!-- 375 -->
+<div class="ybban ybban-375">
+  <div class="ybban-txt"><p>판단은 지금, 진행은 바로</p></div>
+  <a class="ybban-btn" href="https://pf.kakao.com/_xexbgxin/chat" target="_blank">
+    <div class="ybban-btn-bg ybban-btn-blue"></div>
+    <div class="ybban-btn-lbl"><p>카톡 채널 문의</p></div>
+  </a>
+</div>
+
+<!-- 800 -->
+<div class="ybban ybban-800">
+  <div class="ybban-txt"><p>말보다 기준으로 합니다</p></div>
+  <a class="ybban-btn" href="https://ybdemolish.imweb.me/Quotationinquiry" target="_blank">
+    <div class="ybban-btn-bg ybban-btn-outline"></div>
+    <div class="ybban-btn-lbl"><p>간편 견적 요청</p></div>
+  </a>
+  <div class="ybban-txt"><p>판단은 지금, 진행은 바로</p></div>
+  <a class="ybban-btn" href="https://pf.kakao.com/_xexbgxin/chat" target="_blank">
+    <div class="ybban-btn-bg ybban-btn-blue"></div>
+    <div class="ybban-btn-lbl"><p>카톡 채널 문의</p></div>
+  </a>
+</div>
+
+<!-- 1280 -->
+<div class="ybban ybban-1280">
+  <div class="ybban-txt"><p>말보다 기준으로 합니다</p></div>
+  <a class="ybban-btn" href="https://ybdemolish.imweb.me/Quotationinquiry" target="_blank">
+    <div class="ybban-btn-bg ybban-btn-outline"></div>
+    <div class="ybban-btn-lbl"><p>간편 견적 요청</p></div>
+  </a>
+  <div class="ybban-txt"><p>판단은 지금, 진행은 바로</p></div>
+  <a class="ybban-btn" href="https://pf.kakao.com/_xexbgxin/chat" target="_blank">
+    <div class="ybban-btn-bg ybban-btn-blue"></div>
+    <div class="ybban-btn-lbl"><p>카톡 채널 문의</p></div>
+  </a>
+</div>
+
+<!-- 1920 -->
+<div class="ybban ybban-1920">
+  <div class="ybban-txt"><p>말보다 기준으로 합니다</p></div>
+  <a class="ybban-btn" href="https://ybdemolish.imweb.me/Quotationinquiry" target="_blank">
+    <div class="ybban-btn-bg ybban-btn-outline"></div>
+    <div class="ybban-btn-lbl"><p>간편 견적 요청</p></div>
+  </a>
+  <div class="ybban-txt"><p>판단은 지금, 진행은 바로</p></div>
+  <a class="ybban-btn" href="https://pf.kakao.com/_xexbgxin/chat" target="_blank">
+    <div class="ybban-btn-bg ybban-btn-blue"></div>
+    <div class="ybban-btn-lbl"><p>카톡 채널 문의</p></div>
+  </a>
+</div>
+
+</body>
+</html>
