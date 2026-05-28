@@ -9378,10 +9378,12 @@ box-shadow:0 4px 12px rgba(0,0,0,.12);
     line-height: 1.6 !important;
   }
 
-  /* ── 리뷰 뱃지 13px / 700 ── */
+  /* ── 리뷰 뱃지 16px / 700 ── */
   html body section.sec-review .rv-badge {
-    font-size: 13px !important;
+    font-size: 16px !important;
     font-weight: 700 !important;
+    line-height: 1 !important;
+    letter-spacing: -0.02em !important;
   }
 
   /* ── 리뷰 본문 14px ── */
@@ -9389,6 +9391,12 @@ box-shadow:0 4px 12px rgba(0,0,0,.12);
     font-size: 14px !important;
     font-weight: 400 !important;
     line-height: 1.65 !important;
+  }
+
+  /* ── 리뷰 메타 (후기태그 + 별점) 13px ── */
+  html body section.sec-review .rv-author,
+  html body section.sec-review .rv-stars {
+    font-size: 13px !important;
   }
 
   /* ── 버튼 15px / 600 ── */
@@ -9404,6 +9412,78 @@ box-shadow:0 4px 12px rgba(0,0,0,.12);
   html body .hero-tel-num {
     font-size: 24px !important;
     font-weight: 800 !important;
+  }
+}
+</style>
+<style>
+/* ── 모바일: 카드 컨테이너 가로 비율 통일 (padding 0 20px) ── */
+@media (max-width: 768px) {
+
+  /* STRUCT 카드 */
+  html body .sec-struct .struct-grid,
+  html body .sec-structure .struct-grid {
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+    box-sizing: border-box !important;
+    width: 100% !important;
+  }
+
+  /* SAFETY 카드 */
+  html body .sec-safety .safety-grid,
+  html body .sec-safety .safety-inner {
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+    box-sizing: border-box !important;
+    width: 100% !important;
+  }
+
+  /* REVIEW 카드 */
+  html body .sec-review .review-track {
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+    box-sizing: border-box !important;
+    width: 100% !important;
+  }
+  html body .sec-review .rv-card {
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  /* PDARK 카드 — 이미 padding 0 20px 적용중이므로 확인만 */
+  html body .sec-pdark .pdark-inner {
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+    box-sizing: border-box !important;
+  }
+}
+</style>
+<style>
+/* ── 모바일: REVIEW 카드 4개 일렬 중앙 정렬 ── */
+@media (max-width: 768px) {
+  html body .sec-review .review-track {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 20px !important;
+    padding: 0 20px !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+  html body .sec-review .rv-row {
+    display: contents !important;
+  }
+  /* 사이드 카드 숨김 */
+  html body .sec-review .rv-side-card,
+  html body .sec-review .rv-ghost-left,
+  html body .sec-review .rv-ghost-right {
+    display: none !important;
+  }
+  /* 메인 카드: 화면 너비 - 40px */
+  html body .sec-review .rv-main-card {
+    width: calc(100vw - 40px) !important;
+    max-width: calc(100vw - 40px) !important;
+    box-sizing: border-box !important;
   }
 }
 </style>
@@ -11015,17 +11095,17 @@ document.addEventListener('DOMContentLoaded', function(){
     ];
     h2Selectors.forEach(function(sel) {
       document.querySelectorAll(sel).forEach(function(el) {
-        el.style.setProperty('font-size', '28px', 'important');
+        el.style.setProperty('font-size', '26px', 'important');
         el.style.setProperty('font-weight', '800', 'important');
-        el.style.setProperty('line-height', '1.35', 'important');
+        el.style.setProperty('line-height', '1.4', 'important');
         el.style.setProperty('letter-spacing', '-0.03em', 'important');
         el.style.setProperty('word-break', 'keep-all', 'important');
         el.style.setProperty('white-space', 'normal', 'important');
         // 내부 span도 동일하게
         el.querySelectorAll('span').forEach(function(sp) {
-          sp.style.setProperty('font-size', '28px', 'important');
+          sp.style.setProperty('font-size', '26px', 'important');
           sp.style.setProperty('font-weight', '800', 'important');
-          sp.style.setProperty('line-height', '1.35', 'important');
+          sp.style.setProperty('line-height', '1.4', 'important');
           sp.style.setProperty('letter-spacing', '-0.03em', 'important');
           sp.style.setProperty('white-space', 'normal', 'important');
         });
@@ -11034,7 +11114,7 @@ document.addEventListener('DOMContentLoaded', function(){
 
     // ── 설명 p 15px / 400 ──
     var pSelectors = [
-      '.sec-review .sec-sub', '.sec-struct .sec-sub', '.sec-struct p.sec-sub',
+      '.sec-struct .sec-sub', '.sec-struct p.sec-sub',
       '.sec-safety .sec-sub', '.sec-cta p', '.sec-partner p', '.sec-why p'
     ];
     pSelectors.forEach(function(sel) {
@@ -11076,18 +11156,59 @@ document.addEventListener('DOMContentLoaded', function(){
       el.style.setProperty('white-space', 'normal', 'important');
     });
 
-    // ── hero-sub — counter-label 스타일 적용 ──
-    document.querySelectorAll('.hero-sub').forEach(function(el) {
-      el.style.setProperty('font-size', '20px', 'important');
+    // ── counter-label 스타일 20px / 500 / rgba(255,255,255,0.5) 공통 적용 ──
+    // sec-review .sec-sub + sec-struct .sec-sub 16px / 500
+    document.querySelectorAll('.sec-review .sec-sub, .sec-struct .sec-sub, .sec-struct p.sec-sub').forEach(function(el) {
+      el.style.setProperty('font-size', '16px', 'important');
       el.style.setProperty('font-weight', '500', 'important');
-      el.style.setProperty('color', 'rgba(255,255,255,0.5)', 'important');
+      el.style.setProperty('color', '#fff', 'important');
       el.style.setProperty('word-break', 'keep-all', 'important');
+    });
+
+    // sec-partners .sec-sub — 15px / 원래 색상 유지
+    document.querySelectorAll('.sec-partners .sec-sub').forEach(function(el) {
+      el.style.setProperty('font-size', '16px', 'important');
+      el.style.setProperty('font-weight', '500', 'important');
+      el.style.setProperty('color', '#fff', 'important');
+      el.style.setProperty('word-break', 'keep-all', 'important');
+    });
+    // 나머지 — 20px / 500 / rgba(255,255,255,0.5)
+    // sec-why p — 15px
+    document.querySelectorAll('.sec-why .why-inner p').forEach(function(el) {
+      el.style.setProperty('font-size', '16px', 'important');
+      el.style.setProperty('font-weight', '500', 'important');
+      el.style.setProperty('color', '#555', 'important');
+      el.style.setProperty('word-break', 'keep-all', 'important');
+    });
+    // hero-sub 20px
+    document.querySelectorAll('.hero-sub').forEach(function(el) {
+      el.style.setProperty('font-size', '16px', 'important');
+      el.style.setProperty('font-weight', '500', 'important');
+      el.style.setProperty('color', '#fff', 'important');
+      el.style.setProperty('word-break', 'keep-all', 'important');
+    });
+    // sec-cta p / sec-partner p — 15px
+    var targets15 = ['.sec-cta p', '.sec-partner p', '.sec-partner .recruit-desc-force'];
+    targets15.forEach(function(sel) {
+      document.querySelectorAll(sel).forEach(function(el) {
+        el.style.setProperty('font-size', '16px', 'important');
+        el.style.setProperty('font-weight', '500', 'important');
+        el.style.setProperty('color', '#fff', 'important');
+        el.style.setProperty('word-break', 'keep-all', 'important');
+        el.querySelectorAll('span').forEach(function(sp) {
+          sp.style.setProperty('font-size', '16px', 'important');
+          sp.style.setProperty('font-weight', '500', 'important');
+          sp.style.setProperty('color', '#fff', 'important');
+        });
+      });
     });
 
     // ── 섹션 레이블 13px ──
     document.querySelectorAll('.sec-point .sec-label, .sec-review .sec-label, .sec-process .sec-label, .sec-steps .sec-label, .sec-pdark .sec-label, .sec-struct .sec-label, .sec-safety .sec-label').forEach(function(el) {
-      el.style.setProperty('font-size', '13px', 'important');
+      el.style.setProperty('font-size', '16px', 'important');
       el.style.setProperty('font-weight', '700', 'important');
+      el.style.setProperty('line-height', '1', 'important');
+      el.style.setProperty('letter-spacing', '0.1em', 'important');
     });
 
     // ── PDARK 카드 제목 h3 26px ──
@@ -11103,11 +11224,19 @@ document.addEventListener('DOMContentLoaded', function(){
     });
 
     // ── 카드 본문 p 14px ──
+    // sec-struct .sec-sub 색상 흰색
+    document.querySelectorAll('.sec-struct .sec-sub, .sec-struct p.sec-sub').forEach(function(el) {
+      el.style.setProperty('color', '#fff', 'important');
+      el.querySelectorAll('span').forEach(function(sp) {
+        sp.style.setProperty('color', '#fff', 'important');
+      });
+    });
+
     // sec-pdark 카드 p — counter-label 스타일 20px / 500
     document.querySelectorAll('.sec-pdark .pd-card p').forEach(function(el) {
       el.style.setProperty('font-size', '20px', 'important');
       el.style.setProperty('font-weight', '500', 'important');
-      el.style.setProperty('color', 'rgba(255,255,255,0.5)', 'important');
+      el.style.setProperty('color', '#fff', 'important');
       el.style.setProperty('word-break', 'keep-all', 'important');
     });
     // sec-struct 카드 p — 색상 원래대로 + 모바일 텍스트 교체
@@ -11130,7 +11259,7 @@ document.addEventListener('DOMContentLoaded', function(){
     // ── POINT 카드 (01~04) — 파트너 섹션 기준 맞춤 ──
     // 번호 뱃지 (01, 02...)
     document.querySelectorAll('.sec-point .pi-badge').forEach(function(el) {
-      el.style.setProperty('font-size', '13px', 'important');
+      el.style.setProperty('font-size', '15px', 'important');
       el.style.setProperty('font-weight', '700', 'important');
       el.style.setProperty('width', '32px', 'important');
       el.style.setProperty('height', '32px', 'important');
@@ -11147,9 +11276,9 @@ document.addEventListener('DOMContentLoaded', function(){
     });
     // 카드 설명 p — counter-label 스타일 20px / 500
     document.querySelectorAll('.sec-point .pi-text p').forEach(function(el) {
-      el.style.setProperty('font-size', '20px', 'important');
+      el.style.setProperty('font-size', '16px', 'important');
       el.style.setProperty('font-weight', '500', 'important');
-      el.style.setProperty('color', 'rgba(255,255,255,0.5)', 'important');
+      el.style.setProperty('color', '#fff', 'important');
       el.style.setProperty('word-break', 'keep-all', 'important');
     });
 
