@@ -11110,8 +11110,17 @@ document.addEventListener('DOMContentLoaded', function(){
       el.style.setProperty('color', 'rgba(255,255,255,0.5)', 'important');
       el.style.setProperty('word-break', 'keep-all', 'important');
     });
-    // sec-struct 카드 p — 색상은 원래대로 #777
+    // sec-struct 카드 p — 색상 원래대로 + 모바일 텍스트 교체
+    var structTextMap = {
+      '필요 장비 직접 보유<br>대여·외부 비용 없음': '대여·외부 비용 없음',
+      '외주 없이 직영 시공<br>인력 주선 비용 제거': '인력 주선 비용 제거',
+      '중간 마진 없는 처리<br>불필요한 비용 차단': '불필요한 비용 차단'
+    };
     document.querySelectorAll('.sec-struct .struct-card p').forEach(function(el) {
+      var original = el.innerHTML.trim();
+      if (structTextMap[original]) {
+        el.innerHTML = structTextMap[original];
+      }
       el.style.setProperty('font-size', '20px', 'important');
       el.style.setProperty('font-weight', '500', 'important');
       el.style.setProperty('color', '#777', 'important');
