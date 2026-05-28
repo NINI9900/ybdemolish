@@ -9378,10 +9378,10 @@ box-shadow:0 4px 12px rgba(0,0,0,.12);
     line-height: 1.6 !important;
   }
 
-  /* ── 리뷰 뱃지 13px / 700 ── */
+  /* ── 리뷰 뱃지 16px / 500 ── */
   html body section.sec-review .rv-badge {
-    font-size: 13px !important;
-    font-weight: 700 !important;
+    font-size: 16px !important;
+    font-weight: 500 !important;
   }
 
   /* ── 리뷰 본문 14px ── */
@@ -11040,7 +11040,7 @@ document.addEventListener('DOMContentLoaded', function(){
 
     // ── 설명 p 15px / 400 ──
     var pSelectors = [
-      '.sec-review .sec-sub', '.sec-struct .sec-sub', '.sec-struct p.sec-sub',
+      '.sec-struct .sec-sub', '.sec-struct p.sec-sub',
       '.sec-safety .sec-sub', '.sec-cta p', '.sec-partner p', '.sec-why p'
     ];
     pSelectors.forEach(function(sel) {
@@ -11083,6 +11083,14 @@ document.addEventListener('DOMContentLoaded', function(){
     });
 
     // ── counter-label 스타일 20px / 500 / rgba(255,255,255,0.5) 공통 적용 ──
+    // sec-review .sec-sub + sec-struct .sec-sub 16px / 500
+    document.querySelectorAll('.sec-review .sec-sub, .sec-struct .sec-sub, .sec-struct p.sec-sub').forEach(function(el) {
+      el.style.setProperty('font-size', '16px', 'important');
+      el.style.setProperty('font-weight', '500', 'important');
+      el.style.setProperty('color', '#fff', 'important');
+      el.style.setProperty('word-break', 'keep-all', 'important');
+    });
+
     // sec-partners .sec-sub — 15px / 원래 색상 유지
     document.querySelectorAll('.sec-partners .sec-sub').forEach(function(el) {
       el.style.setProperty('font-size', '16px', 'important');
@@ -11123,8 +11131,8 @@ document.addEventListener('DOMContentLoaded', function(){
 
     // ── 섹션 레이블 13px ──
     document.querySelectorAll('.sec-point .sec-label, .sec-review .sec-label, .sec-process .sec-label, .sec-steps .sec-label, .sec-pdark .sec-label, .sec-struct .sec-label, .sec-safety .sec-label').forEach(function(el) {
-      el.style.setProperty('font-size', '15px', 'important');
-      el.style.setProperty('font-weight', '700', 'important');
+      el.style.setProperty('font-size', '16px', 'important');
+      el.style.setProperty('font-weight', '500', 'important');
     });
 
     // ── PDARK 카드 제목 h3 26px ──
