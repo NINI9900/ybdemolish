@@ -11103,8 +11103,12 @@ document.addEventListener('DOMContentLoaded', function(){
     });
 
     // ── 카드 본문 p 14px ──
-    document.querySelectorAll('.sec-point .pi-desc, .sec-pdark .pd-card p, .sec-struct .struct-card p, .sec-safety .safety-card p').forEach(function(el) {
-      el.style.setProperty('font-size', '14px', 'important');
+    // sec-pdark / sec-struct 카드 p — counter-label 스타일 20px / 500
+    document.querySelectorAll('.sec-pdark .pd-card p, .sec-struct .struct-card p').forEach(function(el) {
+      el.style.setProperty('font-size', '20px', 'important');
+      el.style.setProperty('font-weight', '500', 'important');
+      el.style.setProperty('color', 'rgba(255,255,255,0.5)', 'important');
+      el.style.setProperty('word-break', 'keep-all', 'important');
     });
 
     // ── POINT 카드 (01~04) — 파트너 섹션 기준 맞춤 ──
