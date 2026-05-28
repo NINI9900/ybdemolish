@@ -9487,6 +9487,34 @@ box-shadow:0 4px 12px rgba(0,0,0,.12);
   }
 }
 </style>
+<style>
+/* ── 모바일: STRUCT 카드 가로 화면너비 - 40px ── */
+@media (max-width: 768px) {
+  html body .sec-struct .struct-inner,
+  html body .sec-structure .struct-inner {
+    width: 100% !important;
+    padding: 0 20px !important;
+    box-sizing: border-box !important;
+  }
+  html body .sec-struct .struct-grid,
+  html body .sec-structure .struct-grid {
+    width: 100% !important;
+    grid-template-columns: 1fr !important;
+    gap: 20px !important;
+    padding: 0 !important;
+    box-sizing: border-box !important;
+  }
+  html body .sec-struct .struct-card,
+  html body .sec-struct .struct-img,
+  html body .sec-structure .struct-card {
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    min-height: 0 !important;
+    box-sizing: border-box !important;
+  }
+}
+</style>
 </head>
 <body>
 
