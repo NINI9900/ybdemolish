@@ -11052,6 +11052,14 @@ document.addEventListener('DOMContentLoaded', function(){
       });
     });
 
+    // ── hero-sub — counter-label 스타일 적용 ──
+    document.querySelectorAll('.hero-sub').forEach(function(el) {
+      el.style.setProperty('font-size', '20px', 'important');
+      el.style.setProperty('font-weight', '500', 'important');
+      el.style.setProperty('color', 'rgba(255,255,255,0.5)', 'important');
+      el.style.setProperty('word-break', 'keep-all', 'important');
+    });
+
     // ── 섹션 레이블 13px ──
     document.querySelectorAll('.sec-point .sec-label, .sec-review .sec-label, .sec-process .sec-label, .sec-steps .sec-label, .sec-pdark .sec-label, .sec-struct .sec-label, .sec-safety .sec-label').forEach(function(el) {
       el.style.setProperty('font-size', '13px', 'important');
@@ -11075,10 +11083,52 @@ document.addEventListener('DOMContentLoaded', function(){
       el.style.setProperty('font-size', '14px', 'important');
     });
 
+    // ── POINT 카드 (01~04) — 파트너 섹션 기준 맞춤 ──
+    // 번호 뱃지 (01, 02...)
+    document.querySelectorAll('.sec-point .pi-badge').forEach(function(el) {
+      el.style.setProperty('font-size', '13px', 'important');
+      el.style.setProperty('font-weight', '700', 'important');
+      el.style.setProperty('width', '32px', 'important');
+      el.style.setProperty('height', '32px', 'important');
+      el.style.setProperty('margin-bottom', '14px', 'important');
+    });
+    // 카드 제목 h3
+    document.querySelectorAll('.sec-point .pi-text h3').forEach(function(el) {
+      el.style.setProperty('font-size', '26px', 'important');
+      el.style.setProperty('font-weight', '800', 'important');
+      el.style.setProperty('line-height', '1.4', 'important');
+      el.style.setProperty('letter-spacing', '-0.03em', 'important');
+      el.style.setProperty('margin-bottom', '10px', 'important');
+      el.style.setProperty('word-break', 'keep-all', 'important');
+    });
+    // 카드 설명 p
+    document.querySelectorAll('.sec-point .pi-text p').forEach(function(el) {
+      el.style.setProperty('font-size', '15px', 'important');
+      el.style.setProperty('font-weight', '400', 'important');
+      el.style.setProperty('line-height', '1.65', 'important');
+      el.style.setProperty('word-break', 'keep-all', 'important');
+    });
+
     // ── 버튼 15px / 600 ──
     document.querySelectorAll('.btn-filled, .btn-cta-white, .btn-outline, a[class*="btn"]').forEach(function(el) {
       el.style.setProperty('font-size', '15px', 'important');
       el.style.setProperty('font-weight', '600', 'important');
+    });
+
+    // ── counter-num 동일 적용: 전화번호 + struct 카드 제목 ──
+    // 전화번호 1866-0379
+    document.querySelectorAll('.hero-tel').forEach(function(el) {
+      el.style.setProperty('font-size', '32px', 'important');
+      el.style.setProperty('font-weight', '900', 'important');
+      el.style.setProperty('letter-spacing', '-2px', 'important');
+      el.style.setProperty('line-height', '1', 'important');
+    });
+    // 장비 내부 보유 / 전 지점 직영 운영 / 폐기물 원가 처리
+    document.querySelectorAll('.sec-struct .struct-card h3').forEach(function(el) {
+      el.style.setProperty('font-size', '26px', 'important');
+      el.style.setProperty('font-weight', '800', 'important');
+      el.style.setProperty('letter-spacing', '-0.03em', 'important');
+      el.style.setProperty('line-height', '1.4', 'important');
     });
 
     // ── 섹션 헤더 간격 통일 (STRUCTURE 기준) ──
