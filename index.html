@@ -11065,9 +11065,13 @@ document.addEventListener('DOMContentLoaded', function(){
       el.style.setProperty('white-space', 'nowrap', 'important');
       el.style.setProperty('word-break', 'keep-all', 'important');
     });
-    // 3. sec-partners h2 "이름으로 남습니다" 한 줄로
+    // 3. sec-partners h2 — 제목 스타일 26px / 800
     document.querySelectorAll('.sec-partners h2').forEach(function(el) {
       el.innerHTML = el.innerHTML.replace(/<br\s*\/?>/gi, ' ');
+      el.style.setProperty('font-size', '26px', 'important');
+      el.style.setProperty('font-weight', '800', 'important');
+      el.style.setProperty('line-height', '1.4', 'important');
+      el.style.setProperty('letter-spacing', '-0.03em', 'important');
       el.style.setProperty('word-break', 'keep-all', 'important');
       el.style.setProperty('white-space', 'normal', 'important');
     });
