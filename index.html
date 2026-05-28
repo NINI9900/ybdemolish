@@ -10713,5 +10713,161 @@ document.addEventListener('DOMContentLoaded', function(){
 }
 </style>
 
+
+<style>
+@media screen and (max-width:768px){
+
+  /* MOBILE ONLY - 로고 두 행 간격 추가 증가 */
+  html body .sec-partners .partner-marquee-wrap{
+    gap:18px !important;
+    row-gap:18px !important;
+    padding-top:10px !important;
+    padding-bottom:10px !important;
+  }
+
+  html body .sec-partners .partner-marquee-row{
+    margin:9px 0 !important;
+  }
+}
+</style>
+
+
+<style>
+@media screen and (max-width:768px){
+
+  /* MOBILE ONLY - 로고 두 행 간격 더 확대 */
+  html body .sec-partners .partner-marquee-wrap{
+    gap:26px !important;
+    row-gap:26px !important;
+    padding-top:16px !important;
+    padding-bottom:16px !important;
+  }
+
+  html body .sec-partners .partner-marquee-row{
+    margin:13px 0 !important;
+  }
+}
+</style>
+
+
+<style>
+@media screen and (max-width:768px){
+
+  /* MOBILE ONLY - 로고 두 행 간격 크게 확대 */
+  html body .sec-partners .partner-marquee-wrap{
+    gap:38px !important;
+    row-gap:38px !important;
+    padding-top:22px !important;
+    padding-bottom:22px !important;
+  }
+
+  html body .sec-partners .partner-marquee-row{
+    margin:19px 0 !important;
+  }
+}
+</style>
+
+
+<style>
+@media screen and (max-width:768px){
+
+  /* MOBILE ONLY - 협력업체 로고 두 행 속도 동일 */
+  html body .sec-partners .partner-marquee-row:nth-child(1) .pm-track,
+  html body .sec-partners .partner-marquee-row:nth-child(2) .pm-track,
+  html body .sec-partners .pm-track{
+    animation-duration:42s !important;
+    animation-timing-function:linear !important;
+    animation-iteration-count:infinite !important;
+    animation-play-state:running !important;
+  }
+
+  /* MOBILE ONLY - 로고 화질 저하 방지 */
+  html body .sec-partners .pm-logo,
+  html body .sec-partners .pm-logo img{
+    image-rendering:auto !important;
+    image-rendering:-webkit-optimize-contrast !important;
+    backface-visibility:hidden !important;
+    -webkit-font-smoothing:antialiased !important;
+    transform:none !important;
+    filter:none !important;
+    mix-blend-mode:normal !important;
+  }
+
+  html body .sec-partners .pm-logo img{
+    object-fit:contain !important;
+    width:auto !important;
+    height:34px !important;
+    max-height:34px !important;
+    max-width:150px !important;
+  }
+}
+</style>
+
+
+<style>
+@media screen and (max-width:768px){
+
+  /* MOBILE ONLY - 제목/설명과 로고 마퀴 사이 간격은 되돌리고, 로고 두 줄 사이만 벌림 */
+  html body .sec-partners .partner-marquee-wrap{
+    margin-top:24px !important;
+    padding-top:0 !important;
+    padding-bottom:0 !important;
+    display:flex !important;
+    flex-direction:column !important;
+    row-gap:28px !important;
+    gap:28px !important;
+  }
+
+  html body .sec-partners .partner-marquee-row{
+    margin:0 !important;
+  }
+}
+</style>
+
+
+<style>
+@media screen and (max-width:768px){
+
+  /* MOBILE ONLY - 로고 마퀴 두 줄 사이 간격 더 확대 */
+  html body .sec-partners .partner-marquee-wrap{
+    row-gap:42px !important;
+    gap:42px !important;
+  }
+
+  html body .sec-partners .partner-marquee-row{
+    margin:0 !important;
+  }
+}
+</style>
+
+
+<style>
+@media screen and (max-width:768px){
+
+  /* MOBILE ONLY - 제목/설명과 마퀴 사이 간격은 고정 */
+  html body .sec-partners .partner-marquee-wrap{
+    margin-top:24px !important;
+    padding-top:0 !important;
+    display:flex !important;
+    flex-direction:column !important;
+    row-gap:42px !important;
+    gap:42px !important;
+    padding-bottom:42px !important;
+  }
+
+  /* 첫 번째 줄 위치는 고정 */
+  html body .sec-partners .partner-marquee-row:first-child{
+    margin-top:0 !important;
+    margin-bottom:0 !important;
+  }
+
+  /* 두 번째 줄만 아래로 내려서 두 줄 사이 간격 확보 */
+  html body .sec-partners .partner-marquee-row:nth-child(2){
+    margin-top:0 !important;
+    margin-bottom:0 !important;
+  }
+}
+</style>
+
 </body>
 </html>
