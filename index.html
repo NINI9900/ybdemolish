@@ -11053,11 +11053,12 @@ document.addEventListener('DOMContentLoaded', function(){
     });
 
     // ── 모바일 줄바꿈 수정 ──
-    // 1. hero-h1: "비용부터 제거" 한 줄로
+    // 1. hero-h1: 2줄 유지 (br 유지, 각 줄 내 줄바꿈 방지)
     document.querySelectorAll('.hero-h1').forEach(function(el) {
-      el.innerHTML = el.innerHTML.replace(/<br\s*\/?>/gi, ' ');
       el.style.setProperty('word-break', 'keep-all', 'important');
       el.style.setProperty('white-space', 'normal', 'important');
+      el.style.setProperty('font-size', '22px', 'important');
+      el.style.setProperty('line-height', '1.4', 'important');
     });
     // 2. counter-label "최대 폐업지원금" 줄바꿈 방지
     document.querySelectorAll('.counter-label').forEach(function(el) {
