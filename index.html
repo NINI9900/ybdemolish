@@ -11091,27 +11091,30 @@ document.addEventListener('DOMContentLoaded', function(){
       el.style.setProperty('word-break', 'keep-all', 'important');
     });
     // 나머지 — 20px / 500 / rgba(255,255,255,0.5)
-    // sec-why p — 원래 색상 #555
+    // sec-why p — 15px
     document.querySelectorAll('.sec-why .why-inner p').forEach(function(el) {
-      el.style.setProperty('font-size', '20px', 'important');
+      el.style.setProperty('font-size', '15px', 'important');
       el.style.setProperty('font-weight', '500', 'important');
       el.style.setProperty('color', '#555', 'important');
       el.style.setProperty('word-break', 'keep-all', 'important');
     });
-    var counterLabelTargets = [
-      '.hero-sub',
-      '.sec-cta p',
-      '.sec-partner p',
-      '.sec-partner .recruit-desc-force'
-    ];
-    counterLabelTargets.forEach(function(sel) {
+    // hero-sub 20px
+    document.querySelectorAll('.hero-sub').forEach(function(el) {
+      el.style.setProperty('font-size', '20px', 'important');
+      el.style.setProperty('font-weight', '500', 'important');
+      el.style.setProperty('color', '#fff', 'important');
+      el.style.setProperty('word-break', 'keep-all', 'important');
+    });
+    // sec-cta p / sec-partner p — 15px
+    var targets15 = ['.sec-cta p', '.sec-partner p', '.sec-partner .recruit-desc-force'];
+    targets15.forEach(function(sel) {
       document.querySelectorAll(sel).forEach(function(el) {
-        el.style.setProperty('font-size', '20px', 'important');
+        el.style.setProperty('font-size', '15px', 'important');
         el.style.setProperty('font-weight', '500', 'important');
         el.style.setProperty('color', '#fff', 'important');
         el.style.setProperty('word-break', 'keep-all', 'important');
         el.querySelectorAll('span').forEach(function(sp) {
-          sp.style.setProperty('font-size', '20px', 'important');
+          sp.style.setProperty('font-size', '15px', 'important');
           sp.style.setProperty('font-weight', '500', 'important');
           sp.style.setProperty('color', '#fff', 'important');
         });
