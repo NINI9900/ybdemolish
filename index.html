@@ -11267,6 +11267,26 @@ document.addEventListener('DOMContentLoaded', function(){
       el.style.setProperty('color', '#fff', 'important');
       el.style.setProperty('word-break', 'keep-all', 'important');
     });
+    // struct 컨테이너 + 카드 중앙 정렬
+    document.querySelectorAll('.sec-struct .struct-inner, .sec-structure .struct-inner').forEach(function(el) {
+      el.style.setProperty('width', '100%', 'important');
+      el.style.setProperty('max-width', '100%', 'important');
+      el.style.setProperty('padding', '0 20px', 'important');
+      el.style.setProperty('box-sizing', 'border-box', 'important');
+    });
+    document.querySelectorAll('.sec-struct .struct-grid, .sec-structure .struct-grid').forEach(function(el) {
+      el.style.setProperty('width', '100%', 'important');
+      el.style.setProperty('max-width', '100%', 'important');
+      el.style.setProperty('grid-template-columns', '1fr', 'important');
+      el.style.setProperty('margin', '0 auto', 'important');
+      el.style.setProperty('box-sizing', 'border-box', 'important');
+    });
+    document.querySelectorAll('.sec-struct .struct-card').forEach(function(el) {
+      el.style.setProperty('width', '100%', 'important');
+      el.style.setProperty('max-width', '100%', 'important');
+      el.style.setProperty('box-sizing', 'border-box', 'important');
+    });
+
     // sec-struct 카드 p — 색상 원래대로 + 모바일 텍스트 교체
     var structTextMap = {
       '필요 장비 직접 보유<br>대여·외부 비용 없음': '대여·외부 비용 없음',
