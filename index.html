@@ -9517,6 +9517,25 @@ box-shadow:0 4px 12px rgba(0,0,0,.12);
   }
 }
 </style>
+<style>
+/* ── 모바일: steps 카드 간격 일정하게 ── */
+@media (max-width: 768px) {
+  html body .sec-steps .steps-board {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 16px !important;
+    padding: 0 20px !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+  html body .sec-steps .steps-row {
+    display: contents !important;
+  }
+  html body .sec-steps .step-card.side-card {
+    display: none !important;
+  }
+}
+</style>
 </head>
 <body>
 
