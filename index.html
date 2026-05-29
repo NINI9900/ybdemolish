@@ -7147,7 +7147,7 @@ box-shadow:0 4px 12px rgba(0,0,0,.12);
     width: 100% !important;
     height: 100% !important;
     object-fit: cover !important;
-    filter: grayscale(1) brightness(0.55) !important;
+    filter: grayscale(1) brightness(0.75) !important;
   }
 
   /* 일정 준수: 손/핸드폰/종이 아래쪽 크롭 */
@@ -7172,7 +7172,7 @@ box-shadow:0 4px 12px rgba(0,0,0,.12);
     width: 100% !important;
     height: 100% !important;
     object-fit: cover !important;
-    filter: grayscale(1) brightness(0.55) !important;
+    filter: grayscale(1) brightness(0.75) !important;
     transform: none !important;
     left: 0 !important;
     bottom: 0 !important;
@@ -7181,13 +7181,15 @@ box-shadow:0 4px 12px rgba(0,0,0,.12);
     display: block !important;
   }
 
-  /* 하단 그라데이션 오버레이 (::after 재활용) */
+  /* 하단 그라데이션 오버레이 — 3개 카드 전부 */
   html body .sec-pdark .pd-card::after,
+  html body .sec-pdark .pd-card-left::after,
+  html body .sec-pdark .pd-card-right::after,
   html body .sec-pdark .pd-card-center::after {
     content: '' !important;
     position: absolute !important;
     inset: 0 !important;
-    background: linear-gradient(to top, rgba(0,0,0,0.72) 0%, rgba(0,0,0,0.15) 45%, transparent 100%) !important;
+    background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.3) 50%, transparent 100%) !important;
     z-index: 1 !important;
   }
 
@@ -7218,7 +7220,7 @@ box-shadow:0 4px 12px rgba(0,0,0,.12);
     color: #fff !important;
   }
   html body .sec-pdark .pd-card-center p {
-    color: rgba(255,255,255,0.75) !important;
+    color: #fff !important;
   }
 
   /* 제목 40px */
@@ -7235,16 +7237,16 @@ box-shadow:0 4px 12px rgba(0,0,0,.12);
   html body .sec-pdark .pd-line {
     display: block !important;
     width: 80px !important;
-    height: 3px !important;
+    height: 6px !important;
     background: linear-gradient(to right, #1B6CF7, transparent) !important;
-    border-radius: 0 !important;
+    border-radius: 2px !important;
     margin: 8px 0 8px !important;
   }
 
   /* 서브텍스트 */
   html body .sec-pdark .pd-card p {
     font-size: 14px !important;
-    color: rgba(255,255,255,0.75) !important;
+    color: #fff !important;
     line-height: 1.5 !important;
     margin: 0 !important;
     font-weight: 400 !important;
@@ -11267,9 +11269,9 @@ document.addEventListener('DOMContentLoaded', function(){
       });
     });
 
-    // sec-pdark 카드 p — counter-label 스타일 20px / 500
+    // sec-pdark 카드 p — 16px / 500
     document.querySelectorAll('.sec-pdark .pd-card p').forEach(function(el) {
-      el.style.setProperty('font-size', '20px', 'important');
+      el.style.setProperty('font-size', '16px', 'important');
       el.style.setProperty('font-weight', '500', 'important');
       el.style.setProperty('color', '#fff', 'important');
       el.style.setProperty('word-break', 'keep-all', 'important');
