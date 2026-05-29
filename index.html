@@ -11261,11 +11261,15 @@ document.addEventListener('DOMContentLoaded', function(){
     });
 
     // ── 카드 본문 p 14px ──
-    // sec-struct .sec-sub 색상 흰색
+    // sec-struct .sec-sub 색상 흰색 + 16px/500
     document.querySelectorAll('.sec-struct .sec-sub, .sec-struct p.sec-sub').forEach(function(el) {
       el.style.setProperty('color', '#fff', 'important');
+      el.style.setProperty('font-size', '16px', 'important');
+      el.style.setProperty('font-weight', '500', 'important');
       el.querySelectorAll('span').forEach(function(sp) {
         sp.style.setProperty('color', '#fff', 'important');
+        sp.style.setProperty('font-size', '16px', 'important');
+        sp.style.setProperty('font-weight', '500', 'important');
       });
     });
 
