@@ -10326,7 +10326,6 @@ box-shadow:0 4px 12px rgba(0,0,0,.12);
     <div class="ybfooter-logo">청년철거</div>
     <!-- 정보 -->
     <div class="ybfooter-info">
-      <p><strong>대표자</strong>임재인</p>
       <p><strong>전화 번호:</strong>1866-0379</p>
       <p><strong>이메일:</strong><a href="mailto:ybdemolish@naver.com">ybdemolish@naver.com</a></p>
       <p><strong>인스타그램:</strong><a href="https://instagram.com/ybdemolish_" target="_blank">@ybdemolish_</a></p>
@@ -10334,6 +10333,7 @@ box-shadow:0 4px 12px rgba(0,0,0,.12);
     </div>
     <!-- 정보02 -->
     <div class="ybfooter-info02">
+      <p><strong>대표자</strong>임채인</p>
       <p><strong>주소:</strong>서울특별시 동대문구 고산자로 505, 2층 145호(제기동)</p>
       <p><strong>사업자 등록 번호:</strong>681-23-02112</p>
       <p class="copyright">YBdemolish©<br>2025 All Rights Reserved</p>
@@ -11354,6 +11354,23 @@ document.addEventListener('DOMContentLoaded', function(){
       el.style.setProperty('color', '#fff', 'important');
       el.style.setProperty('word-break', 'keep-all', 'important');
     });
+
+    // ── 푸터: 대표자를 유튜브 아래로 이동 (모바일) ──
+    (function() {
+      var info = document.querySelector('.ybfooter-info');
+      if (!info) return;
+      var ps = info.querySelectorAll('p');
+      var repEl = null, youtubeEl = null;
+      ps.forEach(function(p) {
+        if (p.textContent.includes('대표자')) repEl = p;
+        if (p.textContent.includes('유튜브')) youtubeEl = p;
+      });
+      // 대표자를 주소 위로 이동 (ybfooter-info02 첫번째)
+      var info02 = document.querySelector('.ybfooter-info02');
+      if (repEl && info02) {
+        info02.insertBefore(repEl, info02.firstChild);
+      }
+    })();
 
     // ── 푸터 텍스트 16px / 500 ──
     document.querySelectorAll('.ybfooter-info p, .ybfooter-info02 p, .ybfooter-info p strong, .ybfooter-info02 p strong, .ybfooter-info02 .copyright, .ybfooter-info a, .ybfooter-info02 a').forEach(function(el) {
