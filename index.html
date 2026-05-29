@@ -11246,9 +11246,16 @@ document.addEventListener('DOMContentLoaded', function(){
     });
 
     // ── 카드 소제목 h3 20px ──
-    document.querySelectorAll('.sec-point .pi-title, .sec-struct .struct-card h3, .sec-safety .safety-card h3, .sec-steps .step-card h4').forEach(function(el) {
+    document.querySelectorAll('.sec-point .pi-title, .sec-struct .struct-card h3, .sec-safety .safety-card h3').forEach(function(el) {
       el.style.setProperty('font-size', '20px', 'important');
       el.style.setProperty('font-weight', '700', 'important');
+    });
+    // step-card h4 — 26px / 800 / line-height 1.4 / letter-spacing -0.03em
+    document.querySelectorAll('.sec-steps .step-card h4').forEach(function(el) {
+      el.style.setProperty('font-size', '26px', 'important');
+      el.style.setProperty('font-weight', '800', 'important');
+      el.style.setProperty('line-height', '1.4', 'important');
+      el.style.setProperty('letter-spacing', '-0.03em', 'important');
     });
 
     // ── 카드 본문 p 14px ──
@@ -11337,6 +11344,12 @@ document.addEventListener('DOMContentLoaded', function(){
       el.style.setProperty('font-weight', '500', 'important');
       el.style.setProperty('color', '#fff', 'important');
       el.style.setProperty('word-break', 'keep-all', 'important');
+    });
+
+    // ── 푸터 텍스트 16px / 500 ──
+    document.querySelectorAll('.ybfooter-info p, .ybfooter-info02 p, .ybfooter-info p strong, .ybfooter-info02 p strong, .ybfooter-info02 .copyright, .ybfooter-info a, .ybfooter-info02 a').forEach(function(el) {
+      el.style.setProperty('font-size', '16px', 'important');
+      el.style.setProperty('font-weight', '500', 'important');
     });
 
     // ── 버튼 15px / 600 ──
