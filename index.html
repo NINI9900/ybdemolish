@@ -9536,6 +9536,86 @@ box-shadow:0 4px 12px rgba(0,0,0,.12);
   }
 }
 </style>
+<style>
+/* ── 모바일: 햄버거 메뉴 ── */
+@media (max-width: 768px) {
+  .gnav-links { display: none !important; }
+
+  .gnav-hamburger {
+    display: flex !important;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 28px; height: 20px;
+    background: none; border: none;
+    cursor: pointer; padding: 0;
+    z-index: 1001;
+  }
+  .gnav-hamburger span {
+    display: block;
+    width: 100%; height: 2px;
+    background: #fff;
+    border-radius: 2px;
+    transition: all 0.3s;
+  }
+  .gnav-hamburger.open span:nth-child(1) {
+    transform: translateY(9px) rotate(45deg);
+  }
+  .gnav-hamburger.open span:nth-child(2) {
+    opacity: 0;
+  }
+  .gnav-hamburger.open span:nth-child(3) {
+    transform: translateY(-9px) rotate(-45deg);
+  }
+
+  .gnav-drawer {
+    display: none;
+    position: fixed;
+    top: 60px; left: 0; right: 0;
+    background: rgba(0,0,0,0.95);
+    backdrop-filter: blur(14px);
+    flex-direction: column;
+    padding: 24px 28px;
+    gap: 0;
+    z-index: 999;
+    border-top: 1px solid rgba(255,255,255,0.08);
+  }
+  .gnav-drawer.open { display: flex !important; }
+  .gnav-drawer a {
+    display: block;
+    color: rgba(255,255,255,0.85);
+    font-size: 18px;
+    font-weight: 500;
+    padding: 16px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+    text-decoration: none;
+    letter-spacing: -0.02em;
+  }
+  .gnav-drawer a:last-child { border-bottom: none; }
+}
+@media (min-width: 769px) {
+  .gnav-hamburger { display: none !important; }
+  .gnav-drawer { display: none !important; }
+}
+</style>
+<script>
+(function() {
+  document.addEventListener('DOMContentLoaded', function() {
+    var btn = document.getElementById('gnavHamburger');
+    var drawer = document.getElementById('gnavDrawer');
+    if (!btn || !drawer) return;
+    btn.addEventListener('click', function() {
+      btn.classList.toggle('open');
+      drawer.classList.toggle('open');
+    });
+    drawer.querySelectorAll('a').forEach(function(a) {
+      a.addEventListener('click', function() {
+        btn.classList.remove('open');
+        drawer.classList.remove('open');
+      });
+    });
+  });
+})();
+</script>
 </head>
 <body>
 
@@ -9545,6 +9625,14 @@ box-shadow:0 4px 12px rgba(0,0,0,.12);
     <a href="/"><img src="assets/images/img_3.png" alt="청년철거"></a>
   </div>
   <div class="gnav-links">
+    <a href="https://ybdemolish.com/sub-page">시공사례</a>
+    <a href="https://ybdemolish.imweb.me/PartnerRecruitment">파트너 지원</a>
+    <a href="https://ybdemolish.imweb.me/Quotationinquiry">견적문의</a>
+  </div>
+  <button class="gnav-hamburger" id="gnavHamburger" aria-label="메뉴 열기">
+    <span></span><span></span><span></span>
+  </button>
+  <div class="gnav-drawer" id="gnavDrawer">
     <a href="https://ybdemolish.com/sub-page">시공사례</a>
     <a href="https://ybdemolish.imweb.me/PartnerRecruitment">파트너 지원</a>
     <a href="https://ybdemolish.imweb.me/Quotationinquiry">견적문의</a>
