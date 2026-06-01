@@ -187,12 +187,56 @@
     /* LIGHTBOX */
     .lightbox {
       display: none; position: fixed; inset: 0;
-      background: rgba(0,0,0,0.92); z-index: 2000;
-      align-items: center; justify-content: center; padding: 20px;
+      background: rgba(0,0,0,0.95); z-index: 2000;
+      flex-direction: column; align-items: center; justify-content: center;
     }
     .lightbox.open { display: flex; }
-    .lightbox img { max-width: 90vw; max-height: 90vh; object-fit: contain; border-radius: 8px; }
-    .lightbox-close { position: fixed; top: 20px; right: 24px; font-size: 36px; color: #fff; cursor: pointer; background: none; border: none; line-height: 1; }
+    .lb-main {
+      position: relative; display: flex; align-items: center; justify-content: center;
+      width: 100%; flex: 1; padding: 60px 80px;
+    }
+    .lb-main img {
+      max-width: 100%; max-height: 75vh;
+      object-fit: contain; border-radius: 8px;
+      display: block;
+    }
+    .lightbox-close {
+      position: fixed; top: 20px; right: 24px;
+      font-size: 36px; color: #fff; cursor: pointer;
+      background: none; border: none; line-height: 1; z-index: 10;
+    }
+    .lb-nav {
+      position: absolute; top: 50%; transform: translateY(-50%);
+      background: rgba(255,255,255,0.15); border: none; color: #fff;
+      width: 48px; height: 48px; border-radius: 50%;
+      font-size: 22px; cursor: pointer; display: flex;
+      align-items: center; justify-content: center;
+      transition: background 0.2s; backdrop-filter: blur(4px);
+    }
+    .lb-nav:hover { background: rgba(255,255,255,0.3); }
+    .lb-prev { left: 20px; }
+    .lb-next { right: 20px; }
+    .lb-nav:disabled { opacity: 0.3; cursor: default; }
+    /* 썸네일 */
+    .lb-thumbs {
+      display: flex; gap: 8px; padding: 12px 20px 20px;
+      overflow-x: auto; max-width: 100%;
+      scrollbar-width: none;
+    }
+    .lb-thumbs::-webkit-scrollbar { display: none; }
+    .lb-thumb {
+      width: 64px; height: 48px; flex-shrink: 0;
+      border-radius: 6px; overflow: hidden; cursor: pointer;
+      border: 2px solid transparent; opacity: 0.6;
+      transition: all 0.2s;
+    }
+    .lb-thumb.active { border-color: #fff; opacity: 1; }
+    .lb-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    /* 카운터 */
+    .lb-counter {
+      position: fixed; top: 24px; left: 50%; transform: translateX(-50%);
+      color: rgba(255,255,255,0.7); font-size: 14px; font-weight: 500;
+    }
 
     /* CTA */
     .detail-cta {
@@ -287,7 +331,13 @@
 
 <div class="lightbox" id="lightbox">
   <button class="lightbox-close" id="lbClose">&times;</button>
-  <img id="lbImg" src="" alt="">
+  <div class="lb-counter" id="lbCounter"></div>
+  <div class="lb-main">
+    <button class="lb-nav lb-prev" id="lbPrev">&#8249;</button>
+    <img id="lbImg" src="" alt="">
+    <button class="lb-nav lb-next" id="lbNext">&#8250;</button>
+  </div>
+  <div class="lb-thumbs" id="lbThumbs"></div>
 </div>
 
 <footer class="ybfooter">
@@ -342,6 +392,10 @@ async function loadDetail() {
 
     // Gallery (img4~10)
     const gallerySrcs = [item.img4,item.img5,item.img6,item.img7,item.img8,item.img9,item.img10].filter(Boolean);
+    const galleryFullUrls = gallerySrcs.map(u => driveImg(u, 1400));
+    // 전역에 이미지 목록 등록
+    lbImages = galleryFullUrls;
+
     const galleryHTML = gallerySrcs.map((u,i) =>
       `<div class="gallery-item" onclick="openLightbox('${driveImg(u,1400)}')">
         <img src="${driveImg(u,600)}" alt="시공사진 ${i+4}" loading="lazy">
@@ -414,16 +468,61 @@ async function loadDetail() {
   }
 }
 
+let lbImages = [];
+let lbIndex = 0;
+
 function openLightbox(src) {
-  document.getElementById('lbImg').src = src;
+  lbIndex = lbImages.indexOf(src);
+  if (lbIndex < 0) lbIndex = 0;
+  renderLightbox();
   document.getElementById('lightbox').classList.add('open');
 }
+
+function renderLightbox() {
+  const img = document.getElementById('lbImg');
+  const counter = document.getElementById('lbCounter');
+  const thumbs = document.getElementById('lbThumbs');
+  const prev = document.getElementById('lbPrev');
+  const next = document.getElementById('lbNext');
+
+  img.src = lbImages[lbIndex];
+  counter.textContent = `${lbIndex + 1} / ${lbImages.length}`;
+  prev.disabled = lbIndex === 0;
+  next.disabled = lbIndex === lbImages.length - 1;
+
+  thumbs.innerHTML = lbImages.map((u, i) =>
+    `<div class="lb-thumb${i === lbIndex ? ' active' : ''}" onclick="lbGo(${i})">
+      <img src="${u.replace('sz=w1400','sz=w200')}" loading="lazy">
+    </div>`
+  ).join('');
+
+  // 활성 썸네일 스크롤
+  const activeThumb = thumbs.querySelectorAll('.lb-thumb')[lbIndex];
+  if (activeThumb) activeThumb.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+}
+
+function lbGo(i) {
+  lbIndex = i;
+  renderLightbox();
+}
+
+document.getElementById('lbPrev').addEventListener('click', () => { if (lbIndex > 0) { lbIndex--; renderLightbox(); } });
+document.getElementById('lbNext').addEventListener('click', () => { if (lbIndex < lbImages.length - 1) { lbIndex++; renderLightbox(); } });
+
+// 키보드
+document.addEventListener('keydown', e => {
+  if (!document.getElementById('lightbox').classList.contains('open')) return;
+  if (e.key === 'ArrowLeft' && lbIndex > 0) { lbIndex--; renderLightbox(); }
+  if (e.key === 'ArrowRight' && lbIndex < lbImages.length - 1) { lbIndex++; renderLightbox(); }
+  if (e.key === 'Escape') document.getElementById('lightbox').classList.remove('open');
+});
+
 document.getElementById('lbClose').addEventListener('click', () => {
   document.getElementById('lightbox').classList.remove('open');
-  document.getElementById('lbImg').src = '';
 });
 document.getElementById('lightbox').addEventListener('click', e => {
-  if (e.target === e.currentTarget) document.getElementById('lightbox').classList.remove('open');
+  if (e.target === e.currentTarget || e.target.classList.contains('lb-main'))
+    document.getElementById('lightbox').classList.remove('open');
 });
 
 // NAV
