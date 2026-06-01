@@ -325,7 +325,7 @@
   13~22: 1~10상세이미지
 */
 const API_URL = 'https://script.google.com/macros/s/AKfycbwZkOmLSIertg7CaImERwnxXlqobBjeDeoTOjfK6MS_BD4gse3pr-L_Y73rbc27huNR/exec';
-const ITEMS_PER_PAGE = 9;
+const ITEMS_PER_PAGE = window.innerWidth <= 768 ? 8 : 9;
 
 let allCards = [];
 let currentFilter = 'all';
