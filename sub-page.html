@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>시공사례 · 청년철거</title>
+  <meta name="description" content="청년철거 시공사례. 전국 철거 시공 실적을 확인하세요.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --blue: #1B6CF7;
+      --dark: #111;
+      --gray-bg: #f4f5f7;
+      --muted: #888;
+    }
+    html, body { font-family: "Noto Sans KR", sans-serif; background: #fff; color: #111; }
+
+    /* NAV */
+    .gnav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 500;
+      height: 72px; background: transparent;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 40px; transition: background 0.3s;
+    }
+    .gnav-logo img { height: 26px; display: block; }
+    .gnav-links { display: flex; gap: 51px; }
+    .gnav-links a {
+      font-size: 16px; font-weight: 500;
+      color: rgba(255,255,255,0.85); text-decoration: none;
+    }
+    .gnav-links a:hover, .gnav-links a.active { color: #fff; }
+    .gnav-hamburger { display: none; }
+    .gnav-drawer { display: none; }
+
+    /* HERO */
+    .sub-hero {
+      background: #111;
+      padding: 160px 40px 80px;
+      text-align: center;
+    }
+    .sub-hero .eyebrow {
+      font-size: 13px; font-weight: 700; letter-spacing: 0.1em;
+      color: var(--blue); text-transform: uppercase;
+      margin-bottom: 16px; display: block;
+    }
+    .sub-hero h1 {
+      font-size: 48px; font-weight: 900; color: #fff;
+      letter-spacing: -0.04em; line-height: 1.2;
+    }
+
+    /* FILTER */
+    .filter-bar {
+      background: #fff; border-bottom: 1px solid #eee;
+      display: flex; justify-content: center; gap: 8px;
+      padding: 20px 40px;
+      flex-wrap: wrap;
+    }
+    .filter-btn {
+      padding: 8px 20px; border-radius: 999px;
+      border: 1.5px solid #ddd; background: #fff;
+      font-size: 14px; font-weight: 500; cursor: pointer;
+      transition: all 0.2s; font-family: inherit;
+    }
+    .filter-btn.active, .filter-btn:hover {
+      background: var(--blue); border-color: var(--blue); color: #fff;
+    }
+
+    /* GRID */
+    .cases-section { background: var(--gray-bg); padding: 60px 40px 80px; }
+    .cases-grid {
+      max-width: 1290px; margin: 0 auto;
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+    }
+
+    /* LOADING */
+    .loading {
+      grid-column: 1/-1; text-align: center;
+      padding: 60px; color: var(--muted); font-size: 16px;
+    }
+    .spinner {
+      width: 40px; height: 40px; border: 3px solid #eee;
+      border-top-color: var(--blue); border-radius: 50%;
+      animation: spin 0.8s linear infinite; margin: 0 auto 16px;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* CARD */
+    .case-card {
+      background: #fff; border-radius: 20px; overflow: hidden;
+      text-decoration: none; color: inherit;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+      transition: transform 0.3s, box-shadow 0.3s;
+      display: none;
+      flex-direction: column;
+      aspect-ratio: 1 / 1;
+    }
+    .case-card.visible { display: flex; }
+    .case-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 32px rgba(0,0,0,0.13);
+    }
+    .case-thumb {
+      width: 100%; flex: 0 0 68%;
+      overflow: hidden; background: #eee; min-height: 0;
+    }
+    .case-thumb img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s; }
+    .case-card:hover .case-thumb img { transform: scale(1.05); }
+    .case-info {
+      flex: 1; min-height: 0;
+      padding: 14px 18px 16px;
+      display: flex; flex-direction: column; justify-content: center;
+      overflow: hidden;
+    }
+    .case-label {
+      display: flex; align-items: center; gap: 6px;
+      font-size: 14px; font-weight: 700; color: var(--blue);
+      margin-bottom: 10px;
+    }
+    .case-label img { height: 22px; width: auto; }
+    .case-title {
+      font-size: 22px; font-weight: 900;
+      letter-spacing: -0.04em; line-height: 1.3;
+      margin-bottom: 8px; word-break: keep-all; color: #111;
+    }
+    .case-loc { font-size: 15px; color: var(--muted); font-weight: 400; }
+
+    /* PAGINATION */
+    .pagination {
+      display: flex; justify-content: center; align-items: center;
+      gap: 6px; padding: 40px 0 20px; max-width: 1290px; margin: 0 auto; flex-wrap: wrap;
+    }
+    .page-btn {
+      width: 40px; height: 40px; border-radius: 50%;
+      border: 1.5px solid #ddd; background: #fff;
+      font-size: 15px; font-weight: 500; cursor: pointer;
+      transition: all 0.2s; font-family: inherit;
+      display: inline-flex; align-items: center; justify-content: center;
+      padding: 0; line-height: 1; vertical-align: middle;
+    }
+    .page-btn.active { background: var(--blue); border-color: var(--blue); color: #fff; }
+    .page-btn:hover:not(.active):not([disabled]) { border-color: var(--blue); color: var(--blue); }
+    .page-btn[disabled] { opacity: 0.3; cursor: default; }
+    .nav-btn { font-size: 14px; font-weight: 700; }
+    .nav-btn span { display: block; transform: translateY(-1px); }
+
+    /* CTA */
+    .sub-cta { background: #111; padding: 80px 40px; text-align: center; }
+    .sub-cta h2 {
+      font-size: 36px; font-weight: 900; color: #fff;
+      letter-spacing: -0.04em; line-height: 1.3; margin-bottom: 12px;
+    }
+    .sub-cta h2 span { color: var(--blue); }
+    .sub-cta p { font-size: 16px; color: rgba(255,255,255,0.6); margin-bottom: 32px; }
+    .sub-cta .btn-filled {
+      display: inline-block; padding: 16px 40px;
+      background: var(--blue); color: #fff; border-radius: 999px;
+      font-size: 16px; font-weight: 700; text-decoration: none;
+      transition: opacity 0.2s;
+    }
+    .sub-cta .btn-filled:hover { opacity: 0.85; }
+
+    /* FOOTER */
+    .ybfooter { background: #111; padding: 60px 40px; border-top: 1px solid rgba(255,255,255,0.07); }
+    .ybfooter-inner {
+      max-width: 1290px; margin: 0 auto;
+      display: grid; grid-template-columns: 200px 1fr 1fr; gap: 48px;
+    }
+    .ybfooter-logo { font-size: 22px; font-weight: 900; color: #fff; letter-spacing: -0.04em; }
+    .ybfooter-info p, .ybfooter-info02 p { font-size: 14px; color: #888; line-height: 1.8; margin-bottom: 4px; }
+    .ybfooter-info p strong, .ybfooter-info02 p strong { color: rgba(255,255,255,0.7); font-weight: 500; margin-right: 6px; }
+    .ybfooter-info a, .ybfooter-info02 a { color: #888; text-decoration: none; }
+    .ybfooter-info02 .copyright { font-size: 12px; color: #555; margin-top: 8px; }
+
+    /* MOBILE */
+    @media (max-width: 768px) {
+      .gnav { padding: 0 20px; height: 60px; }
+      .gnav-links { display: none !important; }
+      .gnav-hamburger {
+        display: flex; flex-direction: column; justify-content: space-between;
+        width: 28px; height: 20px;
+        background: none; border: none; cursor: pointer; padding: 0; z-index: 1001;
+      }
+      .gnav-hamburger span {
+        display: block; width: 100%; height: 2px;
+        background: #fff; border-radius: 2px; transition: all 0.3s;
+      }
+      .gnav-hamburger.open span:nth-child(1) { transform: translateY(9px) rotate(45deg); }
+      .gnav-hamburger.open span:nth-child(2) { opacity: 0; }
+      .gnav-hamburger.open span:nth-child(3) { transform: translateY(-9px) rotate(-45deg); }
+      .gnav-drawer {
+        position: fixed; top: 60px; left: 0; right: 0;
+        background: rgba(0,0,0,0.45);
+        flex-direction: column; padding: 24px 28px; z-index: 999;
+        border-top: 1px solid rgba(255,255,255,0.08); align-items: flex-end;
+      }
+      .gnav-drawer.open { display: flex !important; }
+      .gnav-drawer a {
+        display: block; color: rgba(255,255,255,0.85);
+        font-size: 18px; font-weight: 500;
+        padding: 16px 0; border-bottom: 1px solid rgba(255,255,255,0.07);
+        text-decoration: none; text-align: right; width: 100%;
+      }
+      .gnav-drawer a:last-child { border-bottom: none; }
+      .sub-hero { padding: 120px 20px 60px; }
+      .sub-hero h1 { font-size: 30px; }
+      .filter-bar { padding: 16px; gap: 6px; }
+      .filter-btn { font-size: 13px; padding: 7px 14px; }
+      .cases-section { padding: 40px 16px 60px; }
+      .cases-grid { grid-template-columns: repeat(2, 1fr); gap: 14px; }
+      .case-title { font-size: 16px; }
+      .case-info { padding: 12px 14px 16px; }
+      .page-btn { width: 36px; height: 36px; font-size: 13px; }
+      .sub-cta { padding: 60px 20px; }
+      .sub-cta h2 { font-size: 26px; }
+      .ybfooter { padding: 40px 20px; }
+      .ybfooter-inner { grid-template-columns: 1fr; gap: 24px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="gnav" id="gnav">
+  <div class="gnav-logo">
+    <a href="index.html"><img src="assets/images/img_3.png" alt="청년철거"></a>
+  </div>
+  <div class="gnav-links">
+    <a href="sub-page.html" class="active">시공사례</a>
+    <a href="https://ybdemolish.imweb.me/PartnerRecruitment" target="_blank">파트너 지원</a>
+    <a href="https://ybdemolish.imweb.me/Quotationinquiry" target="_blank">견적문의</a>
+  </div>
+  <button class="gnav-hamburger" id="gnavHamburger" aria-label="메뉴 열기">
+    <span></span><span></span><span></span>
+  </button>
+  <div class="gnav-drawer" id="gnavDrawer">
+    <a href="sub-page.html">시공사례</a>
+    <a href="https://ybdemolish.imweb.me/PartnerRecruitment" target="_blank">파트너 지원</a>
+    <a href="https://ybdemolish.imweb.me/Quotationinquiry" target="_blank">견적문의</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="sub-hero">
+  <span class="eyebrow">PROCESS</span>
+  <h1>청년철거 시공사례</h1>
+</section>
+
+<!-- FILTER -->
+<div class="filter-bar" id="filterBar">
+  <button class="filter-btn active" data-filter="all">전체</button>
+  <button class="filter-btn" data-filter="전체철거">전체철거</button>
+  <button class="filter-btn" data-filter="부분철거">부분철거</button>
+  <button class="filter-btn" data-filter="폐기물처리">폐기물처리</button>
+  <button class="filter-btn" data-filter="원상복구">원상복구</button>
+</div>
+
+<!-- CASES GRID -->
+<section class="cases-section">
+  <div class="cases-grid" id="casesGrid">
+    <div class="loading">
+      <div class="spinner"></div>
+      시공사례를 불러오는 중입니다...
+    </div>
+  </div>
+  <div class="pagination" id="pagination"></div>
+</section>
+
+<!-- CTA -->
+<section class="sub-cta">
+  <h2>철거는 곧 <span>청년철거,</span><br>전국 1위의 이유가 있습니다</h2>
+  <p>누적 계약과 시공 실적으로 검증된 최고의 파트너</p>
+  <a href="https://ybdemolish.imweb.me/Quotationinquiry" class="btn-filled" target="_blank">무료 견적 요청하기 &gt;</a>
+</section>
+
+<!-- FOOTER -->
+<footer class="ybfooter">
+  <div class="ybfooter-inner">
+    <div class="ybfooter-logo">청년철거</div>
+    <div class="ybfooter-info">
+      <p><strong>전화 번호:</strong>1866-0379</p>
+      <p><strong>이메일:</strong><a href="mailto:ybdemolish@naver.com">ybdemolish@naver.com</a></p>
+      <p><strong>인스타그램:</strong><a href="https://instagram.com/ybdemolish_" target="_blank">@ybdemolish_</a></p>
+      <p><strong>유튜브:</strong><a href="#" target="_blank">청년철거</a></p>
+    </div>
+    <div class="ybfooter-info02">
+      <p><strong>대표자</strong>임채인</p>
+      <p><strong>주소:</strong>서울특별시 동대문구 고산자로 505, 2층 145호(제기동)</p>
+      <p><strong>사업자 등록 번호:</strong>681-23-02112</p>
+      <p class="copyright">YBdemolish© 2025 All Rights Reserved</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ── 컬럼 인덱스 (0-based) ──
+   0: 구글 드라이브상 원문명
+   1: 현장명
+   2: 대분류
+   3: 면적(평)
+   4: 업로드 유무
+   5: 지역
+   6: 건물유형
+   7: 철거지원금
+   8: 시공일자
+   9: 작업기간
+  10: 링크
+  11: 사례이미지
+  12: 아이콘모양
+  13~22: 1~10상세이미지
+*/
+const API_URL = 'https://script.google.com/macros/s/AKfycbwZkOmLSIertg7CaImERwnxXlqobBjeDeoTOjfK6MS_BD4gse3pr-L_Y73rbc27huNR/exec';
+const ITEMS_PER_PAGE = 9;
+
+let allCards = [];
+let currentFilter = 'all';
+let currentPage = 1;
+
+// CSV 파서 (따옴표 안의 쉼표 처리)
+function parseCSV(text) {
+  const rows = [];
+  const lines = text.split('\n');
+  for (const line of lines) {
+    if (!line.trim()) continue;
+    const cols = [];
+    let cur = '', inQ = false;
+    for (let i = 0; i < line.length; i++) {
+      const c = line[i];
+      if (c === '"') {
+        if (inQ && line[i+1] === '"') { cur += '"'; i++; }
+        else inQ = !inQ;
+      } else if (c === ',' && !inQ) {
+        cols.push(cur.trim()); cur = '';
+      } else cur += c;
+    }
+    cols.push(cur.trim());
+    rows.push(cols);
+  }
+  return rows;
+}
+
+async function loadData() {
+  try {
+    const res = await fetch(API_URL);
+    if (!res.ok) throw new Error('fetch failed');
+    allCards = await res.json();
+
+    render();
+  } catch (e) {
+    document.getElementById('casesGrid').innerHTML =
+      '<div class="loading">데이터를 불러오지 못했습니다. 잠시 후 다시 시도해주세요.</div>';
+  }
+}
+
+function getFiltered() {
+  if (currentFilter === 'all') return allCards;
+  return allCards.filter(c => c.category.includes(currentFilter));
+}
+
+function render() {
+  const filtered = getFiltered();
+  const totalPages = Math.ceil(filtered.length / ITEMS_PER_PAGE);
+  const start = (currentPage - 1) * ITEMS_PER_PAGE;
+  const slice = filtered.slice(start, start + ITEMS_PER_PAGE);
+
+  const grid = document.getElementById('casesGrid');
+
+  if (slice.length === 0) {
+    grid.innerHTML = '<div class="loading">해당 카테고리의 시공사례가 없습니다.</div>';
+    document.getElementById('pagination').innerHTML = '';
+    return;
+  }
+
+  // Google Drive URL → 직접 이미지 URL 변환
+  function driveImg(url, size) {
+    if (!url) return '';
+    const m = url.match(/[-\w]{25,}/);
+    if (!m) return url;
+    return `https://drive.google.com/thumbnail?id=${m[0]}&sz=w${size || 400}`;
+  }
+
+  grid.innerHTML = slice.map(c => {
+    const thumbUrl = driveImg(c.thumb, 600);
+    const iconUrl  = driveImg(c.icon, 40);
+    const thumbHtml = thumbUrl
+      ? `<img src="${thumbUrl}" alt="${c.name}" loading="lazy" onerror="this.style.display='none'">`
+      : '';
+    const iconHtml = iconUrl
+      ? `<img src="${iconUrl}" alt="" style="height:20px;width:auto;">`
+      : '<img src="assets/images/img_3.png" alt="" style="height:18px;opacity:0.6">';
+    const sizeText = c.size ? c.size + (isNaN(c.size) ? '' : '평') : '';
+    const labelText = [c.category, sizeText].filter(Boolean).join(' · ');
+    const href = c.link || '#';
+    const target = c.link ? 'target="_blank"' : '';
+
+    return `<a class="case-card visible" href="${href}" ${target}>
+      <div class="case-thumb">${thumbHtml}</div>
+      <div class="case-info">
+        <span class="case-label">${iconHtml} ${labelText}</span>
+        <h3 class="case-title">${c.name}</h3>
+        <p class="case-loc">${c.region}</p>
+      </div>
+    </a>`;
+  }).join('');
+
+  // 페이지네이션
+  const pag = document.getElementById('pagination');
+  if (totalPages <= 1) { pag.innerHTML = ''; return; }
+
+  // 항상 5개 표시 (총 페이지 수가 5 미만이면 전부)
+  const visibleCount = 5;
+  let startPage, endPage;
+  if (totalPages <= visibleCount) {
+    startPage = 1; endPage = totalPages;
+  } else {
+    const half = Math.floor(visibleCount / 2);
+    startPage = Math.max(1, currentPage - half);
+    endPage = startPage + visibleCount - 1;
+    if (endPage > totalPages) { endPage = totalPages; startPage = endPage - visibleCount + 1; }
+  }
+  const pages = [];
+  for (let i = startPage; i <= endPage; i++) pages.push(i);
+
+  let pagHTML = '';
+  // 맨앞
+  pagHTML += `<button class="page-btn nav-btn" data-page="1" ${currentPage===1?'disabled':''}><span>«</span></button>`;
+  // 이전
+  pagHTML += `<button class="page-btn nav-btn" data-page="${currentPage-1}" ${currentPage===1?'disabled':''}><span>‹</span></button>`;
+  // 번호
+  pages.forEach(i => {
+    pagHTML += `<button class="page-btn${i===currentPage?' active':''}" data-page="${i}">${i}</button>`;
+  });
+  // 이후
+  pagHTML += `<button class="page-btn nav-btn" data-page="${currentPage+1}" ${currentPage===totalPages?'disabled':''}><span>›</span></button>`;
+  // 맨뒤
+  pagHTML += `<button class="page-btn nav-btn" data-page="${totalPages}" ${currentPage===totalPages?'disabled':''}><span>»</span></button>`;
+
+  pag.innerHTML = pagHTML;
+
+  pag.querySelectorAll('.page-btn:not([disabled])').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const p = parseInt(btn.dataset.page);
+      if (p < 1 || p > totalPages) return;
+      currentPage = p;
+      render();
+      document.querySelector('.cases-section').scrollIntoView({ behavior: 'smooth' });
+    });
+  });
+}
+
+// 필터
+document.querySelectorAll('.filter-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    currentFilter = btn.dataset.filter;
+    currentPage = 1;
+    render();
+  });
+});
+
+// NAV
+const gnav = document.getElementById('gnav');
+window.addEventListener('scroll', () => {
+  gnav.classList.toggle('scrolled', window.scrollY > 60);
+}, { passive: true });
+
+// 햄버거
+const hbtn = document.getElementById('gnavHamburger');
+const hdrawer = document.getElementById('gnavDrawer');
+hbtn.addEventListener('click', () => {
+  hbtn.classList.toggle('open');
+  hdrawer.classList.toggle('open');
+});
+hdrawer.querySelectorAll('a').forEach(a => {
+  a.addEventListener('click', () => {
+    hbtn.classList.remove('open');
+    hdrawer.classList.remove('open');
+  });
+});
+
+// 시작
+loadData();
+</script>
+</body>
+</html>
