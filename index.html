@@ -96,11 +96,11 @@ a { text-decoration: none; color: inherit; }
   transition: background 0.3s;
 }
 .gnav.scrolled {
-  background: rgba(0,0,0,0.88);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  border-bottom: 1px solid rgba(255,255,255,0.08);
-  box-shadow: 0 2px 20px rgba(0,0,0,0.4);
+  background: transparent;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  border-bottom: none;
+  box-shadow: none;
 }
 .gnav-logo img { height: 26px; display: block; background: transparent !important; mix-blend-mode: normal !important; }
 .gnav-links { display: flex; gap: 51px; }
@@ -9641,6 +9641,26 @@ box-shadow:0 4px 12px rgba(0,0,0,.12);
     letter-spacing: -0.03em !important;
     left: 60px !important;
     top: 17px !important;
+  }
+}
+</style>
+<style>
+/* ── 모바일: 드로어 메뉴 배경 투명 + 메뉴 항목 투명도 ── */
+@media (max-width: 768px) {
+  html body .gnav-drawer {
+    background: rgba(0,0,0,0.45) !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    align-items: flex-end !important;
+  }
+  html body .gnav-drawer a {
+    color: rgba(255,255,255,0.85) !important;
+    border-bottom: 1px solid rgba(255,255,255,0.07) !important;
+    text-align: right !important;
+    width: 100% !important;
+  }
+  html body .gnav-drawer a:hover {
+    color: #fff !important;
   }
 }
 </style>
