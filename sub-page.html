@@ -405,8 +405,8 @@ function render() {
       : '<img src="assets/images/img_3.png" alt="" style="height:18px;opacity:0.6">';
     const sizeText = c.size ? c.size + (isNaN(c.size) ? '' : '평') : '';
     const labelText = [c.category, sizeText].filter(Boolean).join(' · ');
-    const href = c.link || '#';
-    const target = c.link ? 'target="_blank"' : '';
+    const href = `detail.html?id=${c.id}`;
+    const target = '';
 
     return `<a class="case-card visible" href="${href}" ${target} style="aspect-ratio:1/1;display:flex;flex-direction:column;">
       <div class="case-thumb" style="flex:0 0 72%;overflow:hidden;">${thumbHtml}</div>
