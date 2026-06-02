@@ -395,7 +395,7 @@ function render() {
   }
 
   grid.innerHTML = slice.map(c => {
-    const thumbUrl = driveImg(c.thumb, 600);
+    const thumbUrl = driveImg(c.thumb, 400);
     const iconUrl  = driveImg(c.icon, 40);
     const thumbHtml = thumbUrl
       ? `<img src="${thumbUrl}" alt="${c.name}" loading="lazy" onerror="this.style.display='none'">`

@@ -35,7 +35,7 @@
       text-align: center;
     }
     .detail-hero .eyebrow {
-      font-size: 13px; font-weight: 700; letter-spacing: 0.12em;
+      font-size: 16px; font-weight: 700; letter-spacing: 0.1em;
       color: var(--blue); text-transform: uppercase;
       margin-bottom: 18px; display: block;
     }
@@ -220,8 +220,8 @@
       transition: background 0.2s; backdrop-filter: blur(4px);
     }
     .lb-nav:hover { background: rgba(255,255,255,0.4); }
-    .lb-prev { left: 40px; }
-    .lb-next { right: 40px; }
+    .lb-prev { left: 250px; }
+    .lb-next { right: 250px; }
     .lb-nav:disabled { opacity: 0.25; cursor: default; }
     /* 썸네일 */
     .lb-thumbs {
@@ -308,6 +308,9 @@
       .lb-main { padding: 50px 16px; }
       .lb-nav { width: 40px; height: 40px; font-size: 20px; }
       .lb-thumb { width: 56px; height: 42px; }
+      .lb-prev { left: 12px !important; }
+      .lb-next { right: 12px !important; }
+      .lb-nav { width: 40px !important; height: 40px !important; font-size: 20px !important; }
       .detail-table td.td-cell { padding: 10px 14px !important; }
       .td-cell .cell-label { font-size: 14px !important; margin-bottom: 8px !important; }
       .td-cell .cell-value { font-size: 16px !important; }
@@ -411,7 +414,7 @@ async function loadDetail() {
     const allImgs = [item.img1,item.img2,item.img3,item.img4,item.img5,item.img6,item.img7,item.img8,item.img9,item.img10,item.thumb].filter(Boolean);
     const heroSrcs = [0,1,2].map(i => allImgs[i] || allImgs[0] || '');
     const heroHTML = heroSrcs.map((u, i) => u
-      ? `<div class="hi" onclick="openLightbox('${driveImg(u,1400)}')" style="cursor:pointer;"><img src="${driveImg(u,1200)}" alt="${item.name}" loading="lazy"></div>`
+      ? `<div class="hi" onclick="openLightbox('${driveImg(u,1400)}')" style="cursor:pointer;"><img src="${driveImg(u,600)}" alt="${item.name}" loading="lazy" decoding="async"></div>`
       : '<div class="hi"></div>'
     ).join('');
 
@@ -433,7 +436,7 @@ async function loadDetail() {
 
     const galleryHTML = gallerySrcs.map((u,i) =>
       `<div class="gallery-item" onclick="openLightbox('${driveImg(u,1400)}')">
-        <img src="${driveImg(u,600)}" alt="시공사진 ${i+4}" loading="lazy">
+        <img src="${driveImg(u,400)}" alt="시공사진 ${i+4}" loading="lazy">
       </div>`
     ).join('');
 
@@ -461,7 +464,7 @@ async function loadDetail() {
         <div class="detail-left">
           <div class="detail-info-card">
             <div class="detail-label">
-              ${item.icon ? `<img src="${driveImg(item.icon,60)}" alt="">` : ''}
+              ${item.icon ? `<img src="${driveImg(item.icon,40)}" alt="">` : ''}
               ${[item.category, item.size ? (item.size.includes('평') ? item.size : item.size+'평') : ''].filter(Boolean).join(' · ')}
             </div>
             <h2 class="detail-title">${item.name}</h2>
@@ -527,7 +530,7 @@ function renderLightbox() {
 
   thumbs.innerHTML = lbImages.map((u, i) =>
     `<div class="lb-thumb${i === lbIndex ? ' active' : ''}" onclick="lbGo(${i})">
-      <img src="${u.replace('sz=w1400','sz=w200')}" loading="lazy">
+      <img src="${u.replace('sz=w1400','sz=w120')}" loading="lazy">
     </div>`
   ).join('');
 
