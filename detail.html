@@ -403,8 +403,19 @@ async function loadDetail() {
   const content = document.getElementById('pageContent');
 
   try {
-    const res = await fetch(API_URL);
-    const data = await res.json();
+    const CACHE_KEY = 'ybdemolish_cases';
+    const CACHE_TTL = 5 * 60 * 1000;
+    const cached = sessionStorage.getItem(CACHE_KEY);
+    const cachedTime = sessionStorage.getItem(CACHE_KEY + '_time');
+    let data;
+    if (cached && cachedTime && Date.now() - parseInt(cachedTime) < CACHE_TTL) {
+      data = JSON.parse(cached);
+    } else {
+      const res = await fetch(API_URL);
+      data = await res.json();
+      sessionStorage.setItem(CACHE_KEY, JSON.stringify(data));
+      sessionStorage.setItem(CACHE_KEY + '_time', Date.now().toString());
+    }
     const item = data.find(d => d.id === id) || data[0];
     if (!item) throw new Error('not found');
 

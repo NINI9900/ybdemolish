@@ -356,9 +356,19 @@ function parseCSV(text) {
 
 async function loadData() {
   try {
-    const res = await fetch(API_URL);
-    if (!res.ok) throw new Error('fetch failed');
-    allCards = await res.json();
+    const CACHE_KEY = 'ybdemolish_cases';
+    const CACHE_TTL = 5 * 60 * 1000; // 5분
+    const cached = sessionStorage.getItem(CACHE_KEY);
+    const cachedTime = sessionStorage.getItem(CACHE_KEY + '_time');
+    if (cached && cachedTime && Date.now() - parseInt(cachedTime) < CACHE_TTL) {
+      allCards = JSON.parse(cached);
+    } else {
+      const res = await fetch(API_URL);
+      if (!res.ok) throw new Error('fetch failed');
+      allCards = await res.json();
+      sessionStorage.setItem(CACHE_KEY, JSON.stringify(allCards));
+      sessionStorage.setItem(CACHE_KEY + '_time', Date.now().toString());
+    }
 
     render();
   } catch (e) {
