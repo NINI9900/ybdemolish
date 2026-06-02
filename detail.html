@@ -409,8 +409,8 @@ async function loadDetail() {
     // Hero images (img1~3) — 부족하면 thumb/img4~10으로 채움
     const allImgs = [item.img1,item.img2,item.img3,item.img4,item.img5,item.img6,item.img7,item.img8,item.img9,item.img10,item.thumb].filter(Boolean);
     const heroSrcs = [0,1,2].map(i => allImgs[i] || allImgs[0] || '');
-    const heroHTML = heroSrcs.map(u => u
-      ? `<div class="hi"><img src="${driveImg(u,1200)}" alt="${item.name}" loading="lazy"></div>`
+    const heroHTML = heroSrcs.map((u, i) => u
+      ? `<div class="hi" onclick="openLightbox('${driveImg(u,1400)}')" style="cursor:pointer;"><img src="${driveImg(u,1200)}" alt="${item.name}" loading="lazy"></div>`
       : '<div class="hi"></div>'
     ).join('');
 
