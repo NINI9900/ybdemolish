@@ -399,7 +399,7 @@ async function loadDetail() {
 
     // Gallery (사례이미지 + 1~10 상세이미지 전부)
     // Gallery (사례이미지 + 1~10 상세이미지, 아이콘 제외)
-    const gallerySrcs = [item.thumb,item.img1,item.img2,item.img3,item.img4,item.img5,item.img6,item.img7,item.img8,item.img9,item.img10].filter(Boolean);
+    const gallerySrcs = [...new Set([item.thumb,item.img1,item.img2,item.img3,item.img4,item.img5,item.img6,item.img7,item.img8,item.img9,item.img10].filter(Boolean))];
     const galleryFullUrls = gallerySrcs.map(u => driveImg(u, 1400));
     // 전역에 이미지 목록 등록
     lbImages = galleryFullUrls;
