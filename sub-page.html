@@ -21,16 +21,29 @@
     .gnav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 500;
       height: 72px; background: transparent;
+      backdrop-filter: none; -webkit-backdrop-filter: none;
+      border-bottom: none;
       display: flex; align-items: center; justify-content: space-between;
       padding: 0 40px; transition: background 0.3s;
     }
+    .gnav.scrolled { background: transparent; backdrop-filter: none; -webkit-backdrop-filter: none; border-bottom: none; box-shadow: none; }
     .gnav-logo img { height: 26px; display: block; }
     .gnav-links { display: flex; gap: 51px; }
     .gnav-links a {
-      font-size: 16px; font-weight: 500;
-      color: rgba(255,255,255,0.85); text-decoration: none;
+      font-size: 20px; font-weight: 500;
+      color: rgba(255,255,255,0.72); letter-spacing: -0.3px;
+      text-decoration: none; transition: color 0.2s; position: relative;
     }
-    .gnav-links a:hover, .gnav-links a.active { color: #fff; }
+    .gnav-links a::after {
+      content: ''; position: absolute; bottom: -4px; left: 0; right: 0;
+      height: 2px; background: var(--blue);
+      transform: scaleX(0); transition: transform 0.2s; transform-origin: center;
+    }
+    .gnav-links a:hover { color: #fff; }
+    .gnav-links a:hover::after { transform: scaleX(1); }
+    /* 밝은 배경 구간 */
+    .gnav.light .gnav-links a { color: rgba(0,0,0,0.72) !important; }
+    .gnav.light .gnav-links a:hover { color: #111 !important; }
     .gnav-hamburger { display: none; }
     .gnav-drawer { display: none; }
 
@@ -486,8 +499,11 @@ document.querySelectorAll('.filter-btn').forEach(btn => {
 
 // NAV
 const gnav = document.getElementById('gnav');
+const subHero = document.querySelector('.sub-hero');
 window.addEventListener('scroll', () => {
+  const heroH = subHero ? subHero.offsetHeight : 300;
   gnav.classList.toggle('scrolled', window.scrollY > 60);
+  gnav.classList.toggle('light', window.scrollY > heroH - 72);
 }, { passive: true });
 
 // 햄버거

@@ -15,16 +15,28 @@
     .gnav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 500;
       height: 72px; background: transparent;
+      backdrop-filter: none; -webkit-backdrop-filter: none;
+      border-bottom: none;
       display: flex; align-items: center; justify-content: space-between;
       padding: 0 40px; transition: background 0.3s;
     }
-    .gnav.scrolled { background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); box-shadow: 0 1px 12px rgba(0,0,0,0.08); }
+    .gnav.scrolled { background: transparent; backdrop-filter: none; -webkit-backdrop-filter: none; border-bottom: none; box-shadow: none; }
     .gnav-logo img { height: 26px; display: block; }
-    .gnav-links { display: flex; gap: 40px; }
-    .gnav-links a { font-size: 15px; font-weight: 500; color: rgba(255,255,255,0.9); text-decoration: none; transition: color 0.2s; }
-    .gnav.scrolled .gnav-links a { color: #333; }
-    .gnav-links a:hover { color: #fff; }
-    .gnav.scrolled .gnav-links a:hover { color: var(--blue); }
+    .gnav-links { display: flex; gap: 51px; }
+    .gnav-links a {
+      font-size: 20px; font-weight: 500;
+      color: rgba(0,0,0,0.72); letter-spacing: -0.3px;
+      text-decoration: none; transition: color 0.2s; position: relative;
+    }
+    .gnav-links a::after {
+      content: ''; position: absolute; bottom: -4px; left: 0; right: 0;
+      height: 2px; background: var(--blue);
+      transform: scaleX(0); transition: transform 0.2s; transform-origin: center;
+    }
+    .gnav-links a:hover { color: #111; }
+    .gnav-links a:hover::after { transform: scaleX(1); }
+    /* 밝은 배경 구간 */
+
     .gnav-hamburger { display: none; }
     .gnav-drawer { display: none; }
 
@@ -270,14 +282,14 @@
     /* MOBILE */
     @media (max-width: 768px) {
       .gnav { padding: 0 20px; height: 60px; }
-      .gnav.scrolled { background: rgba(0,0,0,0.88); }
+      .gnav.scrolled { background: transparent; }
       .gnav.scrolled .gnav-links a { color: rgba(255,255,255,0.85); }
       .gnav-links { display: none !important; }
       .gnav-hamburger {
         display: flex; flex-direction: column; justify-content: space-between;
         width: 28px; height: 20px; background: none; border: none; cursor: pointer; padding: 0; z-index: 1001;
       }
-      .gnav-hamburger span { display: block; width: 100%; height: 2px; background: #fff; border-radius: 2px; transition: all 0.3s; }
+      .gnav-hamburger span { display: block; width: 100%; height: 2px; background: #111; border-radius: 2px; transition: all 0.3s; }
       .gnav-hamburger.open span:nth-child(1) { transform: translateY(9px) rotate(45deg); }
       .gnav-hamburger.open span:nth-child(2) { opacity: 0; }
       .gnav-hamburger.open span:nth-child(3) { transform: translateY(-9px) rotate(-45deg); }
