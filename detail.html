@@ -384,14 +384,17 @@ async function loadDetail() {
 
     document.title = `${item.name} · 청년철거`;
 
-    // Hero images (img1~3)
-    const heroSrcs = [item.img1, item.img2, item.img3].filter(Boolean);
-    const heroHTML = heroSrcs.length
-      ? heroSrcs.map(u => `<div class="hi"><img src="${driveImg(u,1200)}" alt="${item.name}" loading="lazy"></div>`).join('')
-      : '<div class="hi"></div><div class="hi"></div><div class="hi"></div>';
+    // Hero images (img1~3) — 부족하면 thumb/img4~10으로 채움
+    const allImgs = [item.img1,item.img2,item.img3,item.img4,item.img5,item.img6,item.img7,item.img8,item.img9,item.img10,item.thumb].filter(Boolean);
+    const heroSrcs = [0,1,2].map(i => allImgs[i] || allImgs[0] || '');
+    const heroHTML = heroSrcs.map(u => u
+      ? `<div class="hi"><img src="${driveImg(u,1200)}" alt="${item.name}" loading="lazy"></div>`
+      : '<div class="hi"></div>'
+    ).join('');
 
-    // Gallery (img4~10)
-    const gallerySrcs = [item.img4,item.img5,item.img6,item.img7,item.img8,item.img9,item.img10].filter(Boolean);
+    // Gallery (사례이미지 + 1~10 상세이미지 전부)
+    // Gallery (사례이미지 + 1~10 상세이미지, 아이콘 제외)
+    const gallerySrcs = [item.thumb,item.img1,item.img2,item.img3,item.img4,item.img5,item.img6,item.img7,item.img8,item.img9,item.img10].filter(Boolean);
     const galleryFullUrls = gallerySrcs.map(u => driveImg(u, 1400));
     // 전역에 이미지 목록 등록
     lbImages = galleryFullUrls;
