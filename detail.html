@@ -578,10 +578,12 @@ document.addEventListener('keydown', e => {
   if (e.key === 'Escape') document.getElementById('lightbox').classList.remove('open');
 });
 
-// 터치 스와이프
+// 터치 + 마우스 드래그 스와이프
 (function() {
-  let startX = 0, startY = 0;
+  let startX = 0, startY = 0, isDragging = false;
   const lb = document.getElementById('lightbox');
+
+  // 터치
   lb.addEventListener('touchstart', e => {
     startX = e.touches[0].clientX;
     startY = e.touches[0].clientY;
@@ -593,7 +595,33 @@ document.addEventListener('keydown', e => {
     if (dx < 0 && lbIndex < lbImages.length - 1) { lbIndex++; renderLightbox(); }
     if (dx > 0 && lbIndex > 0) { lbIndex--; renderLightbox(); }
   }, { passive: true });
+
+  // 마우스 드래그 (PC) — lb-main 영역에 붙임
+  const lbMain = document.getElementById('lightbox').querySelector('.lb-main') || document.getElementById('lightbox');
+  lbMain.addEventListener('mousedown', e => {
+    if (e.target.classList.contains('lb-nav')) return;
+    startX = e.clientX; isDragging = true;
+    e.preventDefault();
+  });
+  window.addEventListener('mouseup', e => {
+    if (!isDragging) return;
+    isDragging = false;
+    const dx = e.clientX - startX;
+    if (Math.abs(dx) < 30) return;
+    if (dx < 0 && lbIndex < lbImages.length - 1) { lbIndex++; renderLightbox(); }
+    if (dx > 0 && lbIndex > 0) { lbIndex--; renderLightbox(); }
+  });
 })();
+
+// 마우스 휠로 이미지 넘기기 (PC)
+document.getElementById('lightbox').addEventListener('wheel', e => {
+  e.preventDefault();
+  if (e.deltaY > 0 || e.deltaX > 0) {
+    if (lbIndex < lbImages.length - 1) { lbIndex++; renderLightbox(); }
+  } else {
+    if (lbIndex > 0) { lbIndex--; renderLightbox(); }
+  }
+}, { passive: false });
 
 document.getElementById('lbClose').addEventListener('click', () => {
   document.getElementById('lightbox').classList.remove('open');
