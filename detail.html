@@ -399,19 +399,14 @@ async function loadDetail() {
 
     // Gallery (사례이미지 + 1~10 상세이미지 전부)
     // Gallery (사례이미지 + 1~10 상세이미지, 아이콘 제외)
-    // 구글 드라이브 ID 기준 중복 제거
-    function extractId(url) {
-      if (!url) return '';
-      const m = url.match(/[-\w]{25,}/);
-      return m ? m[0] : url;
-    }
-    const seenIds = new Set();
+    // URL trim + 완전 URL 기준 중복 제거
+    const seenUrls = new Set();
     const gallerySrcs = [item.thumb,item.img1,item.img2,item.img3,item.img4,item.img5,item.img6,item.img7,item.img8,item.img9,item.img10]
+      .map(u => u ? u.trim() : '')
       .filter(u => {
         if (!u) return false;
-        const id = extractId(u);
-        if (seenIds.has(id)) return false;
-        seenIds.add(id);
+        if (seenUrls.has(u)) return false;
+        seenUrls.add(u);
         return true;
       });
     const galleryFullUrls = gallerySrcs.map(u => driveImg(u, 1400));
