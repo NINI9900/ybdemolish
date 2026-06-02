@@ -193,10 +193,11 @@
     .lightbox.open { display: flex; }
     .lb-main {
       position: relative; display: flex; align-items: center; justify-content: center;
-      width: 100%; flex: 1; padding: 60px 80px;
+      width: 100%; flex: 1; padding: 60px 48px;
     }
     .lb-main img {
-      max-width: 100%; max-height: 75vh;
+      max-width: 100%; max-height: 80vh;
+      width: 100%;
       object-fit: contain; border-radius: 8px;
       display: block;
     }
@@ -289,6 +290,9 @@
       .detail-info-card { padding: 24px 20px; border-radius: 16px; }
       .detail-title { font-size: 24px; }
       .detail-right-card { position: static; border-radius: 16px; padding: 20px; }
+      .lb-main { padding: 50px 16px; }
+      .lb-nav { width: 40px; height: 40px; font-size: 20px; }
+      .lb-thumb { width: 56px; height: 42px; }
       .detail-table td { padding: 12px 16px; font-size: 13px; }
       .detail-gallery { padding: 0 16px; margin-top: 20px; }
       .gallery-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
