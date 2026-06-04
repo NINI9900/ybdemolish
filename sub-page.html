@@ -342,7 +342,18 @@ const ITEMS_PER_PAGE = window.innerWidth <= 768 ? 8 : 9;
 
 let allCards = [];
 let currentFilter = 'all';
-let currentPage = 1;
+
+// URL에서 페이지 번호 복원
+const _urlPage = parseInt(new URLSearchParams(location.search).get('page')) || 1;
+let currentPage = _urlPage;
+
+function savePageToURL(p) {
+  const params = new URLSearchParams(location.search);
+  if (p === 1) params.delete('page');
+  else params.set('page', p);
+  const newUrl = location.pathname + (params.toString() ? '?' + params.toString() : '');
+  history.replaceState(null, '', newUrl);
+}
 
 // CSV 파서 (따옴표 안의 쉼표 처리)
 function parseCSV(text) {
@@ -480,6 +491,7 @@ function render() {
       const p = parseInt(btn.dataset.page);
       if (p < 1 || p > totalPages) return;
       currentPage = p;
+      savePageToURL(p);
       render();
       document.querySelector('.cases-section').scrollIntoView({ behavior: 'smooth' });
     });
@@ -493,6 +505,7 @@ document.querySelectorAll('.filter-btn').forEach(btn => {
     btn.classList.add('active');
     currentFilter = btn.dataset.filter;
     currentPage = 1;
+    savePageToURL(1);
     render();
   });
 });
