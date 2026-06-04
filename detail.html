@@ -456,6 +456,13 @@ async function loadDetail() {
     const galleryFullUrls = gallerySrcs.map(u => driveImg(u, 1400));
     // 전역에 이미지 목록 등록
     lbImages = galleryFullUrls;
+    // 라이트박스 이미지 미리 캐싱 (첫 3장 즉시, 나머지는 idle 시)
+    lbImages.forEach((url, i) => {
+      const preload = () => { const im = new Image(); im.src = url; };
+      if (i < 3) preload();
+      else if ('requestIdleCallback' in window) requestIdleCallback(preload, { timeout: 3000 });
+      else setTimeout(preload, 500 + i * 100);
+    });
 
     const galleryHTML = gallerySrcs.map((u,i) =>
       `<div class="gallery-item" onclick="openLightbox('${driveImg(u,1400)}')">
@@ -531,8 +538,10 @@ async function loadDetail() {
 
 let lbImages = [];
 let lbIndex = 0;
+let lbThumbsBuilt = false;
 
 function openLightbox(src) {
+  lbThumbsBuilt = false; // 아이템 바뀔 때 썸네일 재빌드
   lbIndex = lbImages.indexOf(src);
   if (lbIndex < 0) lbIndex = 0;
   renderLightbox();
@@ -546,20 +555,44 @@ function renderLightbox() {
   const prev = document.getElementById('lbPrev');
   const next = document.getElementById('lbNext');
 
-  img.src = lbImages[lbIndex];
+  // 깜빡임 없이 이미지 교체: 새 이미지를 먼저 로드한 뒤 교체
+  const newSrc = lbImages[lbIndex];
+  if (img.src !== newSrc) {
+    const loader = new Image();
+    loader.onload = () => { img.src = newSrc; };
+    loader.onerror = () => { img.src = newSrc; };
+    loader.src = newSrc;
+    // 이미 캐시된 경우 즉시 반영
+    if (loader.complete) img.src = newSrc;
+  }
+
   counter.textContent = `${lbIndex + 1} / ${lbImages.length}`;
   prev.disabled = lbIndex === 0;
   next.disabled = lbIndex === lbImages.length - 1;
 
-  thumbs.innerHTML = lbImages.map((u, i) =>
-    `<div class="lb-thumb${i === lbIndex ? ' active' : ''}" onclick="lbGo(${i})">
-      <img src="${u.replace('sz=w1400','sz=w120')}" loading="lazy">
-    </div>`
-  ).join('');
+  // 썸네일: 최초 1회만 빌드, 이후엔 active 클래스만 교체
+  if (!lbThumbsBuilt) {
+    thumbs.innerHTML = lbImages.map((u, i) =>
+      `<div class="lb-thumb${i === lbIndex ? ' active' : ''}" onclick="lbGo(${i})">
+        <img src="${u.replace('sz=w1400','sz=w120')}" loading="lazy">
+      </div>`
+    ).join('');
+    lbThumbsBuilt = true;
+  } else {
+    const items = thumbs.querySelectorAll('.lb-thumb');
+    items.forEach((el, i) => el.classList.toggle('active', i === lbIndex));
+  }
 
   // 활성 썸네일 스크롤
   const activeThumb = thumbs.querySelectorAll('.lb-thumb')[lbIndex];
   if (activeThumb) activeThumb.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+
+  // 인접 이미지 선제 로딩
+  [lbIndex + 1, lbIndex - 1].forEach(i => {
+    if (i >= 0 && i < lbImages.length) {
+      const pre = new Image(); pre.src = lbImages[i];
+    }
+  });
 }
 
 function lbGo(i) {
