@@ -15,9 +15,9 @@ function doPost(e) {
 
     // 첫 행이 비어있으면 헤더 추가
     if (sheet.getLastRow() === 0) {
-      sheet.appendRow(['제출일시', '업체명', '담당자', '연락처', '이메일', '지역', '업종', '한마디']);
+      sheet.appendRow(['제출일시', '업체명', '담당자', '연락처', '이메일', '지역', '업종', '인원수', '한마디']);
       // 헤더 스타일
-      const header = sheet.getRange(1, 1, 1, 8);
+      const header = sheet.getRange(1, 1, 1, 9);
       header.setFontWeight('bold');
       header.setBackground('#1B6CF7');
       header.setFontColor('#ffffff');
@@ -31,12 +31,13 @@ function doPost(e) {
       data.phone   || '',
       data.email   || '',
       data.region  || '',
-      data.type    || '',
-      data.message || ''
+      data.type     || '',
+      data.teamsize || '',
+      data.message  || ''
     ]);
 
     // 열 너비 자동 조정
-    sheet.autoResizeColumns(1, 8);
+    sheet.autoResizeColumns(1, 9);
 
     // ── 이메일 발송 ──
     MailApp.sendEmail({
@@ -55,6 +56,7 @@ function doPost(e) {
               <tr><td style="padding: 10px 0; color: #888;">이메일</td><td style="padding: 10px 0;">${data.email || '-'}</td></tr>
               <tr><td style="padding: 10px 0; color: #888;">지역</td><td style="padding: 10px 0;">${data.region}</td></tr>
               <tr><td style="padding: 10px 0; color: #888;">업종</td><td style="padding: 10px 0;">${data.type}</td></tr>
+              <tr><td style="padding: 10px 0; color: #888;">인원수</td><td style="padding: 10px 0;">${data.teamsize || '-'}</td></tr>
               <tr><td style="padding: 10px 0; color: #888; vertical-align: top;">한마디</td><td style="padding: 10px 0;">${data.message || '-'}</td></tr>
             </table>
             <div style="margin-top: 24px; padding-top: 16px; border-top: 1px solid #eee; color: #aaa; font-size: 13px;">

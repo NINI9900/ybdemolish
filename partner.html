@@ -125,7 +125,21 @@
       display: grid; grid-template-columns: 1fr 1fr; gap: 16px;
     }
 
-    /* SUBMIT */
+    /* 개인정보 동의 */
+    .privacy-box {
+      border: 1.5px solid #e0e0e0; border-radius: 12px;
+      padding: 16px 18px; background: #fafafa;
+      font-size: 13px; color: #666; line-height: 1.6;
+      max-height: 120px; overflow-y: auto; margin-bottom: 12px;
+    }
+    .privacy-check {
+      display: flex; align-items: center; gap: 10px;
+      font-size: 14px; font-weight: 600; color: #333; cursor: pointer;
+    }
+    .privacy-check input[type="checkbox"] {
+      width: 18px; height: 18px; accent-color: var(--blue);
+      cursor: pointer; flex-shrink: 0;
+    }
     .form-submit {
       margin-top: 36px;
     }
@@ -358,8 +372,33 @@
         </div>
       </div>
       <div class="form-group">
+        <label>공사팀 인원 수 <span class="req">*</span></label>
+        <select id="f_teamsize">
+          <option value="">인원 선택</option>
+          <option>1명</option>
+          <option>2~3명</option>
+          <option>4~5명</option>
+          <option>6~10명</option>
+          <option>11명 이상</option>
+        </select>
+      </div>
+      <div class="form-group">
         <label>한마디</label>
         <textarea id="f_message" placeholder="파트너 지원 동기나 협업 희망 내용을 자유롭게 작성해 주세요."></textarea>
+      </div>
+
+      <div class="form-group">
+        <div class="privacy-box">
+          <strong>개인정보 수집 및 이용 동의</strong><br><br>
+          수집 항목: 업체명, 담당자명, 연락처, 이메일, 지역, 업종<br>
+          수집 목적: 파트너 지원 검토 및 연락<br>
+          보유 기간: 검토 완료 후 1년<br><br>
+          위 개인정보 수집·이용에 동의하지 않으실 수 있으며, 동의 거부 시 파트너 지원 서비스 이용이 제한될 수 있습니다.
+        </div>
+        <label class="privacy-check">
+          <input type="checkbox" id="f_privacy">
+          개인정보 수집 및 이용에 동의합니다 <span class="req">*</span>
+        </label>
       </div>
 
       <div class="form-submit">
@@ -462,16 +501,19 @@ hdrawer.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
 const GAS_URL = 'https://script.google.com/macros/s/AKfycby7dDov6Sd7geNc1bW3vZwsi5CEZ98AHQuIVj-qwAYYZ0JAecwb244fz6OJ0c7d6Fs/exec';
 
 function submitForm() {
-  const company = document.getElementById('f_company').value.trim();
-  const name    = document.getElementById('f_name').value.trim();
-  const phone   = document.getElementById('f_phone').value.trim();
-  const email   = document.getElementById('f_email').value.trim();
-  const region  = document.getElementById('f_region').value;
-  const type    = document.getElementById('f_type').value;
-  const message = document.getElementById('f_message').value.trim();
-  const errEl   = document.getElementById('errorMsg');
+  const company  = document.getElementById('f_company').value.trim();
+  const name     = document.getElementById('f_name').value.trim();
+  const phone    = document.getElementById('f_phone').value.trim();
+  const email    = document.getElementById('f_email').value.trim();
+  const region   = document.getElementById('f_region').value;
+  const type     = document.getElementById('f_type').value;
+  const teamsize = document.getElementById('f_teamsize').value;
+  const message  = document.getElementById('f_message').value.trim();
+  const privacy  = document.getElementById('f_privacy').checked;
+  const errEl    = document.getElementById('errorMsg');
 
-  if (!company || !name || !phone || !region || !type) {
+  if (!company || !name || !phone || !region || !type || !teamsize || !privacy) {
+    errEl.textContent = '필수 항목을 모두 입력하고 개인정보 동의에 체크해 주세요.';
     errEl.style.display = 'block';
     return;
   }
@@ -481,7 +523,7 @@ function submitForm() {
   btn.disabled = true;
   btn.textContent = '제출 중...';
 
-  const payload = { company, name, phone, email, region, type, message };
+  const payload = { company, name, phone, email, region, type, teamsize, message };
 
   fetch(GAS_URL, {
     method: 'POST',
