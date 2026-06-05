@@ -617,12 +617,21 @@ async function submitForm() {
   const payload = { address, phone, type, detail, subsidy, date, photos };
 
   try {
-    await fetch(GAS_URL, {
-      method: 'POST',
-      mode: 'no-cors',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(payload)
-    });
+    // no-cors 우회: 이미지 태그 방식으로 GET 요청
+    const payload = encodeURIComponent(JSON.stringify({ address, phone, type, detail, subsidy, date, photos: [] }));
+    
+    if (selectedFiles.length > 0) {
+      // 사진 있으면 POST로 전송
+      await fetch(GAS_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ address, phone, type, detail, subsidy, date, photos })
+      });
+    } else {
+      // 사진 없으면 GET으로 전송 (더 안정적)
+      await fetch(`${GAS_URL}?data=${payload}`, { mode: 'no-cors' });
+    }
     progressBar.style.width = '100%';
     setTimeout(() => {
       document.getElementById('quoteForm').style.display = 'none';

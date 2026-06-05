@@ -2,13 +2,28 @@
 // 청년철거 견적문의 - Google Apps Script
 // =============================================
 
-const SHEET_ID    = '1Tbv5An6wX5HpR4MPMh47xAKrf5mCr2Jf932CMHEqvxw';
+const SHEET_ID     = '1Tbv5An6wX5HpR4MPMh47xAKrf5mCr2Jf932CMHEqvxw';
 const NOTIFY_EMAIL = 'a62936559@gmail.com';
 const FOLDER_NAME  = '청년철거_견적문의_사진';
 
 function doPost(e) {
+  return handleRequest(e);
+}
+
+function doGet(e) {
+  return handleRequest(e);
+}
+
+function handleRequest(e) {
   try {
-    const data = JSON.parse(e.postData.contents);
+    let data;
+    if (e.postData && e.postData.contents) {
+      data = JSON.parse(e.postData.contents);
+    } else if (e.parameter && e.parameter.data) {
+      data = JSON.parse(decodeURIComponent(e.parameter.data));
+    } else {
+      data = e.parameter || {};
+    }
 
     // ── 스프레드시트 저장 ──
     const sheet = SpreadsheetApp.openById(SHEET_ID).getActiveSheet();
