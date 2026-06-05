@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>파트너 지원 · 청년철거</title>
-  <meta name="description" content="청년철거 파트너 지원. 기준과 신뢰가 검증된 파트너와 함께합니다.">
+  <title>견적문의 · 청년철거</title>
+  <meta name="description" content="청년철거 무료 견적문의. 추가요금 없는 투명한 견적을 안내해드립니다.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
   <style>
@@ -21,12 +21,9 @@
     .gnav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 500;
       height: 72px; background: transparent;
-      backdrop-filter: none; -webkit-backdrop-filter: none;
-      border-bottom: none;
       display: flex; align-items: center; justify-content: space-between;
       padding: 0 40px; transition: background 0.3s;
     }
-    .gnav.scrolled { background: transparent; backdrop-filter: none; -webkit-backdrop-filter: none; border-bottom: none; box-shadow: none; }
     .gnav-logo img { height: 26px; display: block; }
     .gnav-links { display: flex; gap: 51px; }
     .gnav-links a {
@@ -46,32 +43,32 @@
     .gnav-drawer { display: none; }
 
     /* HERO */
-    .partner-hero {
+    .quote-hero {
       background: #111;
       padding: 160px 40px 80px;
       text-align: center;
     }
-    .partner-hero .eyebrow {
+    .quote-hero .eyebrow {
       font-size: 16px; font-weight: 700; letter-spacing: 0.1em;
       color: var(--blue); text-transform: uppercase;
       margin-bottom: 16px; display: block;
     }
-    .partner-hero h1 {
+    .quote-hero h1 {
       font-size: 48px; font-weight: 900; color: #fff;
       letter-spacing: -0.04em; line-height: 1.2;
       margin-bottom: 20px;
     }
-    .partner-hero p {
+    .quote-hero p {
       font-size: 18px; color: rgba(255,255,255,0.6);
       line-height: 1.7; word-break: keep-all;
     }
 
     /* FORM SECTION */
-    .partner-section {
+    .quote-section {
       background: var(--gray-bg);
       padding: 80px 40px 100px;
     }
-    .partner-form-wrap {
+    .quote-form-wrap {
       max-width: 720px; margin: 0 auto;
       background: #fff; border-radius: 24px;
       padding: 56px 56px;
@@ -88,16 +85,12 @@
     }
 
     /* FIELDS */
-    .form-group {
-      margin-bottom: 24px;
-    }
+    .form-group { margin-bottom: 24px; }
     .form-group label {
       display: block; font-size: 14px; font-weight: 700;
-      color: #333; margin-bottom: 8px; letter-spacing: -0.01em;
+      color: #333; margin-bottom: 8px;
     }
-    .form-group label .req {
-      color: var(--blue); margin-left: 3px;
-    }
+    .form-group label .req { color: var(--blue); margin-left: 3px; }
     .form-group input,
     .form-group select,
     .form-group textarea {
@@ -118,17 +111,58 @@
       background-position: right 16px center;
       padding-right: 40px;
     }
-    .form-group textarea {
-      resize: vertical; min-height: 100px;
+    .form-group textarea { resize: vertical; min-height: 100px; }
+
+    /* 파일 업로드 */
+    .file-upload-area {
+      border: 2px dashed #e0e0e0; border-radius: 12px;
+      padding: 28px 20px; text-align: center;
+      cursor: pointer; transition: border-color 0.2s, background 0.2s;
+      background: #fafafa;
     }
-    .form-row {
-      display: grid; grid-template-columns: 1fr 1fr; gap: 16px;
+    .file-upload-area:hover, .file-upload-area.drag-over {
+      border-color: var(--blue); background: #f0f5ff;
+    }
+    .file-upload-area input[type="file"] { display: none; }
+    .file-upload-icon { font-size: 32px; margin-bottom: 8px; }
+    .file-upload-txt { font-size: 14px; color: var(--muted); line-height: 1.6; }
+    .file-upload-txt strong { color: var(--blue); }
+    .file-preview {
+      display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px;
+    }
+    .file-preview-item {
+      position: relative; width: 80px; height: 80px;
+      border-radius: 8px; overflow: hidden; border: 1.5px solid #e0e0e0;
+    }
+    .file-preview-item img { width: 100%; height: 100%; object-fit: cover; }
+    .file-preview-item .remove-btn {
+      position: absolute; top: 3px; right: 3px;
+      width: 20px; height: 20px; border-radius: 50%;
+      background: rgba(0,0,0,0.6); color: #fff;
+      font-size: 12px; border: none; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      line-height: 1;
+    }
+    .file-count { font-size: 13px; color: var(--muted); margin-top: 8px; }
+
+    /* 개인정보 동의 */
+    .privacy-box {
+      border: 1.5px solid #e0e0e0; border-radius: 12px;
+      padding: 16px 18px; background: #fafafa;
+      font-size: 13px; color: #666; line-height: 1.6;
+      max-height: 120px; overflow-y: auto; margin-bottom: 12px;
+    }
+    .privacy-check {
+      display: flex; align-items: center; gap: 10px;
+      font-size: 14px; font-weight: 600; color: #333; cursor: pointer;
+    }
+    .privacy-check input[type="checkbox"] {
+      width: 18px; height: 18px; accent-color: var(--blue);
+      cursor: pointer; flex-shrink: 0;
     }
 
     /* SUBMIT */
-    .form-submit {
-      margin-top: 36px;
-    }
+    .form-submit { margin-top: 36px; }
     .btn-submit {
       width: 100%; padding: 18px;
       background: var(--blue); color: #fff;
@@ -142,7 +176,22 @@
     .btn-submit:active { transform: scale(0.98); }
     .btn-submit:disabled { opacity: 0.5; cursor: not-allowed; }
 
-    /* 완료 메시지 */
+    /* 진행바 */
+    .upload-progress {
+      display: none; margin-top: 16px;
+      background: #eee; border-radius: 999px; height: 6px; overflow: hidden;
+    }
+    .upload-progress-bar {
+      height: 100%; background: var(--blue);
+      border-radius: 999px; transition: width 0.3s;
+      width: 0%;
+    }
+    .upload-status {
+      display: none; text-align: center;
+      font-size: 14px; color: var(--muted); margin-top: 10px;
+    }
+
+    /* 완료 */
     .form-success {
       display: none; text-align: center; padding: 40px 0 20px;
     }
@@ -218,8 +267,6 @@
     .ybban-1920 .ybban-btn-bg{width:205px;height:47px;}
     .ybban-1920 .ybban-btn-outline{border:1px solid #fff;}
     .ybban-1920 .ybban-btn-lbl{font-size:28px;letter-spacing:-2.24px;left:102.5px;top:23px;}
-
-    /* 모바일: 하단 배너 확대 */
     @media (max-width: 768px) {
       .ybban-375 { height: 52px !important; gap: 12px !important; }
       .ybban-375 .ybban-txt { font-size: 16px !important; letter-spacing: -0.03em !important; line-height: 1.3 !important; }
@@ -258,13 +305,12 @@
         text-decoration: none; text-align: right; width: 100%;
       }
       .gnav-drawer a:last-child { border-bottom: none; }
-      .partner-hero { padding: 120px 20px 60px; }
-      .partner-hero h1 { font-size: 30px; }
-      .partner-hero p { font-size: 15px; }
-      .partner-section { padding: 40px 16px 60px; }
-      .partner-form-wrap { padding: 32px 24px; border-radius: 20px; }
+      .quote-hero { padding: 120px 20px 60px; }
+      .quote-hero h1 { font-size: 30px; }
+      .quote-hero p { font-size: 15px; }
+      .quote-section { padding: 40px 16px 60px; }
+      .quote-form-wrap { padding: 32px 24px; border-radius: 20px; }
       .form-title { font-size: 22px; }
-      .form-row { grid-template-columns: 1fr; gap: 0; }
       .ybfooter { padding: 40px 20px; }
       .ybfooter-inner { grid-template-columns: 1fr; gap: 24px; }
       .ybfooter-logo { font-size: 22px; font-style: normal; letter-spacing: -0.04em; }
@@ -284,8 +330,8 @@
   </div>
   <div class="gnav-links">
     <a href="sub-page.html">시공사례</a>
-    <a href="partner.html" class="active">파트너 지원</a>
-    <a href="quote.html">견적문의</a>
+    <a href="partner.html">파트너 지원</a>
+    <a href="quote.html" class="active">견적문의</a>
   </div>
   <button class="gnav-hamburger" id="gnavHamburger" aria-label="메뉴 열기">
     <span></span><span></span><span></span>
@@ -298,74 +344,95 @@
 </nav>
 
 <!-- HERO -->
-<section class="partner-hero">
-  <span class="eyebrow">PARTNER</span>
-  <h1>청년철거와 함께 성장할<br>파트너 팀을 찾습니다</h1>
-  <p>기준과 신뢰가 검증된 파트너와 함께합니다.<br>아래 양식을 작성해 주시면 검토 후 연락드리겠습니다.</p>
+<section class="quote-hero">
+  <span class="eyebrow">QUOTE</span>
+  <h1>무료 방문 견적<br>지금 바로 신청하세요</h1>
+  <p>추가요금 없는 투명한 견적으로 안내해드립니다.<br>정확한 주소와 철거 내용을 입력해 주세요.</p>
 </section>
 
 <!-- FORM -->
-<section class="partner-section">
-  <div class="partner-form-wrap">
-    <h2 class="form-title">파트너 지원서</h2>
+<section class="quote-section">
+  <div class="quote-form-wrap">
+    <h2 class="form-title">견적 문의서</h2>
     <p class="form-desc">필수 항목(<span style="color:var(--blue)">*</span>)을 포함하여 작성해 주세요.</p>
 
-    <div id="partnerForm">
-      <div class="form-row">
-        <div class="form-group">
-          <label>업체명 <span class="req">*</span></label>
-          <input type="text" id="f_company" placeholder="예) 홍길동 인테리어" maxlength="50">
-        </div>
-        <div class="form-group">
-          <label>담당자명 <span class="req">*</span></label>
-          <input type="text" id="f_name" placeholder="예) 홍길동" maxlength="20">
-        </div>
-      </div>
-      <div class="form-row">
-        <div class="form-group">
-          <label>연락처 <span class="req">*</span></label>
-          <input type="tel" id="f_phone" placeholder="예) 010-1234-5678" maxlength="20">
-        </div>
-        <div class="form-group">
-          <label>이메일</label>
-          <input type="email" id="f_email" placeholder="예) example@email.com" maxlength="60">
-        </div>
-      </div>
-      <div class="form-row">
-        <div class="form-group">
-          <label>지역 <span class="req">*</span></label>
-          <select id="f_region">
-            <option value="">지역 선택</option>
-            <option>서울</option><option>경기</option><option>인천</option>
-            <option>부산</option><option>대구</option><option>광주</option>
-            <option>대전</option><option>울산</option><option>세종</option>
-            <option>강원</option><option>충북</option><option>충남</option>
-            <option>전북</option><option>전남</option><option>경북</option>
-            <option>경남</option><option>제주</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label>업종 <span class="req">*</span></label>
-          <select id="f_type">
-            <option value="">업종 선택</option>
-            <option>철거 전문업체</option>
-            <option>인테리어업체</option>
-            <option>건설사</option>
-            <option>공인중개사</option>
-            <option>부동산 컨설팅</option>
-            <option>기타</option>
-          </select>
-        </div>
+    <div id="quoteForm">
+      <div class="form-group">
+        <label>현장 주소 <span class="req">*</span></label>
+        <input type="text" id="f_address" placeholder="예) 서울특별시 강남구 테헤란로 123" maxlength="100">
       </div>
       <div class="form-group">
-        <label>한마디</label>
-        <textarea id="f_message" placeholder="파트너 지원 동기나 협업 희망 내용을 자유롭게 작성해 주세요."></textarea>
+        <label>연락처 <span class="req">*</span></label>
+        <input type="tel" id="f_phone" placeholder="예) 010-1234-5678" maxlength="20">
+      </div>
+      <div class="form-group">
+        <label>철거 내용 <span class="req">*</span></label>
+        <select id="f_type">
+          <option value="">철거 유형 선택</option>
+          <option>부분철거</option>
+          <option>전체철거</option>
+          <option>원상복구</option>
+          <option>사무실 철거</option>
+          <option>상가 철거</option>
+          <option>공장 철거</option>
+          <option>주거 철거</option>
+          <option>기타</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>상세 내용</label>
+        <textarea id="f_detail" placeholder="철거 범위, 면적, 특이사항 등 자유롭게 작성해 주세요."></textarea>
+      </div>
+      <div class="form-group">
+        <label>폐업지원금 신청 여부</label>
+        <select id="f_subsidy">
+          <option value="">선택</option>
+          <option>신청 필요함</option>
+          <option>해당 없음</option>
+          <option>모르겠음</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>방문견적 가능 일자</label>
+        <input type="text" id="f_date" placeholder="예) 6월 10일 오전, 6월 11~12일 중" maxlength="50">
+      </div>
+      <div class="form-group">
+        <label>철거 장소 사진 <span style="font-weight:400;color:var(--muted)">(최대 5장)</span></label>
+        <div class="file-upload-area" id="fileDropArea" onclick="document.getElementById('f_photos').click()">
+          <input type="file" id="f_photos" accept="image/*" multiple>
+          <div class="file-upload-icon">📷</div>
+          <div class="file-upload-txt">
+            <strong>클릭</strong>하거나 사진을 여기에 끌어다 놓으세요<br>
+            JPG, PNG, HEIC · 장당 최대 10MB
+          </div>
+        </div>
+        <div class="file-preview" id="filePreview"></div>
+        <div class="file-count" id="fileCount"></div>
+      </div>
+
+      <!-- 개인정보 동의 -->
+      <div class="form-group">
+        <div class="privacy-box">
+          <strong>개인정보 수집 및 이용 동의</strong><br><br>
+          수집 항목: 현장 주소, 연락처, 철거 내용, 첨부 사진<br>
+          수집 목적: 견적 산출 및 방문 상담 안내<br>
+          보유 기간: 견적 완료 후 1년<br><br>
+          위 개인정보 수집·이용에 동의하지 않으실 수 있으며, 동의 거부 시 견적 서비스 이용이 제한될 수 있습니다.
+        </div>
+        <label class="privacy-check">
+          <input type="checkbox" id="f_privacy">
+          개인정보 수집 및 이용에 동의합니다 <span class="req">*</span>
+        </label>
       </div>
 
       <div class="form-submit">
-        <button class="btn-submit" id="submitBtn" onclick="submitForm()">지원서 제출하기</button>
+        <button class="btn-submit" id="submitBtn" onclick="submitForm()">견적 문의 제출하기</button>
       </div>
-      <div class="form-error-msg" id="errorMsg">필수 항목을 모두 입력해 주세요.</div>
+      <div class="upload-progress" id="uploadProgress">
+        <div class="upload-progress-bar" id="uploadProgressBar"></div>
+      </div>
+      <div class="upload-status" id="uploadStatus"></div>
+      <div class="form-error-msg" id="errorMsg">필수 항목을 모두 입력하고 개인정보 동의에 체크해 주세요.</div>
     </div>
 
     <!-- 완료 -->
@@ -375,8 +442,8 @@
           <path d="M7 16.5l6 6 12-12" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
       </div>
-      <h3>지원이 완료되었습니다!</h3>
-      <p>소중한 지원 감사합니다.<br>검토 후 담당자가 연락드리겠습니다.</p>
+      <h3>견적 문의가 접수되었습니다!</h3>
+      <p>빠른 시간 내에 담당자가 연락드리겠습니다.<br>무료 방문 견적 감사합니다.</p>
     </div>
   </div>
 </section>
@@ -457,21 +524,68 @@ hdrawer.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
   hbtn.classList.remove('open'); hdrawer.classList.remove('open');
 }));
 
+// ── 파일 업로드 ──
+const GAS_URL = 'https://script.google.com/macros/s/AKfycbyfqQuk9MgGw4iSQ6RcbRNj1Q3qdUszQ0dJ_vGsyAHYplzmsa2fE2wgCvvoAoM-qYK5/exec';
+let selectedFiles = [];
+
+const fileInput = document.getElementById('f_photos');
+const fileDropArea = document.getElementById('fileDropArea');
+const filePreview = document.getElementById('filePreview');
+const fileCount = document.getElementById('fileCount');
+
+fileInput.addEventListener('change', handleFiles);
+
+fileDropArea.addEventListener('dragover', e => { e.preventDefault(); fileDropArea.classList.add('drag-over'); });
+fileDropArea.addEventListener('dragleave', () => fileDropArea.classList.remove('drag-over'));
+fileDropArea.addEventListener('drop', e => {
+  e.preventDefault();
+  fileDropArea.classList.remove('drag-over');
+  handleFiles({ target: { files: e.dataTransfer.files } });
+});
+
+function handleFiles(e) {
+  const newFiles = Array.from(e.target.files);
+  newFiles.forEach(f => {
+    if (selectedFiles.length >= 5) return;
+    if (!f.type.startsWith('image/')) return;
+    selectedFiles.push(f);
+  });
+  renderPreview();
+  fileInput.value = '';
+}
+
+function renderPreview() {
+  filePreview.innerHTML = '';
+  selectedFiles.forEach((f, i) => {
+    const reader = new FileReader();
+    reader.onload = ev => {
+      const item = document.createElement('div');
+      item.className = 'file-preview-item';
+      item.innerHTML = `<img src="${ev.target.result}"><button class="remove-btn" onclick="removeFile(${i})">×</button>`;
+      filePreview.appendChild(item);
+    };
+    reader.readAsDataURL(f);
+  });
+  fileCount.textContent = selectedFiles.length > 0 ? `${selectedFiles.length}장 선택됨` : '';
+}
+
+function removeFile(i) {
+  selectedFiles.splice(i, 1);
+  renderPreview();
+}
+
 // ── 폼 제출 ──
-// ★ 아래 GAS_URL을 Google Apps Script 배포 URL로 교체하세요
-const GAS_URL = 'https://script.google.com/macros/s/AKfycby7dDov6Sd7geNc1bW3vZwsi5CEZ98AHQuIVj-qwAYYZ0JAecwb244fz6OJ0c7d6Fs/exec';
+async function submitForm() {
+  const address  = document.getElementById('f_address').value.trim();
+  const phone    = document.getElementById('f_phone').value.trim();
+  const type     = document.getElementById('f_type').value;
+  const detail   = document.getElementById('f_detail').value.trim();
+  const subsidy  = document.getElementById('f_subsidy').value;
+  const date     = document.getElementById('f_date').value.trim();
+  const privacy  = document.getElementById('f_privacy').checked;
+  const errEl    = document.getElementById('errorMsg');
 
-function submitForm() {
-  const company = document.getElementById('f_company').value.trim();
-  const name    = document.getElementById('f_name').value.trim();
-  const phone   = document.getElementById('f_phone').value.trim();
-  const email   = document.getElementById('f_email').value.trim();
-  const region  = document.getElementById('f_region').value;
-  const type    = document.getElementById('f_type').value;
-  const message = document.getElementById('f_message').value.trim();
-  const errEl   = document.getElementById('errorMsg');
-
-  if (!company || !name || !phone || !region || !type) {
+  if (!address || !phone || !type || !privacy) {
     errEl.style.display = 'block';
     return;
   }
@@ -481,23 +595,55 @@ function submitForm() {
   btn.disabled = true;
   btn.textContent = '제출 중...';
 
-  const payload = { company, name, phone, email, region, type, message };
+  const progressWrap = document.getElementById('uploadProgress');
+  const progressBar  = document.getElementById('uploadProgressBar');
+  const statusEl     = document.getElementById('uploadStatus');
 
-  fetch(GAS_URL, {
-    method: 'POST',
-    mode: 'no-cors',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(payload)
-  })
-  .then(() => {
-    document.getElementById('partnerForm').style.display = 'none';
-    document.getElementById('formSuccess').style.display = 'block';
-  })
-  .catch(() => {
+  // 사진을 base64로 변환
+  const photos = [];
+  if (selectedFiles.length > 0) {
+    progressWrap.style.display = 'block';
+    statusEl.style.display = 'block';
+    statusEl.textContent = '사진 변환 중...';
+
+    for (let i = 0; i < selectedFiles.length; i++) {
+      const base64 = await fileToBase64(selectedFiles[i]);
+      photos.push({ name: selectedFiles[i].name, data: base64 });
+      progressBar.style.width = `${((i + 1) / selectedFiles.length) * 50}%`;
+    }
+    statusEl.textContent = '서버에 전송 중...';
+  }
+
+  const payload = { address, phone, type, detail, subsidy, date, photos };
+
+  try {
+    await fetch(GAS_URL, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    });
+    progressBar.style.width = '100%';
+    setTimeout(() => {
+      document.getElementById('quoteForm').style.display = 'none';
+      document.getElementById('formSuccess').style.display = 'block';
+    }, 400);
+  } catch (err) {
     btn.disabled = false;
-    btn.textContent = '지원서 제출하기';
+    btn.textContent = '견적 문의 제출하기';
     errEl.textContent = '제출 중 오류가 발생했습니다. 잠시 후 다시 시도해 주세요.';
     errEl.style.display = 'block';
+    progressWrap.style.display = 'none';
+    statusEl.style.display = 'none';
+  }
+}
+
+function fileToBase64(file) {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onload = () => resolve(reader.result.split(',')[1]);
+    reader.onerror = reject;
+    reader.readAsDataURL(file);
   });
 }
 </script>
