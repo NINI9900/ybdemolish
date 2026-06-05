@@ -197,9 +197,17 @@ a { text-decoration: none; color: inherit; }
   margin-bottom: 20px;
 }
 .hero-h1 em {
-  background: var(--blue); color: #fff;
+  background: transparent;
   font-style: normal; padding: 0px 5px; border-radius: 0;
   display: inline; vertical-align: baseline;
+  position: relative;
+}
+.hero-h1 em::before {
+  content: '';
+  position: absolute;
+  inset: 3px 0 -1px 0;
+  background: var(--blue);
+  z-index: -1;
 }
 @media (min-width: 769px) {
   .hero-h1 em {
