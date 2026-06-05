@@ -98,7 +98,7 @@
     .form-group label .req {
       color: var(--blue); margin-left: 3px;
     }
-    .form-group input,
+    .form-group input:not([type="checkbox"]),
     .form-group select,
     .form-group textarea {
       width: 100%; padding: 14px 18px;
@@ -133,12 +133,20 @@
       max-height: 120px; overflow-y: auto; margin-bottom: 12px;
     }
     .privacy-check {
-      display: flex; align-items: center; gap: 10px;
+      display: flex !important; align-items: center; gap: 10px;
       font-size: 14px; font-weight: 600; color: #333; cursor: pointer;
+      margin-bottom: 0 !important; padding: 0 !important;
+      width: 100%;
     }
     .privacy-check input[type="checkbox"] {
-      width: 18px; height: 18px; accent-color: var(--blue);
-      cursor: pointer; flex-shrink: 0;
+      width: 16px; height: 16px; min-width: 16px;
+      accent-color: var(--blue); cursor: pointer;
+      appearance: checkbox; -webkit-appearance: checkbox;
+      margin: 0; padding: 0; border: none; background: none;
+      flex-shrink: 0; display: inline-block;
+    }
+    .privacy-check span.check-label {
+      line-height: 1.4; display: inline;
     }
     .form-submit {
       margin-top: 36px;
@@ -397,7 +405,7 @@
         </div>
         <label class="privacy-check">
           <input type="checkbox" id="f_privacy">
-          개인정보 수집 및 이용에 동의합니다 <span class="req">*</span>
+          <span class="check-label">개인정보 수집 및 이용에 동의합니다 <span class="req">*</span></span>
         </label>
       </div>
 
