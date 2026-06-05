@@ -7,22 +7,15 @@ const NOTIFY_EMAIL = 'a62936559@gmail.com';
 const FOLDER_NAME  = '청년철거_견적문의_사진';
 
 function doPost(e) {
-  return handleRequest(e);
-}
-
-function doGet(e) {
-  return handleRequest(e);
-}
-
-function handleRequest(e) {
   try {
     let data;
-    if (e.postData && e.postData.contents) {
+    // form submit 방식
+    if (e.parameter && e.parameter.payload) {
+      data = JSON.parse(e.parameter.payload);
+    } else if (e.postData && e.postData.contents) {
       data = JSON.parse(e.postData.contents);
-    } else if (e.parameter && e.parameter.data) {
-      data = JSON.parse(decodeURIComponent(e.parameter.data));
     } else {
-      data = e.parameter || {};
+      data = {};
     }
 
     // ── 스프레드시트 저장 ──
@@ -100,14 +93,18 @@ function handleRequest(e) {
     });
 
     return ContentService
-      .createTextOutput(JSON.stringify({ result: 'ok' }))
-      .setMimeType(ContentService.MimeType.JSON);
+      .createTextOutput('ok')
+      .setMimeType(ContentService.MimeType.TEXT);
 
   } catch (err) {
     return ContentService
-      .createTextOutput(JSON.stringify({ result: 'error', message: err.toString() }))
-      .setMimeType(ContentService.MimeType.JSON);
+      .createTextOutput('error: ' + err.toString())
+      .setMimeType(ContentService.MimeType.TEXT);
   }
+}
+
+function doGet(e) {
+  return doPost(e);
 }
 
 function getOrCreateFolder(name) {

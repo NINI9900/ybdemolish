@@ -617,21 +617,37 @@ async function submitForm() {
   const payload = { address, phone, type, detail, subsidy, date, photos };
 
   try {
-    // no-cors 우회: 이미지 태그 방식으로 GET 요청
-    const payload = encodeURIComponent(JSON.stringify({ address, phone, type, detail, subsidy, date, photos: [] }));
-    
-    if (selectedFiles.length > 0) {
-      // 사진 있으면 POST로 전송
-      await fetch(GAS_URL, {
-        method: 'POST',
-        mode: 'no-cors',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ address, phone, type, detail, subsidy, date, photos })
-      });
-    } else {
-      // 사진 없으면 GET으로 전송 (더 안정적)
-      await fetch(`${GAS_URL}?data=${payload}`, { mode: 'no-cors' });
-    }
+    // hidden iframe으로 CORS 우회
+    const iframeName = 'hidden_iframe_' + Date.now();
+    const iframe = document.createElement('iframe');
+    iframe.name = iframeName;
+    iframe.style.display = 'none';
+    document.body.appendChild(iframe);
+
+    const form = document.createElement('form');
+    form.method = 'POST';
+    form.action = GAS_URL;
+    form.target = iframeName;
+    form.style.display = 'none';
+
+    const input = document.createElement('input');
+    input.type = 'hidden';
+    input.name = 'payload';
+    input.value = JSON.stringify({ address, phone, type, detail, subsidy, date, photos });
+    form.appendChild(input);
+    document.body.appendChild(form);
+
+    iframe.onload = () => {
+      progressBar.style.width = '100%';
+      setTimeout(() => {
+        document.getElementById('quoteForm').style.display = 'none';
+        document.getElementById('formSuccess').style.display = 'block';
+        document.body.removeChild(iframe);
+        document.body.removeChild(form);
+      }, 400);
+    };
+
+    form.submit();
     progressBar.style.width = '100%';
     setTimeout(() => {
       document.getElementById('quoteForm').style.display = 'none';
