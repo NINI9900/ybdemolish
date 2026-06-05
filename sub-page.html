@@ -176,8 +176,11 @@
     .sub-cta .btn-filled:hover { opacity: 0.85; }
 
     /* FOOTER */
-.ybfooter { background: #111; color: #fff; padding: 48px 40px; box-sizing: border-box; width: 100%; }
-    .ybfooter-inner { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; align-items: start; }
+    .ybfooter { background: #111; color: #fff; padding: 48px 40px; box-sizing: border-box; width: 100%; }
+    .ybfooter-inner {
+      max-width: 1290px; margin: 0 auto;
+      display: grid; grid-template-columns: 200px 1fr 1fr; gap: 48px;
+    }
     .ybfooter-logo { font-size: 28px; font-weight: 900; font-style: italic; letter-spacing: -0.5px; color: #fff; line-height: 1.2; }
     .footer-logo-img { height: 30px; width: auto; }
     .ybfooter-info p, .ybfooter-info02 p { margin: 0 0 12px 0; font-size: 16px; line-height: 1.6; color: #ccc; }
@@ -185,6 +188,8 @@
     .ybfooter-info a, .ybfooter-info02 a { color: #ccc; text-decoration: none; }
     .ybfooter-info a:hover, .ybfooter-info02 a:hover { color: #fff; }
     .ybfooter-info02 .copyright { font-size: 16px; color: #999; margin-top: 4px; }
+    .ybfooter-info a, .ybfooter-info02 a { color: #888; text-decoration: none; }
+    .ybfooter-info02 .copyright { font-size: 12px; color: #555; margin-top: 8px; }
 
     /* MOBILE */
     @media (max-width: 768px) {
@@ -240,7 +245,7 @@
       .pagination { gap: 4px; padding: 30px 0 16px; flex-wrap: wrap; justify-content: center; }
       .sub-cta { padding: 60px 20px; }
       .sub-cta h2 { font-size: 26px; }
-.ybfooter { padding: 40px 20px; }
+      .ybfooter { padding: 40px 20px; }
       .ybfooter-inner { grid-template-columns: 1fr; gap: 24px; }
       .ybfooter-logo { font-size: 22px; font-style: normal; letter-spacing: -0.04em; }
       .ybfooter-info p, .ybfooter-info02 p { font-size: 14px; color: #888; line-height: 1.8; margin-bottom: 4px; }
@@ -290,31 +295,12 @@
     .ybban-1920 .ybban-btn-bg{width:205px;height:47px;}
     .ybban-1920 .ybban-btn-outline{border:1px solid #fff;}
     .ybban-1920 .ybban-btn-lbl{font-size:28px;letter-spacing:-2.24px;left:102.5px;top:23px;}
-    /* ── 모바일: 하단 배너 폰트 16px + 버튼 확대 ── */
     @media (max-width: 768px) {
-      .ybban-375 {
-        height: 52px !important;
-        gap: 12px !important;
-      }
-      .ybban-375 .ybban-txt {
-        font-size: 16px !important;
-        letter-spacing: -0.03em !important;
-        line-height: 1.3 !important;
-      }
-      .ybban-375 .ybban-btn {
-        width: 120px !important;
-        height: 34px !important;
-      }
-      .ybban-375 .ybban-btn-bg {
-        width: 120px !important;
-        height: 34px !important;
-      }
-      .ybban-375 .ybban-btn-lbl {
-        font-size: 16px !important;
-        letter-spacing: -0.03em !important;
-        left: 60px !important;
-        top: 17px !important;
-      }
+      .ybban-375 { height: 52px !important; gap: 12px !important; }
+      .ybban-375 .ybban-txt { font-size: 16px !important; letter-spacing: -0.03em !important; line-height: 1.3 !important; }
+      .ybban-375 .ybban-btn { width: 120px !important; height: 34px !important; }
+      .ybban-375 .ybban-btn-bg { width: 120px !important; height: 34px !important; }
+      .ybban-375 .ybban-btn-lbl { font-size: 16px !important; letter-spacing: -0.03em !important; left: 60px !important; top: 17px !important; }
     }
   </style>
 </head>
@@ -609,7 +595,7 @@ hdrawer.querySelectorAll('a').forEach(a => {
 loadData();
 </script>
 
-<!-- 하단 고정 바 (375) -->
+<!-- 하단 고정 바 -->
 <div class="ybban ybban-375">
   <div class="ybban-txt"><p>판단은 지금, 진행은 바로</p></div>
   <a class="ybban-btn" href="https://pf.kakao.com/_xexbgxin/chat" target="_blank">
@@ -617,7 +603,6 @@ loadData();
     <div class="ybban-btn-lbl"><p>카톡 채널 문의</p></div>
   </a>
 </div>
-<!-- 800 -->
 <div class="ybban ybban-800">
   <div class="ybban-txt"><p>말보다 기준으로 합니다</p></div>
   <a class="ybban-btn" href="quote.html">
@@ -630,7 +615,6 @@ loadData();
     <div class="ybban-btn-lbl"><p>카톡 채널 문의</p></div>
   </a>
 </div>
-<!-- 1280 -->
 <div class="ybban ybban-1280">
   <div class="ybban-txt"><p>말보다 기준으로 합니다</p></div>
   <a class="ybban-btn" href="quote.html">
@@ -643,7 +627,6 @@ loadData();
     <div class="ybban-btn-lbl"><p>카톡 채널 문의</p></div>
   </a>
 </div>
-<!-- 1920 -->
 <div class="ybban ybban-1920">
   <div class="ybban-txt"><p>말보다 기준으로 합니다</p></div>
   <a class="ybban-btn" href="quote.html">
