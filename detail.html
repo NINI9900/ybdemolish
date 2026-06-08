@@ -227,9 +227,9 @@
     }
     .lb-main img {
       width: 100%;
-      height: min(calc(100vh - 160px), calc(100vw * 3 / 2));
-      object-fit: cover; border-radius: 8px;
+      border-radius: 8px;
       display: block;
+      object-fit: cover;
     }
     .lb-nav {
       position: absolute; top: 50%; transform: translateY(-50%);
@@ -640,7 +640,12 @@ function renderLightbox() {
   const newSrc = lbImages[lbIndex];
   if (img.src !== newSrc) {
     const loader = new Image();
-    loader.onload = () => { img.src = newSrc; };
+    loader.onload = () => {
+      img.src = newSrc;
+      // 2:3 비율(높이가 너비의 1.5배) 초과면 height 고정해서 crop
+      const maxH = Math.min(window.innerHeight - 160, window.innerWidth * 1.5);
+      img.style.height = maxH + 'px';
+    };
     loader.onerror = () => { img.src = newSrc; };
     loader.src = newSrc;
     // 이미 캐시된 경우 즉시 반영
