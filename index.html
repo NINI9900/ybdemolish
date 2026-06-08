@@ -3520,10 +3520,12 @@ header .navbar-brand img {
 
 .sec-safety .sec-sub{
   color:rgba(255,255,255,.90) !important;
-  font-size:32px !important;
+  font-size:34px !important;
+  font-weight:500 !important;
   margin-top:34px !important;
-  line-height:1.35 !important;
-  letter-spacing:-0.045em !important;
+  line-height:1.45 !important;
+  letter-spacing:-0.02em !important;
+  opacity:0.72 !important;
 }
 
 .safety-grid{
@@ -3901,11 +3903,27 @@ header .navbar-brand img {
 
 .sec-safety .sec-sub{
   color:rgba(255,255,255,.92) !important;
-  font-size:32px !important;
-  line-height:1.35 !important;
+  font-size:34px !important;
+  font-weight:500 !important;
+  line-height:1.45 !important;
+  letter-spacing:-0.02em !important;
   margin-top:34px !important;
-  opacity:1 !important;
+  opacity:0.72 !important;
   filter:none !important;
+}
+
+.sec-safety .safety-head p:not(.sec-sub){
+    font-size:34px !important;
+    font-weight:500 !important;
+    line-height:1.45 !important;
+    letter-spacing:-0.02em !important;
+    opacity:0.72 !important;
+    color:rgba(255,255,255,.92) !important;
+    width:fit-content !important;
+    max-width:100% !important;
+    margin-top:14px !important;
+    margin-left:auto !important;
+    margin-right:auto !important;
 }
 
 .safety-grid{
@@ -8588,6 +8606,7 @@ box-shadow:0 4px 12px rgba(0,0,0,.12);
   html body section.sec-process .sec-label,
   html body section.sec-steps .sec-label,
   html body section.sec-pdark .sec-label,
+  html body section.sec-pdark .pdark-head .sec-label,
   html body section.sec-struct .sec-label,
   html body section.sec-safety .sec-label {
     font-size: 16px !important;
@@ -9378,6 +9397,11 @@ box-shadow:0 4px 12px rgba(0,0,0,.12);
     font-weight: 700 !important;
     letter-spacing: 0.08em !important;
   }
+  html body section.sec-pdark .pdark-head .sec-label {
+    font-size: 16px !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.1em !important;
+  }
 
   /* ── 섹션 제목 h2 28px / 800 — force 클래스 및 :has() 포함 ── */
   html body section.sec-point h2, html body section.sec-point h2 *,
@@ -9776,7 +9800,7 @@ box-shadow:0 4px 12px rgba(0,0,0,.12);
     </h1>
     <p class="hero-sub">추가요금 없는 투명한 견적<br>무료 방문 상담으로 정확하게 안내합니다</p>
     <div class="hero-tel">
-      <img class="hero-tel-icon" src="https://ybdemolish.com/_assets/v11/ba68f95ba05de48dcf8ea1f5a37ec9c07235a3e7.png" alt="">
+      <img class="hero-tel-icon" style="position:relative;top:4px;" src="https://ybdemolish.com/_assets/v11/ba68f95ba05de48dcf8ea1f5a37ec9c07235a3e7.png" alt="">
       1866-0379
     </div>
     <div class="hero-btns">
@@ -10460,7 +10484,7 @@ box-shadow:0 4px 12px rgba(0,0,0,.12);
         시공만큼 중요한 건<br>
         <span>안전·민원 관리</span>입니다
       </h2>
-      <p class="sec-sub reveal visible">청년철거는 네 가지 기준으로 관리합니다</p>
+      <p class="reveal visible">청년철거는 네 가지 기준으로 관리합니다</p>
     </div>
 
     <div class="safety-grid">
@@ -11382,7 +11406,7 @@ document.addEventListener('DOMContentLoaded', function(){
     var pSelectors = [
       '.sec-review .sec-sub', '.sec-review p.sec-sub',
       '.sec-struct .sec-sub', '.sec-struct p.sec-sub',
-      '.sec-safety .sec-sub', '.sec-cta p', '.sec-partner p', '.sec-why p'
+      '.sec-safety .safety-head p', '.sec-cta p', '.sec-partner p', '.sec-why p'
     ];
     pSelectors.forEach(function(sel) {
       document.querySelectorAll(sel).forEach(function(el) {
@@ -11691,5 +11715,6 @@ document.addEventListener('DOMContentLoaded', function(){
   }
 })();
 </script>
+<style>@media(max-width:768px){.hero-tel img.hero-tel-icon{transform:scale(1.3);transform-origin:center;}}</style>
 </body>
 </html>
