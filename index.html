@@ -817,9 +817,9 @@ a { text-decoration: none; color: inherit; }
 .sec-partner h2 {
   font-size: 40px; font-weight: 900;
   letter-spacing: -1.2px; line-height: 1.3;
-  margin-bottom: 12px;
+  margin-bottom: 14px;
 }
-.sec-partner p { font-size: 20px; color: rgba(255,255,255,0.65); margin-bottom: 37px; }
+.sec-partner p { font-size: 20px; color: rgba(255,255,255,0.65); margin-top: 0; margin-bottom: 37px; }
 
 /* ══════════════════════════════════
    FOOTER
@@ -1105,11 +1105,11 @@ a { text-decoration: none; color: inherit; }
 }
 .sec-pdark .pdark-head .sec-label {
   color: #1B6CF7 !important;
-  font-size: 20px !important;
+  font-size: 26px !important;
   font-weight: 800 !important;
   letter-spacing: 5.8px !important;
   text-transform: uppercase !important;
-  margin-bottom: 23px !important;
+  margin-bottom: 18px !important;
 }
 .sec-pdark .pdark-head .sec-title {
   color: #fff !important;
@@ -2649,8 +2649,8 @@ header .navbar-brand img {
   color:var(--blue) !important;
   font-size:26px !important;
   line-height:1 !important;
-  font-weight:500 !important;
-  letter-spacing:0 !important;
+  font-weight:800 !important;
+  letter-spacing:5.8px !important;
   margin-bottom:18px !important;
 }
 
@@ -4713,9 +4713,9 @@ header .navbar-brand img {
 }
 
 .sec-struct .sec-sub{
-  color:rgba(255,255,255,.65) !important;
-  font-size:20px !important;
-  line-height:1.5 !important;
+  color:rgba(255,255,255,.86) !important;
+  font-size:25px !important;
+  line-height:1.4 !important;
   margin-top:22px !important;
 }
 
@@ -4808,6 +4808,19 @@ html body .sec-struct .sec-label{
     display:block !important;
 }
 
+/* TYPO SYNC — STRUCTURE 기준: POINT / REVIEW / PROCESS sec-label 26px */
+html body .sec-point .sec-label,
+html body .sec-review .sec-label,
+html body .sec-process .sec-label,
+html body .sec-steps .sec-label,
+html body .sec-pdark .sec-label{
+    font-size:26px !important;
+    font-weight:800 !important;
+    letter-spacing:5.8px !important;
+    margin-bottom:18px !important;
+    display:block !important;
+}
+
 html body .sec-struct .sec-title{
     font-size:54px !important;
     line-height:1.15 !important;
@@ -4816,7 +4829,9 @@ html body .sec-struct .sec-title{
 
 html body .sec-struct .sec-sub{
     margin-top:22px !important;
-    font-size:20px !important;
+    font-size:25px !important;
+    line-height:1.4 !important;
+    color:rgba(255,255,255,.86) !important;
 }
 
 html body .sec-struct .struct-grid{
@@ -5697,13 +5712,26 @@ html body .partner-grid{
 
 html body .sec-partner h2{
     font-size:72px !important;
-    line-height:1.18 !important;
+    line-height:1 !important;
     letter-spacing:-0.06em !important;
+    margin-bottom:14px !important;
+}
+html body .sec-partner h2 .recruit-title-force{
+    margin-bottom:0 !important;
+    vertical-align:top !important;
+    line-height:1.2 !important;
 }
 
 html body .sec-partner p{
-    font-size:54px !important;
-    line-height:1.7 !important;
+    font-size:34px !important;
+    font-weight:500 !important;
+    line-height:1.45 !important;
+    letter-spacing:-0.02em !important;
+    opacity:0.72 !important;
+    width:fit-content !important;
+    max-width:100% !important;
+    margin-left:auto !important;
+    margin-right:auto !important;
 }
 
 html body .partner-grid img{
@@ -6326,6 +6354,10 @@ html body .sec-partners [class*="marquee"]{
     line-height:1.45 !important;
     letter-spacing:-0.02em !important;
     opacity:0.72 !important;
+    width:fit-content !important;
+    max-width:100% !important;
+    margin-left:auto !important;
+    margin-right:auto !important;
 }
 
 
@@ -6448,21 +6480,24 @@ html body .sec-process .sec-title{
     letter-spacing:-0.04em !important;
 }
 
-/* REVIEW REFERENCE */
+/* REVIEW REFERENCE — STRUCTURE 기준 완전 맞춤 */
 html body .sec-review *[class*="title"],
 html body .sec-review h2{
     font-size:54px !important;
+    font-weight:800 !important;
+    line-height:1.15 !important;
+    letter-spacing:-0.04em !important;
 }
 
 
-/* PROCESS TITLE VISUAL MATCH FIX */
+/* PROCESS TITLE VISUAL MATCH FIX — STRUCTURE 기준 54px */
 html body .sec-process h2,
 html body .sec-process .sec-title,
 html body .sec-process .process-title,
 html body .sec-process *[class*="title"]{
-    font-size:62px !important;
+    font-size:54px !important;
     font-weight:800 !important;
-    line-height:1.18 !important;
+    line-height:1.15 !important;
     letter-spacing:-0.04em !important;
 }
 
@@ -6472,7 +6507,7 @@ html body .process-title-force{
     display:inline-block !important;
     font-size:54px !important;
     font-weight:800 !important;
-    line-height:1.2 !important;
+    line-height:1.15 !important;
     letter-spacing:-0.04em !important;
     transform:none !important;
     scale:1 !important;
@@ -6494,7 +6529,7 @@ html body .point-title-force{
     display:inline-block !important;
     font-size:54px !important;
     font-weight:800 !important;
-    line-height:1.2 !important;
+    line-height:1.15 !important;
     letter-spacing:-0.04em !important;
 }
 
@@ -6502,7 +6537,7 @@ html body .sec-point h2:has(.point-title-force),
 html body .sec-point .sec-title:has(.point-title-force){
     font-size:54px !important;
     font-weight:800 !important;
-    line-height:1.2 !important;
+    line-height:1.15 !important;
     letter-spacing:-0.04em !important;
 }
 
@@ -6528,7 +6563,7 @@ html body section[class*="partner"] .recruit-desc-force{
     line-height:1.45 !important;
     letter-spacing:-0.02em !important;
     opacity:0.72 !important;
-    display:inline-block !important;
+    display:inline !important;
 }
 
 /* 부모 태그가 기존 font-size를 강제하는 경우 방지 */
@@ -7008,14 +7043,16 @@ box-shadow:0 4px 12px rgba(0,0,0,.12);
 ══════════════════════════════════ */
 @media (max-width: 768px) {
 
-  /* 공통 sec-label */
+  /* 공통 sec-label — STRUCTURE 기준 16px/700/0.1em */
   .sec-point .sec-label,
   .sec-review .sec-label,
   .sec-process .sec-label,
   .sec-steps .sec-label,
   .sec-pdark .sec-label,
   .sec-struct .sec-label {
-    font-size: 20px !important;
+    font-size: 16px !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.1em !important;
   }
 
   /* ── POINT (조건이 다르면 결과도 다릅니다) ── */
@@ -7035,7 +7072,10 @@ box-shadow:0 4px 12px rgba(0,0,0,.12);
   }
   html body .sec-review .sec-sub,
   html body .sec-review p.sec-sub {
-    font-size: 20px !important;
+    font-size: 16px !important;
+    font-weight: 500 !important;
+    line-height: 1.75 !important;
+    letter-spacing: -0.02em !important;
     word-break: keep-all !important;
   }
 
@@ -7087,7 +7127,10 @@ box-shadow:0 4px 12px rgba(0,0,0,.12);
   html body .sec-struct .sec-sub,
   html body .sec-struct p.sec-sub,
   html body .sec-struct p.sec-sub span {
-    font-size: 20px !important;
+    font-size: 16px !important;
+    font-weight: 500 !important;
+    line-height: 1.75 !important;
+    letter-spacing: -0.02em !important;
     word-break: keep-all !important;
   }
 
@@ -7592,11 +7635,11 @@ box-shadow:0 4px 12px rgba(0,0,0,.12);
   html body .sec-structure .struct-head .sec-sub,
   html body .sec-struct .struct-head .sec-sub span,
   html body .sec-structure .struct-head .sec-sub span{
-    font-size:12px !important;
+    font-size:16px !important;
     font-weight:500 !important;
-    line-height:1.4 !important;
-    letter-spacing:-0.04em !important;
-    color:rgba(255,255,255,0.82) !important;
+    line-height:1.75 !important;
+    letter-spacing:-0.02em !important;
+    color:#fff !important;
     opacity:1 !important;
     margin:0 !important;
   }
@@ -7718,9 +7761,10 @@ box-shadow:0 4px 12px rgba(0,0,0,.12);
 
   html body .sec-structure .struct-head .sec-sub,
   html body .sec-struct .struct-head .sec-sub{
-    color:rgba(255,255,255,.78) !important;
-    font-size:12px !important;
-    line-height:1.45 !important;
+    color:#fff !important;
+    font-size:16px !important;
+    line-height:1.75 !important;
+    letter-spacing:-0.02em !important;
     font-weight:500 !important;
   }
 
@@ -8385,10 +8429,10 @@ box-shadow:0 4px 12px rgba(0,0,0,.12);
   html body .sec-struct .sec-sub,
   html body .sec-struct p.sec-sub,
   html body .sec-struct p.sec-sub span {
-    font-size: 15px !important;
-    font-weight: 400 !important;
-    line-height: 1.65 !important;
-    letter-spacing: -0.01em !important;
+    font-size: 16px !important;
+    font-weight: 500 !important;
+    line-height: 1.75 !important;
+    letter-spacing: -0.02em !important;
     word-break: keep-all !important;
     white-space: normal !important;
   }
@@ -8546,9 +8590,9 @@ box-shadow:0 4px 12px rgba(0,0,0,.12);
   html body section.sec-pdark .sec-label,
   html body section.sec-struct .sec-label,
   html body section.sec-safety .sec-label {
-    font-size: 13px !important;
+    font-size: 16px !important;
     font-weight: 700 !important;
-    letter-spacing: 0.08em !important;
+    letter-spacing: 0.1em !important;
   }
 
   /* ── h2 제목 — force 클래스 / :has() 전부 포함 ── */
@@ -8595,10 +8639,10 @@ box-shadow:0 4px 12px rgba(0,0,0,.12);
   html body section.sec-struct p.sec-sub span,
   html body section.sec-safety .sec-sub,
   html body section.sec-safety p.sec-sub {
-    font-size: 15px !important;
-    font-weight: 400 !important;
-    line-height: 1.65 !important;
-    letter-spacing: -0.01em !important;
+    font-size: 16px !important;
+    font-weight: 500 !important;
+    line-height: 1.75 !important;
+    letter-spacing: -0.02em !important;
     word-break: keep-all !important;
   }
 }
@@ -9391,7 +9435,7 @@ box-shadow:0 4px 12px rgba(0,0,0,.12);
   html body section.sec-partner p, html body section.sec-partner p *,
   html body section.sec-partner .recruit-desc-force,
   html body section.sec-why p {
-    font-size: 15px !important;
+    font-size: 16px !important;
     font-weight: 400 !important;
     line-height: 1.65 !important;
     letter-spacing: -0.01em !important;
@@ -10497,8 +10541,8 @@ box-shadow:0 4px 12px rgba(0,0,0,.12);
 <section class="sec-partner">
   <img class="bg" src="https://ybdemolish.com/_assets/v11/17b7f96b874045fc92869aa4a8eee35536c9c2d0.png" alt="">
   <div>
-    <h2 class="reveal"><span class="recruit-title-force" style="font-weight:800 !important;line-height:1.2 !important;letter-spacing:-0.04em !important;display:inline-block !important;">청년철거와 함께 성장할<br>파트너 팀을 찾습니다</span></h2>
-    <p class="reveal reveal-delay-1"><span style="font-weight:500 !important;line-height:1.45 !important;letter-spacing:-0.02em !important;opacity:0.72 !important;display:inline-block !important;"><span class="recruit-desc-force" style="font-weight:500 !important;line-height:1.45 !important;letter-spacing:-0.02em !important;opacity:0.72 !important;display:inline-block !important;">기준과 신뢰가 검증된 파트너와 함께합니다.</span></span></p>
+    <h2 class="reveal" style="margin-bottom:14px !important;"><span class="recruit-title-force" style="font-weight:800 !important;line-height:1.2 !important;letter-spacing:-0.04em !important;display:block !important;margin-bottom:0 !important;">청년철거와 함께 성장할<br>파트너 팀을 찾습니다</span></h2>
+    <p class="reveal reveal-delay-1">기준과 신뢰가 검증된 파트너와 함께합니다.</p>
     <a href="partner.html" class="btn-filled reveal reveal-delay-2">파트너 지원하기 ></a>
   </div>
 </section>
@@ -11336,6 +11380,7 @@ document.addEventListener('DOMContentLoaded', function(){
 
     // ── 설명 p 15px / 400 ──
     var pSelectors = [
+      '.sec-review .sec-sub', '.sec-review p.sec-sub',
       '.sec-struct .sec-sub', '.sec-struct p.sec-sub',
       '.sec-safety .sec-sub', '.sec-cta p', '.sec-partner p', '.sec-why p'
     ];
@@ -11462,10 +11507,14 @@ document.addEventListener('DOMContentLoaded', function(){
       el.style.setProperty('color', '#fff', 'important');
       el.style.setProperty('font-size', '16px', 'important');
       el.style.setProperty('font-weight', '500', 'important');
+      el.style.setProperty('line-height', '1.75', 'important');
+      el.style.setProperty('letter-spacing', '-0.02em', 'important');
       el.querySelectorAll('span').forEach(function(sp) {
         sp.style.setProperty('color', '#fff', 'important');
         sp.style.setProperty('font-size', '16px', 'important');
         sp.style.setProperty('font-weight', '500', 'important');
+        sp.style.setProperty('line-height', '1.75', 'important');
+        sp.style.setProperty('letter-spacing', '-0.02em', 'important');
       });
     });
 
@@ -11602,10 +11651,14 @@ document.addEventListener('DOMContentLoaded', function(){
         el.style.setProperty('display', 'block', 'important');
         el.style.setProperty('margin-bottom', '12px', 'important');
       });
-      // h2 제목 margin 초기화
+      // h2 제목 margin 초기화 (sec-partner는 14px 유지)
       document.querySelectorAll(sec + ' h2').forEach(function(el) {
         el.style.setProperty('margin-top', '0', 'important');
-        el.style.setProperty('margin-bottom', '0', 'important');
+        if (sec === '.sec-partner') {
+          el.style.setProperty('margin-bottom', '14px', 'important');
+        } else {
+          el.style.setProperty('margin-bottom', '0', 'important');
+        }
       });
       // 설명 p / sec-sub: margin-top 16px
       document.querySelectorAll(sec + ' .sec-sub, ' + sec + ' p.sec-sub').forEach(function(el) {
@@ -11614,7 +11667,11 @@ document.addEventListener('DOMContentLoaded', function(){
       // sec-cta / sec-partner / sec-why p
       document.querySelectorAll(sec + ' p:not(.sec-sub)').forEach(function(el) {
         if (!el.closest('.rv-card') && !el.closest('.pi-item') && !el.closest('.struct-card') && !el.closest('.safety-card') && !el.closest('.pd-card')) {
-          el.style.setProperty('margin-top', '16px', 'important');
+          if (sec === '.sec-partner') {
+            el.style.setProperty('margin-top', '0', 'important');
+          } else {
+            el.style.setProperty('margin-top', '16px', 'important');
+          }
         }
       });
     });
