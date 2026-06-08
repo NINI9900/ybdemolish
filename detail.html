@@ -204,15 +204,15 @@
     .lightbox {
       display: none; position: fixed; inset: 0;
       background: rgba(0,0,0,0.95); z-index: 2000;
-      flex-direction: column; align-items: center; justify-content: center;
+      flex-direction: column; align-items: center; justify-content: flex-start;
     }
     .lightbox.open { display: flex; }
     .lb-main {
       position: relative; display: flex; align-items: center; justify-content: center;
-      width: 100%; flex: 1; padding: 60px 48px;
+      width: 100%; flex: 1; min-height: 0; padding: 60px 48px;
     }
     .lb-main img {
-      max-width: 100%; max-height: 80vh;
+      max-width: 100%; max-height: 100%;
       width: 100%;
       object-fit: contain; border-radius: 8px;
       display: block;
@@ -239,7 +239,7 @@
     .lb-thumbs {
       display: flex; gap: 8px; padding: 12px 20px 20px;
       overflow-x: auto; max-width: 100%;
-      scrollbar-width: none;
+      scrollbar-width: none; flex-shrink: 0;
     }
     .lb-thumbs::-webkit-scrollbar { display: none; }
     .lb-thumb {
@@ -319,7 +319,7 @@
       .right-info-row { font-size: 16px !important; padding: 8px 0 !important; }
       .detail-btns { margin-top: 14px !important; gap: 8px !important; }
       .btn-primary, .btn-secondary { padding: 12px 16px !important; font-size: 14px !important; }
-      .lb-main { padding: 16px 16px 8px; }
+      .lb-main { padding: 8px 16px 8px; }
       .lb-main img { max-height: 60vh; }
       .lb-nav { width: 40px; height: 40px; font-size: 20px; }
       .lb-thumb { width: 56px; height: 42px; }
