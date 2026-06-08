@@ -205,6 +205,7 @@
       display: none; position: fixed; inset: 0;
       background: rgba(0,0,0,0.95); z-index: 2000;
       flex-direction: column; align-items: center; justify-content: center;
+      overflow: hidden;
     }
     .lightbox.open { display: flex; }
     .lb-header {
@@ -220,18 +221,18 @@
       font-size: 32px; color: #fff; cursor: pointer;
       background: none; border: none; line-height: 1;
     }
-    /* 이미지+썸네일을 하나의 블록으로 묶어 중앙 정렬 */
     .lb-main {
-      position: relative; display: flex; flex-direction: column;
+      position: relative; display: flex;
       align-items: center; justify-content: center;
-      width: 100%; padding: 64px 56px 0;
-      box-sizing: border-box;
+      width: 100%; flex: 1; min-height: 0;
+      padding: 0 56px; box-sizing: border-box;
     }
     .lb-main img {
       width: 100%;
-      height: min(calc(100vh - 340px), calc(100vw * 4 / 3));
+      max-height: 100%;
+      aspect-ratio: 4/3;
       object-fit: cover; border-radius: 8px;
-      display: block; flex-shrink: 0;
+      display: block;
     }
     .lb-nav {
       position: absolute; top: 50%; transform: translateY(-50%);
@@ -248,11 +249,10 @@
     .lb-nav:disabled { opacity: 0.25; cursor: default; }
     /* 썸네일: 이미지 바로 아래 갭 7px */
     .lb-thumbs {
-      display: flex; gap: 8px; padding: 8px 16px;
-      margin-top: 7px;
+      display: flex; gap: 8px; padding: 8px 16px 16px;
       overflow-x: auto; scrollbar-width: none;
-      align-items: center; flex-shrink: 0;
-      height: 60px; box-sizing: border-box;
+      align-items: center; flex-shrink: 0; flex-grow: 0;
+      height: 68px; box-sizing: border-box; width: 100%;
     }
     .lb-thumbs::-webkit-scrollbar { display: none; }
     .lb-thumb {
@@ -327,9 +327,7 @@
       .right-info-row { font-size: 16px !important; padding: 8px 0 !important; }
       .detail-btns { margin-top: 14px !important; gap: 8px !important; }
       .btn-primary, .btn-secondary { padding: 12px 16px !important; font-size: 14px !important; }
-      .lb-main { padding: 56px 48px 0; }
-      .lb-main { padding: 64px 48px 0; }
-      .lb-main img { width: 100%; height: min(calc(100vh - 340px), calc(100vw * 4 / 3)); object-fit: cover; }
+      .lb-main { padding: 0 48px; }
       .lb-nav { width: 40px !important; height: 40px !important; font-size: 20px !important; }
       .lb-prev { left: 4px !important; }
       .lb-next { right: 4px !important; }
@@ -459,8 +457,8 @@
     <button class="lb-nav lb-prev" id="lbPrev">&#8249;</button>
     <img id="lbImg" src="" alt="">
     <button class="lb-nav lb-next" id="lbNext">&#8250;</button>
-    <div class="lb-thumbs" id="lbThumbs"></div>
   </div>
+  <div class="lb-thumbs" id="lbThumbs"></div>
 </div>
 
 <footer class="ybfooter">
