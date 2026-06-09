@@ -24,7 +24,7 @@
       display: flex; align-items: center; justify-content: space-between;
       padding: 0 40px; transition: background 0.3s;
     }
-    .gnav-logo img { height: 26px; display: block; }
+    .gnav-logo img { height: 26px; display: block; filter: brightness(0) invert(1); }
     .gnav-links { display: flex; gap: 51px; }
     .gnav-links a {
       font-size: 20px; font-weight: 500;
@@ -44,13 +44,13 @@
 
     /* HERO */
     .quote-hero {
-      background: #111;
+      background: var(--blue);
       padding: 160px 40px 80px;
       text-align: center;
     }
     .quote-hero .eyebrow {
       font-size: 16px; font-weight: 700; letter-spacing: 0.1em;
-      color: var(--blue); text-transform: uppercase;
+      color: #fff; text-transform: uppercase;
       margin-bottom: 16px; display: block;
     }
     .quote-hero h1 {
