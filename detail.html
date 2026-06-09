@@ -536,7 +536,8 @@ async function loadDetail() {
         seenUrls.add(u);
         return true;
       });
-    const galleryFullUrls = gallerySrcs.map(u => driveImg(u, 1400));
+    const isMobile = window.innerWidth <= 768;
+    const galleryFullUrls = gallerySrcs.map(u => driveImg(u, isMobile ? 800 : 1400));
     // 전역에 이미지 목록 등록
     lbImages = galleryFullUrls;
     // 라이트박스 이미지 미리 캐싱 (첫 3장 즉시, 나머지는 idle 시)
@@ -548,7 +549,7 @@ async function loadDetail() {
     });
 
     const galleryHTML = gallerySrcs.map((u,i) =>
-      `<div class="gallery-item" onclick="openLightbox('${driveImg(u,1400)}')">
+      `<div class="gallery-item" onclick="openLightbox('${driveImg(u, isMobile ? 800 : 1400)}')">
         <img src="${driveImg(u,400)}" alt="시공사진 ${i+4}" loading="lazy">
       </div>`
     ).join('');
@@ -670,6 +671,10 @@ function renderLightbox() {
     items.forEach((el, i) => el.classList.toggle('active', i === lbIndex));
   }
 
+  // 인접 이미지 preload
+  [lbIndex - 1, lbIndex + 1].forEach(i => {
+    if (lbImages[i]) { const p = new Image(); p.src = lbImages[i]; }
+  });
   // 활성 썸네일 스크롤 (DOM 렌더 후 실행)
   requestAnimationFrame(() => {
     const activeThumb = thumbs.querySelectorAll('.lb-thumb')[lbIndex];
