@@ -686,9 +686,11 @@ function renderLightbox() {
     items.forEach((el, i) => el.classList.toggle('active', i === lbIndex));
   }
 
-  // 활성 썸네일 스크롤
-  const activeThumb = thumbs.querySelectorAll('.lb-thumb')[lbIndex];
-  if (activeThumb) activeThumb.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+  // 활성 썸네일 스크롤 (DOM 렌더 후 실행)
+  requestAnimationFrame(() => {
+    const activeThumb = thumbs.querySelectorAll('.lb-thumb')[lbIndex];
+    if (activeThumb) activeThumb.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+  });
 
   // 인접 이미지 선제 로딩
   [lbIndex + 1, lbIndex - 1].forEach(i => {
