@@ -220,12 +220,28 @@
       font-size: 32px; color: #fff; cursor: pointer;
       background: none; border: none; line-height: 1;
     }
-    /* 썸네일: 하단 고정 96px */
+    /* 이미지+썸네일 묶음: 헤더 아래 남은 공간 중앙 배치 */
+    .lb-wrap {
+      position: absolute; top: 56px; bottom: 0; left: 0; right: 0;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      padding: 16px 0;
+    }
+    .lb-main {
+      position: relative; display: flex;
+      align-items: center; justify-content: center;
+      width: 100%; padding: 0 56px; box-sizing: border-box;
+    }
+    .lb-main img {
+      max-width: 100%; max-height: calc(100vh - 56px - 7px - 68px - 32px);
+      object-fit: contain; border-radius: 8px; display: block;
+    }
+    /* 썸네일: 이미지 바로 아래 7px */
     .lb-thumbs {
-      position: absolute; bottom: 0; left: 0; right: 0; height: 96px;
-      display: flex; gap: 8px; padding: 16px 16px 20px;
+      margin-top: 7px; width: 100%;
+      display: flex; gap: 8px; padding: 0 16px;
       overflow-x: auto; scrollbar-width: none; align-items: center;
-      justify-content: center; box-sizing: border-box;
+      justify-content: center; flex-shrink: 0; height: 60px; box-sizing: border-box;
     }
     .lb-thumbs::-webkit-scrollbar { display: none; }
     .lb-thumb {
@@ -236,16 +252,6 @@
     }
     .lb-thumb.active { border-color: #fff; opacity: 1; }
     .lb-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
-    /* 이미지 영역: 헤더(56px) ~ 썸네일(96px) 사이, 양쪽 패딩으로 이미지 축소 */
-    .lb-main {
-      position: absolute; top: 56px; bottom: 96px; left: 0; right: 0;
-      display: flex; align-items: center; justify-content: center;
-      padding: 12px 56px; overflow: hidden;
-    }
-    .lb-main img {
-      max-width: 100%; max-height: 100%;
-      object-fit: contain; border-radius: 8px; display: block;
-    }
     .lb-nav {
       position: absolute; top: 50%; transform: translateY(-50%);
       background: rgba(255,255,255,0.2); border: 1.5px solid rgba(255,255,255,0.3);
@@ -323,7 +329,7 @@
       .detail-btns { margin-top: 14px !important; gap: 8px !important; }
       .btn-primary, .btn-secondary { padding: 12px 16px !important; font-size: 14px !important; }
       .lb-thumb { width: 56px; height: 42px; }
-      .lb-thumbs { position: absolute !important; bottom: 0 !important; left: 0 !important; right: 0 !important; height: 80px !important; padding: 12px 12px 16px !important; justify-content: center !important; }
+      .lb-main img { max-height: calc(100vh - 56px - 7px - 60px - 32px); }
       .detail-table td.td-cell { padding: 10px 14px !important; }
       .td-cell .cell-label { font-size: 14px !important; margin-bottom: 8px !important; }
       .td-cell .cell-value { font-size: 16px !important; }
@@ -446,12 +452,14 @@
     <div class="lb-counter" id="lbCounter"></div>
     <button class="lightbox-close" id="lbClose">&times;</button>
   </div>
-  <div class="lb-main">
-    <button class="lb-nav lb-prev" id="lbPrev">&#8249;</button>
-    <img id="lbImg" src="" alt="">
-    <button class="lb-nav lb-next" id="lbNext">&#8250;</button>
+  <div class="lb-wrap">
+    <div class="lb-main">
+      <button class="lb-nav lb-prev" id="lbPrev">&#8249;</button>
+      <img id="lbImg" src="" alt="">
+      <button class="lb-nav lb-next" id="lbNext">&#8250;</button>
+    </div>
+    <div class="lb-thumbs" id="lbThumbs"></div>
   </div>
-  <div class="lb-thumbs" id="lbThumbs"></div>
 </div>
 
 <footer class="ybfooter">
