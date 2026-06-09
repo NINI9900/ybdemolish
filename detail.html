@@ -597,7 +597,7 @@ async function loadDetail() {
             ${item.period ? `<div class="right-info-row"><span class="rl">작업 기간</span><span class="rv">${item.period}</span></div>` : ''}
             <div class="detail-btns">
               <a href="quote.html" class="btn-primary" target="_blank">무료 견적 받으러가기</a>
-              <a href="sub-page.html" class="btn-secondary">목록으로 가기</a>
+              <button onclick="history.back()" class="btn-secondary">목록으로 가기</button>
             </div>
           </div>
         </div>
