@@ -120,10 +120,10 @@ a { text-decoration: none; color: inherit; }
 }
 .gnav-links a:hover { color: #fff; }
 .gnav-links a:hover::after { transform: scaleX(1); }
-.gnav[data-theme="light"] .gnav-links a { color: rgba(0,0,0,0.65); }
-.gnav[data-theme="light"] .gnav-links a:hover { color: #000; }
-.gnav[data-theme="light"] .gnav-links a.active { color: #000; }
-.gnav[data-theme="light"] .gnav-hamburger span { background: #111; }
+    .gnav[data-theme="light"] .gnav-links a { color: rgba(0,0,0,0.65); }
+    .gnav[data-theme="light"] .gnav-links a:hover { color: #000; }
+    .gnav[data-theme="light"] .gnav-links a.active { color: #000; }
+    .gnav[data-theme="light"] .gnav-hamburger span { background: #111; }
 
 /* ══════════════════════════════════
    BUTTONS
@@ -10636,7 +10636,7 @@ document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach(el => 
 // sticky bar removed
 
 /* ══════════════════════════════
-   NAV — scrolled state + 밝기 감지
+   NAV — scrolled state
 ══════════════════════════════ */
 const gnav = document.getElementById('gnav');
 function getBrightness(rgbStr) {

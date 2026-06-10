@@ -40,11 +40,14 @@
       transform: scaleX(0); transition: transform 0.2s; transform-origin: center;
     }
     .gnav-links a:hover { color: #fff; }
-    .gnav-links a:hover::after { transform: scaleX(1); }
     .gnav[data-theme="light"] .gnav-links a { color: rgba(0,0,0,0.65); }
     .gnav[data-theme="light"] .gnav-links a:hover { color: #000; }
     .gnav[data-theme="light"] .gnav-links a.active { color: #000; }
     .gnav[data-theme="light"] .gnav-hamburger span { background: #111; }
+    .gnav-links a:hover::after { transform: scaleX(1); }
+    /* 밝은 배경 구간 */
+    .gnav.light .gnav-links a { color: rgba(0,0,0,0.72) !important; }
+    .gnav.light .gnav-links a:hover { color: #111 !important; }
     .gnav-hamburger { display: none; }
     .gnav-drawer { display: none; }
 
@@ -219,6 +222,8 @@
 .ybfooter-info a:hover,
 .ybfooter-info02 a:hover { color: #fff; }
 .ybfooter-info02 .copyright { font-size: 16px; color: #999; margin-top: 4px; }
+    .ybfooter-info a, .ybfooter-info02 a { color: #888; text-decoration: none; }
+    .ybfooter-info02 .copyright { font-size: 12px; color: #555; margin-top: 8px; }
 
     /* MOBILE */
     @media (max-width: 768px) {
@@ -274,48 +279,13 @@
       .pagination { gap: 4px; padding: 30px 0 16px; flex-wrap: wrap; justify-content: center; }
       .sub-cta { padding: 60px 20px; }
       .sub-cta h2 { font-size: 26px; }
-      .ybfooter {
-  background: #111;
-  color: #fff;
-  padding: 48px 40px;
-  box-sizing: border-box;
-  width: 100%;
-}
-.ybfooter-inner {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 20px;
-  align-items: start;
-}
-.ybfooter-logo {
-  font-size: 28px;
-  font-weight: 900;
-  font-style: italic;
-  letter-spacing: -0.5px;
-  color: #fff;
-  line-height: 1.2;
-}
-.footer-logo-img { height: 30px; width: auto; }
-.ybfooter-info p,
-.ybfooter-info02 p {
-  margin: 0 0 24px 0;
-  font-size: 16px;
-  line-height: 1.6;
-  color: #ccc;
-}
-.ybfooter-info p strong,
-.ybfooter-info02 p strong {
-  display: block;
-  color: #fff;
-  font-weight: 500;
-  font-size: 16px;
-  margin-bottom: 2px;
-}
-.ybfooter-info a,
-.ybfooter-info02 a { color: #ccc; text-decoration: none; }
-.ybfooter-info a:hover,
-.ybfooter-info02 a:hover { color: #fff; }
-.ybfooter-info02 .copyright { font-size: 16px; color: #999; margin-top: 4px; }
+      .ybfooter { padding: 40px 20px; }
+      .ybfooter-inner { grid-template-columns: 1fr; gap: 24px; }
+      .ybfooter-logo { font-size: 22px; font-style: normal; letter-spacing: -0.04em; }
+      .ybfooter-info p, .ybfooter-info02 p { font-size: 14px; color: #888; line-height: 1.8; margin-bottom: 4px; }
+      .ybfooter-info p strong, .ybfooter-info02 p strong { display: inline; color: rgba(255,255,255,0.7); font-weight: 500; font-size: 14px; margin-bottom: 0; }
+      .ybfooter-info a, .ybfooter-info02 a { color: #888; }
+      .ybfooter-info02 .copyright { font-size: 12px; color: #555; margin-top: 8px; }
     }
 
     /* ── 하단 고정 바 ── */
@@ -365,13 +335,6 @@
       .ybban-375 .ybban-btn { width: 120px !important; height: 34px !important; }
       .ybban-375 .ybban-btn-bg { width: 120px !important; height: 34px !important; }
       .ybban-375 .ybban-btn-lbl { font-size: 16px !important; letter-spacing: -0.03em !important; left: 60px !important; top: 17px !important; }
-      .ybfooter { padding: 40px 20px; }
-      .ybfooter-inner { grid-template-columns: 1fr; gap: 24px; }
-      .ybfooter-logo { font-size: 22px; font-style: normal; letter-spacing: -0.04em; }
-      .ybfooter-info p, .ybfooter-info02 p { font-size: 14px; color: #888; line-height: 1.8; margin-bottom: 4px; }
-      .ybfooter-info p strong, .ybfooter-info02 p strong { display: inline; color: rgba(255,255,255,0.7); font-weight: 500; font-size: 14px; margin-bottom: 0; }
-      .ybfooter-info a, .ybfooter-info02 a { color: #888; }
-      .ybfooter-info02 .copyright { font-size: 12px; color: #555; margin-top: 8px; }
     }
   </style>
 </head>
@@ -639,7 +602,7 @@ document.querySelectorAll('.filter-btn').forEach(btn => {
   });
 });
 
-// NAV — 배경 밝기 감지 → light/dark 자동 전환
+// NAV
 const gnav = document.getElementById('gnav');
 function getBrightness(rgbStr) {
   const m = rgbStr.match(/\d+/g);
@@ -683,12 +646,6 @@ hdrawer.querySelectorAll('a').forEach(a => {
 
 // 시작
 loadData();
-
-// ── 푸터 텍스트 16px / 500 ──
-document.querySelectorAll('.ybfooter-info p, .ybfooter-info02 p, .ybfooter-info p strong, .ybfooter-info02 p strong, .ybfooter-info02 .copyright, .ybfooter-info a, .ybfooter-info02 a').forEach(function(el) {
-  el.style.setProperty('font-size', '16px', 'important');
-  el.style.setProperty('font-weight', '500', 'important');
-});
 </script>
 
 <!-- 하단 고정 바 -->
