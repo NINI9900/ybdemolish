@@ -42,6 +42,10 @@
     .gnav-links a:hover { color: #fff; }
     .gnav-links a:hover::after, .gnav-links a.active::after { transform: scaleX(1); }
     .gnav-links a.active { color: #fff; }
+    .gnav[data-theme="light"] .gnav-links a { color: rgba(0,0,0,0.65); }
+    .gnav[data-theme="light"] .gnav-links a:hover { color: #000; }
+    .gnav[data-theme="light"] .gnav-links a.active { color: #000; }
+    .gnav[data-theme="light"] .gnav-hamburger span { background: #111; }
     .gnav-hamburger { display: none; }
     .gnav-drawer { display: none; }
 
@@ -189,15 +193,48 @@
     }
 
     /* FOOTER */
-    .ybfooter { background: #111; color: #fff; padding: 48px 40px; box-sizing: border-box; width: 100%; }
-    .ybfooter-inner { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; align-items: start; }
-    .ybfooter-logo { font-size: 28px; font-weight: 900; font-style: italic; letter-spacing: -0.5px; color: #fff; line-height: 1.2; }
-    .footer-logo-img { height: 30px; width: auto; }
-    .ybfooter-info p, .ybfooter-info02 p { margin: 0 0 12px 0; font-size: 16px; line-height: 1.6; color: #ccc; }
-    .ybfooter-info p strong, .ybfooter-info02 p strong { display: block; color: #fff; font-weight: 500; font-size: 16px; margin-bottom: 2px; }
-    .ybfooter-info a, .ybfooter-info02 a { color: #ccc; text-decoration: none; }
-    .ybfooter-info a:hover, .ybfooter-info02 a:hover { color: #fff; }
-    .ybfooter-info02 .copyright { font-size: 16px; color: #999; margin-top: 4px; }
+    .ybfooter {
+  background: #111;
+  color: #fff;
+  padding: 48px 40px;
+  box-sizing: border-box;
+  width: 100%;
+}
+.ybfooter-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 20px;
+  align-items: start;
+}
+.ybfooter-logo {
+  font-size: 28px;
+  font-weight: 900;
+  font-style: italic;
+  letter-spacing: -0.5px;
+  color: #fff;
+  line-height: 1.2;
+}
+.footer-logo-img { height: 30px; width: auto; }
+.ybfooter-info p,
+.ybfooter-info02 p {
+  margin: 0 0 24px 0 !important;
+  font-size: 16px !important;
+  line-height: 1.6 !important;
+  color: #ccc;
+}
+.ybfooter-info p strong,
+.ybfooter-info02 p strong {
+  display: block;
+  color: #fff;
+  font-weight: 500;
+  font-size: 16px;
+  margin-bottom: 2px;
+}
+.ybfooter-info a,
+.ybfooter-info02 a { color: #ccc; text-decoration: none; }
+.ybfooter-info a:hover,
+.ybfooter-info02 a:hover { color: #fff; }
+.ybfooter-info02 .copyright { font-size: 16px; color: #999; margin-top: 4px; }
 
     /* YBBAN */
     body { padding-bottom: 33.016px; }
@@ -287,6 +324,48 @@
       .partner-form-wrap { padding: 32px 24px; border-radius: 20px; }
       .form-title { font-size: 22px; }
       .form-row { grid-template-columns: 1fr; gap: 0; }
+      .ybfooter {
+  background: #111;
+  color: #fff;
+  padding: 48px 40px;
+  box-sizing: border-box;
+  width: 100%;
+}
+.ybfooter-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 20px;
+  align-items: start;
+}
+.ybfooter-logo {
+  font-size: 28px;
+  font-weight: 900;
+  font-style: italic;
+  letter-spacing: -0.5px;
+  color: #fff;
+  line-height: 1.2;
+}
+.footer-logo-img { height: 30px; width: auto; }
+.ybfooter-info p,
+.ybfooter-info02 p {
+  margin: 0 0 24px 0 !important;
+  font-size: 16px !important;
+  line-height: 1.6 !important;
+  color: #ccc;
+}
+.ybfooter-info p strong,
+.ybfooter-info02 p strong {
+  display: block;
+  color: #fff;
+  font-weight: 500;
+  font-size: 16px;
+  margin-bottom: 2px;
+}
+.ybfooter-info a,
+.ybfooter-info02 a { color: #ccc; text-decoration: none; }
+.ybfooter-info a:hover,
+.ybfooter-info02 a:hover { color: #fff; }
+.ybfooter-info02 .copyright { font-size: 16px; color: #999; margin-top: 4px; }
       .ybfooter { padding: 40px 20px; }
       .ybfooter-inner { grid-template-columns: 1fr; gap: 24px; }
       .ybfooter-logo { font-size: 22px; font-style: normal; letter-spacing: -0.04em; }
@@ -493,6 +572,36 @@
 </div>
 
 <script>
+// ── NAV 배경 밝기 감지 → light/dark 자동 전환 ──
+const gnav = document.getElementById('gnav');
+function getBrightness(rgbStr) {
+  const m = rgbStr.match(/\d+/g);
+  if (!m || m.length < 3) return 0;
+  return 0.299 * m[0] + 0.587 * m[1] + 0.114 * m[2];
+}
+function updateNavTheme() {
+  const y = gnav.offsetHeight + 2;
+  const cx = window.innerWidth / 2;
+  // 네비 바로 아래 좌/중/우 세 지점 샘플링
+  const points = [cx * 0.25, cx, cx * 1.75].map(x => document.elementFromPoint(x, y)).filter(Boolean);
+  let totalBrightness = 0, count = 0;
+  points.forEach(el => {
+    // 투명 요소는 올라가며 불투명 배경 찾기
+    let target = el;
+    while (target && target !== document.body) {
+      const bg = getComputedStyle(target).backgroundColor;
+      if (bg && bg !== 'rgba(0, 0, 0, 0)' && bg !== 'transparent') {
+        totalBrightness += getBrightness(bg); count++; break;
+      }
+      target = target.parentElement;
+    }
+  });
+  const avg = count > 0 ? totalBrightness / count : 0;
+  gnav.dataset.theme = avg > 160 ? 'light' : 'dark';
+}
+updateNavTheme();
+window.addEventListener('scroll', updateNavTheme, { passive: true });
+
 // ── NAV 햄버거 ──
 const hbtn = document.getElementById('gnavHamburger');
 const hdrawer = document.getElementById('gnavDrawer');
@@ -550,6 +659,12 @@ function submitForm() {
     errEl.style.display = 'block';
   });
 }
+
+// ── 푸터 텍스트 16px / 500 ──
+document.querySelectorAll('.ybfooter-info p, .ybfooter-info02 p, .ybfooter-info p strong, .ybfooter-info02 p strong, .ybfooter-info02 .copyright, .ybfooter-info a, .ybfooter-info02 a').forEach(function(el) {
+  el.style.setProperty('font-size', '16px', 'important');
+  el.style.setProperty('font-weight', '500', 'important');
+});
 </script>
 </body>
 </html>
